@@ -1,0 +1,13 @@
+Deliverable 1:
+
+We have three files to submit as a part of deliverable 1:
+
+Project_Deliverable_1.docx 
+GanttChart_Plan.pdf
+pert.docx
+
+Path to each of the files:
+
+Project_Deliverable_1.docx : Shan\Project\Documents\Project Reports\Project_Deliverable_1.docx
+GanttChart_Plan.pdf : Shan\Project\Documents\Planning Documents\Gantt Charts\GanttChart_Plan.pdf
+Pert.docx : Shan\Project\Documents\Planning Documents\Pert Charts\Pert.docx
