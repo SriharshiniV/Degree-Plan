@@ -36,7 +36,7 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
-INSERT INTO `login` VALUES ('aravind','806af810e2bbe73310e53e52ffc2de7f','student'),('bryant','e5b79bbdb797144a4cbf576aef22f492','chair'),('CSCEUNT_DPA','ba0af364b2d1ae82bd2cd44002c3c8c6','admin'),('mikler','42972dfe655ee2de724d96fd1b2193b1','professor'),('nanditha','f13bbffce11026f9ca053b4c9935581b','student'),('sharanya','2b864cad0ede992c2fb13954d0638ca9','student');
+INSERT INTO `login` VALUES ('aravind','347b7d2417ca30d906dc5edda4056d7b','student'),('bryant','f925916e2754e5e03f75dd58a5733251','chair'),('CSCEUNT_DPA','a39d362c8364f35fe6ce612d1e5dbee3','admin'),('harshini','e6d304912bdaaad6e67c2f6fdf8015cb','student'),('mikler','e63eea102da9e561d9e1281a9e2dd6b6','professor'),('nanditha','8e86ec7899c66248e6bf5d24503bd3f9','student'),('sharanya','d232704062b0fea5c8d5b869cddef2a5','student');
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -48,12 +48,11 @@ DROP TABLE IF EXISTS `majorprofessor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `majorprofessor` (
-  `studentName` varchar(40) DEFAULT NULL,
-  `studentMajor` varchar(40) DEFAULT NULL,
-  `professorName` varchar(40) DEFAULT NULL,
+  `studentName` varchar(50) NOT NULL,
+  `studentMajor` varchar(20) DEFAULT NULL,
+  `professorName` varchar(50) DEFAULT NULL,
   `professorEmail` varchar(60) DEFAULT NULL,
-  KEY `professorEmail` (`professorEmail`),
-  CONSTRAINT `majorprofessor_ibfk_1` FOREIGN KEY (`professorEmail`) REFERENCES `requests` (`professoremail`)
+  PRIMARY KEY (`studentName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -63,7 +62,7 @@ CREATE TABLE `majorprofessor` (
 
 LOCK TABLES `majorprofessor` WRITE;
 /*!40000 ALTER TABLE `majorprofessor` DISABLE KEYS */;
-INSERT INTO `majorprofessor` VALUES ('sharanya','CS','Dr. Armin Mikler','arminmikler@unt.edu');
+INSERT INTO `majorprofessor` VALUES ('aravind','CS','Bryant Barett','BryantBarett@unt.edu'),('harshini','CS','Bryant Barett','BryantBarett@unt.edu'),('nanditha','CS','Bryant Barett','BryantBarett@unt.edu'),('sharanya','CS','Dr. Armin Mikler','arminmikler@unt.edu');
 /*!40000 ALTER TABLE `majorprofessor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +89,7 @@ CREATE TABLE `register` (
 
 LOCK TABLES `register` WRITE;
 /*!40000 ALTER TABLE `register` DISABLE KEYS */;
-INSERT INTO `register` VALUES ('Aravind Thotempudi','aravindthottempudi@my.unt.edu','student','aravind','806af810e2bbe73310e53e52ffc2de7f'),('Dr. Armin Mikler','arminmikler@unt.edu','professor','mikler','42972dfe655ee2de724d96fd1b2193b1'),('Bryant Barett','BryantBarett@unt.edu','chair','Bryant','e5b79bbdb797144a4cbf576aef22f492'),('Nanditha Bodanapu','nandithabodanapu@my.unt.edu','student','nanditha','f13bbffce11026f9ca053b4c9935581b'),('Sharanya Gottimukkula','sharanyagottimukkula@my.unt.edu','student','Sharanya','2b864cad0ede992c2fb13954d0638ca9');
+INSERT INTO `register` VALUES ('Aravind Thotempudi','aravindthottempudi@my.unt.edu','student','aravind','347b7d2417ca30d906dc5edda4056d7b'),('Dr. Armin Mikler','arminmikler@unt.edu','professor','mikler','e63eea102da9e561d9e1281a9e2dd6b6'),('Bryant Barett','BryantBarett@unt.edu','chair','Bryant','f925916e2754e5e03f75dd58a5733251'),('Nanditha Bodanapu','nandithabodanapu@my.unt.edu','student','nanditha','8e86ec7899c66248e6bf5d24503bd3f9'),('Sharanya Gottimukkula','sharanyagottimukkula@my.unt.edu','student','Sharanya','d232704062b0fea5c8d5b869cddef2a5'),('Sri Harshini','sriharshinivallabhaneni@my.unt.edu','student','harshini','e6d304912bdaaad6e67c2f6fdf8015cb');
 /*!40000 ALTER TABLE `register` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,7 +101,7 @@ DROP TABLE IF EXISTS `requests`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `requests` (
-  `userName` varchar(50) DEFAULT NULL,
+  `userName` varchar(50) NOT NULL,
   `professorName` varchar(50) DEFAULT NULL,
   `professorEmail` varchar(80) NOT NULL,
   `department` varchar(30) DEFAULT NULL,
@@ -110,8 +109,7 @@ CREATE TABLE `requests` (
   `admissionYear` int(11) DEFAULT NULL,
   `message` varchar(4000) DEFAULT NULL,
   `requestStatus` varchar(40) DEFAULT NULL,
-  PRIMARY KEY (`professorEmail`),
-  KEY `userName` (`userName`),
+  PRIMARY KEY (`userName`,`professorEmail`),
   CONSTRAINT `requests_ibfk_1` FOREIGN KEY (`userName`) REFERENCES `login` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -122,7 +120,7 @@ CREATE TABLE `requests` (
 
 LOCK TABLES `requests` WRITE;
 /*!40000 ALTER TABLE `requests` DISABLE KEYS */;
-INSERT INTO `requests` VALUES ('sharanya','Dr. Armin Mikler','arminmikler@unt.edu','CS','fall',2017,'Hello Sir\r\n\r\nIt would be great if you can accept my request and be my major professor.\r\n\r\nThanks\r\nSharanya','Request Accepted');
+INSERT INTO `requests` VALUES ('aravind','Bryant Barett','BryantBarett@unt.edu','CS','fall',2017,'please accept my request','Request Accepted'),('harshini','Bryant Barett','BryantBarett@unt.edu','CS','fall',2017,'Please accept','Request Accepted'),('nanditha','Bryant Barett','BryantBarett@unt.edu','CS','fall',2017,'Hello Sir,\r\n\r\nIt would be great if you can accept my request.\r\n\r\nThanks\r\nSharanya','Request Accepted'),('sharanya','Dr. Armin Mikler','arminmikler@unt.edu','CS','fall',2017,'Hello Sir\r\n\r\nIt would be great if you can accept my request and be my major professor.\r\n\r\nThanks\r\nSharanya','Request Accepted'),('sharanya','Bryant Barett','BryantBarett@unt.edu','CS','fall',2017,'mmmmm','Request Sent');
 /*!40000 ALTER TABLE `requests` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -135,4 +133,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-26 13:32:38
+-- Dump completed on 2018-10-27 18:38:12

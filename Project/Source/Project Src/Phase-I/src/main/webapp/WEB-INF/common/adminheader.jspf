@@ -4,6 +4,7 @@
 <title>DPA</title>
 <link href="/webjars/bootstrap/3.3.6/css/bootstrap.min.css"
 	rel="stylesheet">
+<script src="/webjars/jquery/1.9.1/jquery.min.js"></script>
 <style>
 	.firstHeader {
 	    background-color: #608000;
@@ -25,10 +26,11 @@
 	  color: white;
 	}
 	.applyBox {
-    background-color: #e6ffcc;
-    width: 600px;
-    height: 260px;
-    padding: 25px;
+	    background-color: #eeffcc;
+	    width: 600px;
+	    height: 260px;
+	    padding: 25px;
+	    border-radius: 25px;
 	}
 </style>
 <script>
@@ -36,7 +38,6 @@
 		var selectBox = document.getElementById("accountOptions");
 	    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 	    if(selectedValue == "MyAccount"){
-	    
 	    }else if(selectedValue == "Logout"){
 	     $.ajax({
          type: "GET",
@@ -54,7 +55,7 @@
 	}
 </script>
 </head>
-<body>
+<body onload="openSelect();">
 <nav class="navbar navbar-default" >
  	<div class="container-fluid firstHeader">
       	<h3 style = "text-align:center;">DPA CSCE UNT</h3>

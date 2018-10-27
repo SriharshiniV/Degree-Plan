@@ -51,4 +51,20 @@ public class RequestServiceImpl implements RequestService{
 		return deleteStatus;
 	}
 
+	@Override
+	public String[] splitString(String details) {
+		// TODO Auto-generated method stub
+		String[] majorProfessor = details.split("\\[");
+		String[] studentName = majorProfessor[1].split("\\]");
+		String[] studentMajor = majorProfessor[2].split("\\]");
+		String[] professorName = majorProfessor[3].split("\\]");
+		String[] professorEmail = majorProfessor[4].split("\\]");
+		String sName = studentName[0].replaceAll("^\"|\"$", "");
+		String pName = studentMajor[0].replaceAll("^\"|\"$", "");
+		String pEmail = professorName[0].replaceAll("^\"|\"$", "");
+		String sMajor = professorEmail[0].replaceAll("^\"|\"$", "");
+		String[] requestDetails = {sName, sMajor, pName, pEmail};
+		return requestDetails;
+	}
+
 }

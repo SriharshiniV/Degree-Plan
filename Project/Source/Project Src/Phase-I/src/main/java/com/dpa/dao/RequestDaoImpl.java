@@ -67,9 +67,9 @@ public class RequestDaoImpl implements RequestDao{
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		int result = jdbcTemplate.update(sql, new Object[] {sName, sMajor, pName, pEmail});
 		String requestStatus = "Request Accepted";
-		String sql1 =  "update requests set requestStatus = ?";
+		String sql1 =  "update requests set requestStatus = ? where userName = ? and professorEmail = ?";
 		JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
-		int result1 = jdbcTemp.update(sql1, new Object[] {requestStatus});
+		int result1 = jdbcTemp.update(sql1, new Object[] {requestStatus, sName, pEmail});
 		return result;
 	}
 

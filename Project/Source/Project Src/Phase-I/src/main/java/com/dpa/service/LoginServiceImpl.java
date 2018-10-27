@@ -15,10 +15,13 @@ public class LoginServiceImpl implements LoginService{
 @Autowired
 LoginDao loginDao;
 
+	/*public LoginServiceImpl(LoginDao loginServiceMock) {
+	// TODO Auto-generated constructor stub
+	}*/
+
 	public List<Login> checkCredentials(String userName, String password, String role) {
 		List<Login> result = new ArrayList<Login>(); 
 		result = loginDao.validateUser(userName, password, role);
 		return result;
 	}
-
 }

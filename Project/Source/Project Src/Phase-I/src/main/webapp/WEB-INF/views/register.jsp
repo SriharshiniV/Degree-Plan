@@ -73,22 +73,20 @@
 </div>
 
 <script>
-function validate() {
-    var password = document.forms["registerForm"]["password"].value;
-    var rePassword = document.forms["registerForm"]["retypePassword"].value;
-    if (password == rePassword) {
-        return true;
-    }else{
-    	document.getElementById("errMessage").innerHTML = "Password do not match";
-    	return false;
-    }
-}
 var	var1=false;
 var var2=false;
 var var3=false;
-function validate(){
- return (var1 && var2 && var3 )
-}
+	function validate() {
+	    var password = document.forms["registerForm"]["password"].value;
+	    var rePassword = document.forms["registerForm"]["retypePassword"].value;
+	    if (password == rePassword) {
+	        var var4 =  true;
+	    }else{
+	    	document.getElementById("errMessage").innerHTML = "Password do not match";
+	    	var var4 =  false;
+	    }
+	    return var1 && var2 && var3 && var4;
+	}
 	
 	function validateUserName(){
 		var usename =document.forms["registerForm"]["userName"].value;

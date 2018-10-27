@@ -20,10 +20,10 @@
       		dataType : 'json',
 	        data: JSON.stringify(majorProfessor),
 	        success: function (result) {
-	            window.location.href="/dpa/adminhome";
+            	window.location.href="/dpa/professorhome";
 	        },
 	        error: function (result) {
-	            // do something.
+	           window.location.href="/dpa/professorhome";
 	        }
 	    });
 	});
@@ -44,11 +44,12 @@
       		dataType : 'json',
 	        data: JSON.stringify(reqData),
 	        success: function (result) {
-	        	alert(result);
+		        var Backlen = history.length;
+	            history.go(-Backlen);
 	            window.location.href="/dpa/professorhome";
 	        },
 	        error: function (result) {
-	            // do something.
+	            window.location.href="/dpa/professorhome";
 	        }
 	    });
 	 });

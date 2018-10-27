@@ -21,8 +21,7 @@ import com.dpa.service.RetrieveUsersService;
 public class AdminController {
 	@Autowired
 	RegisterService registerService;
-	@Autowired 
-	RetrieveUsersService retrieveStudents;
+	
 	
 	@RequestMapping(value = "/adminhome", method = RequestMethod.GET)
 	public String login() {
@@ -51,17 +50,4 @@ public class AdminController {
 			return "adduser";
 		}
 	}
-	
-	@RequestMapping(value = "/mystudents", method = RequestMethod.GET)
-	public String getMyStudents(HttpServletRequest request, HttpServletResponse response, Model model) {
-		HttpSession session = request.getSession(false);
-		if (session != null) {
-			String userName = (String) session.getAttribute("userName");
-			model.addAttribute("myStudents", retrieveStudents.getMyStudents(userName));
-			return "mystudents";
-		} else {
-		return "login";
-		}
-	}
-	
 }
