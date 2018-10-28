@@ -20,7 +20,7 @@
 	            window.location.href="/dpa/studenthome";
 	        },
 	        error: function (result) {
-	            // do something.
+	        	window.location.href="/dpa/studenthome";
 	        }
 	    });
 	 });

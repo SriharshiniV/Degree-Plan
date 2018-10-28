@@ -18,7 +18,7 @@
 				</label>
 				<div class="col-sm-4">
 					<input type="text" class="form-control field" id="userName"
-						name="userName" placeholder="Enter UserName" onblur="validateUserName()" required>
+						name="userName" placeholder="Enter UserName" required onblur="validateUserName()">
 				 		<span id="errorUserNameContent" style="color:red"></span>
 				</div>
 			</div>

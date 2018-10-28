@@ -39,7 +39,7 @@ public class LoginController {
 			@RequestParam String role, ModelMap model, HttpServletRequest request, HttpServletResponse response) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		List<Login> result = new ArrayList<Login>();
 		Hashing hashing = new Hashing();
-		String pwd = hashing.hashString(userName, "MD5");
+		String pwd = hashing.hashString(password, "MD5");
 		result = loginService.checkCredentials(userName, pwd, role);
 		if (result.isEmpty() == true) {
 			model.put("errorMsg", "Invalid Credentials");

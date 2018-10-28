@@ -5,7 +5,7 @@
 <div class="container-fluid">
 	<div class="col-sm-4 applyBox">
 		<h4 align="center">Manage Users</h4><br/>
-		<select class="form-control field" id ="manageUsers" name="manageUsers" onchange="callController();">
+		<select class="form-control field openSelectBox" id ="manageUsers" name="manageUsers" onchange="callController();">
 		  <option value="Select">Select</option>
 		  <option value="ManageChair">Manage Chair</option>
 		  <option value="ManageAssociateChair">Manage Associate Chair</option>
@@ -13,7 +13,7 @@
 		  <option value="ManageAdminSpecialist">Manage Admin Specialist</option>
 		</select>
 	</div>
-	<div class="col-sm-offset-2 col-sm-4 apstpr">
+	<div class="col-sm-offset-1 col-sm-4">
 		<input type="submit" value="Verify and Approve Students/Professors" class="btn btn-block btn-primary" />
 	</div>
 	<br/><br/><br/><br/><br/><br/><br/>
@@ -50,7 +50,11 @@ function callController(){
     	document.getElementById("unhide3").style.display='block';
     	document.getElementById("unhide3").value = "UPDATE " + selectedValue;
     }
-}	
+}
+function openSelect(){	
+    var elements = document.getElementsByClassName("openSelectBox");
+    elements[0].click();
+}
 </script>
 
 <%@ include file="../common/footer.jspf"%>

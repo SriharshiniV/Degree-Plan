@@ -69,20 +69,13 @@ public class RequestController {
 	}
 	@RequestMapping(value = "/acceptrequest", method = RequestMethod.POST, consumes="application/json")
 	public String acceptRequest(@RequestBody String details, HttpServletRequest request, HttpServletResponse response, ModelMap model){
-		String[] majorProfessor = details.split("\\[");
-		String[] studentName = majorProfessor[1].split("\\]");
-		String[] studentMajor = majorProfessor[2].split("\\]");
-		String[] professorName = majorProfessor[3].split("\\]");
-		String[] professorEmail = majorProfessor[4].split("\\]");
-		String sName = studentName[0].replaceAll("^\"|\"$", "");
-		String pName = studentMajor[0].replaceAll("^\"|\"$", "");
-		String pEmail = professorName[0].replaceAll("^\"|\"$", "");
-		String sMajor = professorEmail[0].replaceAll("^\"|\"$", "");
+		String[] requestDetails = requestService.splitString(details);
+		System.out.println(details);
 		HttpSession session = request.getSession(false);
 		if (session != null) {
 			String userName = (String) session.getAttribute("userName");
-			int Result = requestService.acceptRequest(sName, sMajor, pName, pEmail);
-			return "receivedrequests";
+			int Result = requestService.acceptRequest(requestDetails[0], requestDetails[1], requestDetails[2], requestDetails[3]);
+			return "professorhome";
 		}else {
 		return "login";
 		}

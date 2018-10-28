@@ -23,5 +23,25 @@
 			</tbody>
 		</table>
 	</div>
+	<div class="container form-group"><h4>My Degree Plan</h4></div>
+	<div class="container form-group">
+		<input type="submit" value="Start New Degree Plan" style = "background-color:#e6ffb3" class="btn btn-default col-sm-4" onclick="selectForm();" />
+		<form action="/dpa/degreeplan" method = "POST">
+			<div class="col-sm-4 degreePlan" id="degreePlan" style="visibility:hidden;">
+			<select class="form-control field selectPlan" id ="selectDegreePlan"  name="selectPlan" style = "background-color:#e6ffb3" onchange="this.form.submit()">
+			  <option value="Select">Select</option>
+			  <option value="computerScience">Computer Science</option>
+			  <option value="computerEngineering">Computer Engineering</option>
+			</select>
+			</div>
+		</form>
+	</div>
 </div>
+
+<script>
+	function selectForm(){
+		$("#degreePlan").css("visibility", "visible");
+	}
+</script>
+
 <%@ include file="../common/footer.jspf"%>

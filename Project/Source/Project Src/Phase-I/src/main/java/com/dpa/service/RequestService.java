@@ -12,5 +12,6 @@ public interface RequestService {
 	int acceptRequest(String sName, String sMajor, String pName,String pEmail);
 	List<Request> getAcceptedRequests(String userName);
 	int deleteRequest(String pEmail, String sName);
+	String[] splitString(String details);
 
 }
