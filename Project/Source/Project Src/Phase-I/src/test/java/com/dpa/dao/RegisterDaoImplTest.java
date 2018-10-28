@@ -2,6 +2,7 @@ package com.dpa.dao;
 
 import static org.mockito.Mockito.when;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +17,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.dpa.model.Register;
 
-import junit.framework.Assert;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ RegisterDaoImpl.class, JdbcTemplate.class })
 public class RegisterDaoImplTest {

@@ -5,6 +5,10 @@ public class Courses {
 	private String semesterTaken;
 	private int cHrs;
 	private String grade;
+	public Courses() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public String toString() {
 		return "Courses [course=" + course + ", semesterTaken=" + semesterTaken + ", cHrs=" + cHrs + ", grade=" + grade

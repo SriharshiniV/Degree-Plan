@@ -4,6 +4,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="container">
 		<form name="degreePlanForm"  action="/dpa/degreeplanform" class="form-horizontal" onsubmit="return validate()" method="POST">
+			<div align = "center">
+				<font color="green">${success}</font>
+			</div>
 			<div align="center"><font color="red">${error}</font></div>
 			<div class="form-group">
 				<h4 style="text-align:center;">
@@ -78,8 +81,6 @@
 						name="interestArea" placeholder="Enter specialization" required>
 				</div>
 			</div>
-			
-			
 			                                 <!-- Major Professor -->
 			<div class="form-group">
 			<label class="control-label col-sm-2" for="majorProf">Major Professor</label>
@@ -93,7 +94,6 @@
 						name="coMajorProfessor" placeholder="Enter Co-Major Professor Name" required>
 				</div>
 			</div>
-			
 			 <!-- gre  -->
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="gre_score">Most Recent GRE Scores: 
@@ -118,7 +118,6 @@
 				</div>
 			</div>
 			
-			
 			                                     <!--course A  -->
 			<div class="form-group">
 				<h4 align = "center">
@@ -129,7 +128,7 @@
 			<div class="form-group">
 			<label class="control-label col-sm-2" for="sub_A">Core Course A</label>
 				<div class="col-sm-3">
-					<select class="form-control" id ="sublist_a" name="courses.course">
+					<select class="form-control" id ="sublist_a" name="courseA.course">
     						<option value="select" selected>select</option>
 							 <c:forEach items="${groupACourses}" var="groupACourse">
 						          <option value="${groupACourse.courseName}">${groupACourse.courseName}</option>
@@ -138,7 +137,7 @@
 				</div>
 				<label class="control-label col-sm-1" for="semes">semester taken</label>
 				<div class="col-sm-2">
-					<select class="form-control field" id ="semes" name="courses.semesterTaken">
+					<select class="form-control field" id ="semes" name="courseA.semesterTaken">
 					  <option value="Select">Select</option>
 					  <option value="Fall">Fall</option>
 					  <option value="spring">Spring</option>
@@ -149,13 +148,13 @@
 				</label>
 				<div class="col-sm-1">
 					<input type="text" class="form-control field" id="cHrs"
-						name="courses.cHrs" placeholder="C. Hrs" required>
+						name="courseA.cHrs" placeholder="C. Hrs" required>
 				</div>
 				<label class="control-label col-sm-1" for="grade_ae">Grade
 				</label>
 				<div class="col-sm-1">
 					<input type="text" class="form-control field" id="grade_a"
-						name="courses.grade" placeholder="grade"   required>
+						name="courseA.grade" placeholder="grade"   required>
 				</div>
 				
 			</div>
@@ -164,7 +163,7 @@
 			<div class="form-group">
 			<label class="control-label col-sm-2" for="sub_B">Core Course B</label>
 				<div class="col-sm-3">
-					<select class="form-control field" id ="sublist_b" name="courses.course">
+					<select class="form-control field" id ="sublist_b" name="courseB.course">
     						<option value="select" selected>select</option>
 							 <c:forEach items="${groupBCourses}" var="groupBCourse">
 						          <option value="${groupBCourse.courseName}">${groupBCourse.courseName}</option>
@@ -173,7 +172,7 @@
 				</div>
 				<label class="control-label col-sm-1" for="semes">semester taken</label>
 				<div class="col-sm-2">
-					<select class="form-control field" id ="semes" name="courses.semesterTaken">
+					<select class="form-control field" id ="semes" name="courseB.semesterTaken">
 					  <option value="Select">Select</option>
 					  <option value="Fall">Fall</option>
 					  <option value="spring">Spring</option>
@@ -184,13 +183,13 @@
 				</label>
 				<div class="col-sm-1">
 					<input type="text" class="form-control field" id="cHrs"
-						name="courses.cHrs" placeholder="C. Hrs" required>
+						name="courseB.cHrs" placeholder="C. Hrs" required>
 				</div>
 				<label class="control-label col-sm-1" for="grade_b">Grade
 				</label>
 				<div class="col-sm-1">
 					<input type="text" class="form-control field" id="grade_b"
-						name="courses.grade" placeholder="grade"   >
+						name="courseB.grade" placeholder="grade"   >
 				</div>
 			</div>
 			
@@ -198,7 +197,7 @@
 			<div class="form-group">
 			<label class="control-label col-sm-2" for="sub_c">Core Course C</label>
 				<div class="col-sm-3">
-					<select class="form-control field" id ="sublist_c" name="courses.course">
+					<select class="form-control field" id ="sublist_c" name="courseC.course">
     						<option value="select" selected>select</option>
 							 <c:forEach items="${groupCCourses}" var="groupCCourse">
 						          <option value="${groupCCourse.courseName}">${groupCCourse.courseName}</option>
@@ -207,7 +206,7 @@
 				</div>
 				<label class="control-label col-sm-1" for="semes">semester taken</label>
 				<div class="col-sm-2">
-					<select class="form-control field" id ="semes" name="courses.semesterTaken">
+					<select class="form-control field" id ="semes" name="courseC.semesterTaken">
 					  <option value="Select">Select</option>
 					  <option value="Fall">Fall</option>
 					  <option value="spring">Spring</option>
@@ -218,13 +217,13 @@
 				</label>
 				<div class="col-sm-1">
 					<input type="text" class="form-control field" id="cHrs"
-						name="courses.cHrs" placeholder="C. Hrs" required>
+						name="courseC.cHrs" placeholder="C. Hrs" required>
 				</div>
 				<label class="control-label col-sm-1" for="grade_c">Grade
 				</label>
 				<div class="col-sm-1">
 					<input type="text" class="form-control field" id="grade_c"
-						name="courses.grade" placeholder="grade"   >
+						name="courseC.grade" placeholder="grade"   >
 				</div>
 			</div>
 			
@@ -233,7 +232,7 @@
 			<div class="form-group">
 			<label class="control-label col-sm-2" for="sub_D">Core Course D</label>
 				<div class="col-sm-3">
-					<select class="form-control field" id ="sublist_d" name="courses.course">
+					<select class="form-control field" id ="sublist_d" name="courseD.course">
     						<option value="select" selected>select</option>
 							 <c:forEach items="${groupDCourses}" var="groupDCourse">
 						          <option value="${groupDCourse.courseName}">${groupDCourse.courseName}</option>
@@ -242,7 +241,7 @@
 				</div>
 				<label class="control-label col-sm-1" for="semes">semester taken</label>
 				<div class="col-sm-2">
-					<select class="form-control field" id ="semes" name="courses.semesterTaken">
+					<select class="form-control field" id ="semes" name="courseD.semesterTaken">
 					  <option value="Select">Select</option>
 					  <option value="Fall">Fall</option>
 					  <option value="spring">Spring</option>
@@ -253,13 +252,13 @@
 				</label>
 				<div class="col-sm-1">
 					<input type="text" class="form-control field" id="cHrs"
-						name="courses.cHrs" placeholder="C. Hrs" required>
+						name="courseD.cHrs" placeholder="C. Hrs" required>
 				</div>
 				<label class="control-label col-sm-1" for="grade_d">Grade
 				</label>
 				<div class="col-sm-1">
 					<input type="text" class="form-control field" id="grade_d"
-						name="courses.grade" placeholder="grade"   >
+						name="courseD.grade" placeholder="grade"   >
 				</div>
 			</div>
 		
@@ -273,7 +272,7 @@
 			<div class="form-group">
 			<label class="control-label col-sm-2" for="sub_B">Optional Course ${optionalCourse}</label>
 				<div class="col-sm-3">
-					<select class="form-control field" id ="optionalCourse" name="courses.course">
+					<select class="form-control field" id ="optionalCourse" name="opCourse${optionalCourse}.course">
     						<option value="select" selected>select</option>
 							 <c:forEach items="${optionalCourseLists}" var="optionalCourseList">
 						          <option value="${optionalCourseList}">${optionalCourseList}</option>
@@ -282,7 +281,7 @@
 				</div>
 				<label class="control-label col-sm-1" for="semes">semester taken</label>
 				<div class="col-sm-2">
-					<select class="form-control field" id ="semes" name="courses.semesterTaken">
+					<select class="form-control field" id ="semes" name="opCourse${optionalCourse}.semesterTaken">
 					  <option value="Select">Select</option>
 					  <option value="Fall">Fall</option>
 					  <option value="spring">Spring</option>
@@ -293,13 +292,13 @@
 				</label>
 				<div class="col-sm-1">
 					<input type="text" class="form-control field" id="cHrs"
-						name="courses.cHrs" placeholder="C. Hrs" required>
+						name="opCourse${optionalCourse}.cHrs" placeholder="C. Hrs" required>
 				</div>
 				<label class="control-label col-sm-1" for="grade_d">Grade
 				</label>
 				<div class="col-sm-1">
 					<input type="text" class="form-control field" id="grade_d"
-						name="courses.grade" placeholder="grade"   >
+						name="opCourse${optionalCourse}.grade" placeholder="grade"   >
 				</div>
 			</div>
 			</c:forEach>

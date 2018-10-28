@@ -3,6 +3,7 @@ package com.dpa.service;
 import java.util.List;
 
 import com.dpa.model.Course;
+import com.dpa.model.DegreePlan;
 
 public interface DegreePlanService {
 
@@ -15,5 +16,7 @@ public interface DegreePlanService {
 	List<Course> getGroupDCourses(String major);
 
 	List<String> getOptionalCourses();
+
+	int submitDegreePlan(DegreePlan degreePlan, String userName);
 
 }

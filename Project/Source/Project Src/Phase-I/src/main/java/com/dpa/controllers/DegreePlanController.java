@@ -12,11 +12,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.dpa.model.Course;
 import com.dpa.model.DegreePlan;
 import com.dpa.service.DegreePlanService;
 
@@ -45,12 +45,14 @@ public class DegreePlanController {
 	}
 	
 	@RequestMapping(value = "/degreeplanform", method = RequestMethod.POST)
-	public String submitDegreePlan(@RequestParam DegreePlan degreePlan, HttpServletRequest request, HttpServletResponse response, ModelMap model){
+	public String submitDegreePlan(@ModelAttribute DegreePlan degreePlan, HttpServletRequest request, HttpServletResponse response, ModelMap model){
 		System.out.println(degreePlan);
 		HttpSession session = request.getSession(false);
 		if (session != null) {
 			String userName = (String) session.getAttribute("userName");
-			return "studenthome";
+			int result = degreePlanService.submitDegreePlan(degreePlan, userName);
+			model.put("success", "Degree Plan Submitted Successfully");
+			return "degreeplan";
 		} else {
 			return "login";
 		}

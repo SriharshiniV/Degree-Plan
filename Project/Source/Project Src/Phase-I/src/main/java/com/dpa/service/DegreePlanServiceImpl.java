@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.dpa.dao.DegreePlanDao;
 import com.dpa.model.Course;
+import com.dpa.model.DegreePlan;
 
 @Service
 public class DegreePlanServiceImpl implements DegreePlanService{
@@ -91,6 +92,12 @@ public class DegreePlanServiceImpl implements DegreePlanService{
 	public List<String> getOptionalCourses() {
 		List<String> optionalCourses = degreePlanDao.getOptionalCourses();
 		return optionalCourses;
+	}
+
+	@Override
+	public int submitDegreePlan(DegreePlan degreePlan, String userName) {
+		int result = degreePlanDao.submitDegreePlan(degreePlan, userName);
+		return result;
 	}
 
 }

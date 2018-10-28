@@ -1,7 +1,4 @@
 package com.dpa.model;
-
-import java.util.List;
-
 public class DegreePlan {
 	
 	private String name;
@@ -15,7 +12,18 @@ public class DegreePlan {
 	private String majorProfessor;
 	private String coMajorProfessor;
 	private GRE gre;
-	private List<Courses> courses;
+	private Courses courseA;
+	private Courses courseB;
+	private Courses courseC;
+	private Courses courseD;
+	private Courses opCourse1;
+	private Courses opCourse2;
+	private Courses opCourse3;
+	private Courses opCourse4;
+	private Courses opCourse5;
+	private Courses opCourse6;
+	private Courses opCourse7;
+	private Courses opCourse8;
 	private int totalCreditHours;
 	public DegreePlan() {
 		super();
@@ -26,28 +34,14 @@ public class DegreePlan {
 		return "DegreePlan [name=" + name + ", studentId=" + studentId + ", localAddress=" + localAddress + ", email="
 				+ email + ", degree=" + degree + ", major=" + major + ", minor=" + minor + ", interestArea="
 				+ interestArea + ", majorProfessor=" + majorProfessor + ", coMajorProfessor=" + coMajorProfessor
-				+ ", gre=" + gre + ", courses=" + courses + ", totalCreditHours=" + totalCreditHours + "]";
+				+ ", gre=" + gre + ", courseA=" + courseA + ", courseB=" + courseB + ", courseC=" + courseC
+				+ ", courseD=" + courseD + ", opCourse1=" + opCourse1 + ", opCourse2=" + opCourse2 + ", opCourse3="
+				+ opCourse3 + ", opCourse4=" + opCourse4 + ", opCourse5=" + opCourse5 + ", opCourse6=" + opCourse6
+				+ ", opCourse7=" + opCourse7 + ", opCourse8=" + opCourse8 + ", totalCreditHours=" + totalCreditHours
+				+ "]";
 	}
 	public String getName() {
 		return name;
-	}
-	public DegreePlan(String name, int studentId, String localAddress, String email, String degree, String major,
-			String minor, String interestArea, String majorProfessor, String coMajorProfessor, GRE gre,
-			List<Courses> courses, int totalCreditHours) {
-		super();
-		this.name = name;
-		this.studentId = studentId;
-		this.localAddress = localAddress;
-		this.email = email;
-		this.degree = degree;
-		this.major = major;
-		this.minor = minor;
-		this.interestArea = interestArea;
-		this.majorProfessor = majorProfessor;
-		this.coMajorProfessor = coMajorProfessor;
-		this.gre = gre;
-		this.courses = courses;
-		this.totalCreditHours = totalCreditHours;
 	}
 	public void setName(String name) {
 		this.name = name;
@@ -112,11 +106,77 @@ public class DegreePlan {
 	public void setGre(GRE gre) {
 		this.gre = gre;
 	}
-	public List<Courses> getCourses() {
-		return courses;
+	public Courses getCourseA() {
+		return courseA;
 	}
-	public void setCourses(List<Courses> courses) {
-		this.courses = courses;
+	public void setCourseA(Courses courseA) {
+		this.courseA = courseA;
+	}
+	public Courses getCourseB() {
+		return courseB;
+	}
+	public void setCourseB(Courses courseB) {
+		this.courseB = courseB;
+	}
+	public Courses getCourseC() {
+		return courseC;
+	}
+	public void setCourseC(Courses courseC) {
+		this.courseC = courseC;
+	}
+	public Courses getCourseD() {
+		return courseD;
+	}
+	public void setCourseD(Courses courseD) {
+		this.courseD = courseD;
+	}
+	public Courses getOpCourse1() {
+		return opCourse1;
+	}
+	public void setOpCourse1(Courses opCourse1) {
+		this.opCourse1 = opCourse1;
+	}
+	public Courses getOpCourse2() {
+		return opCourse2;
+	}
+	public void setOpCourse2(Courses opCourse2) {
+		this.opCourse2 = opCourse2;
+	}
+	public Courses getOpCourse3() {
+		return opCourse3;
+	}
+	public void setOpCourse3(Courses opCourse3) {
+		this.opCourse3 = opCourse3;
+	}
+	public Courses getOpCourse4() {
+		return opCourse4;
+	}
+	public void setOpCourse4(Courses opCourse4) {
+		this.opCourse4 = opCourse4;
+	}
+	public Courses getOpCourse5() {
+		return opCourse5;
+	}
+	public void setOpCourse5(Courses opCourse5) {
+		this.opCourse5 = opCourse5;
+	}
+	public Courses getOpCourse6() {
+		return opCourse6;
+	}
+	public void setOpCourse6(Courses opCourse6) {
+		this.opCourse6 = opCourse6;
+	}
+	public Courses getOpCourse7() {
+		return opCourse7;
+	}
+	public void setOpCourse7(Courses opCourse7) {
+		this.opCourse7 = opCourse7;
+	}
+	public Courses getOpCourse8() {
+		return opCourse8;
+	}
+	public void setOpCourse8(Courses opCourse8) {
+		this.opCourse8 = opCourse8;
 	}
 	public int getTotalCreditHours() {
 		return totalCreditHours;

@@ -2,10 +2,13 @@ package com.dpa.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class GRE {
 	private int verbal;
 	private int quantitative;
 	private int analytical;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date dateTaken;
 	@Override
 	public String toString() {
