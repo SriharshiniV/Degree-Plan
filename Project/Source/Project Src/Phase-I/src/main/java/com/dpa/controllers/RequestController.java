@@ -69,7 +69,6 @@ public class RequestController {
 	@RequestMapping(value = "/acceptrequest", method = RequestMethod.POST, consumes="application/json")
 	public String acceptRequest(@RequestBody String details, HttpServletRequest request, HttpServletResponse response, ModelMap model){
 		String[] requestDetails = requestService.splitString(details);
-		System.out.println(details);
 		HttpSession session = request.getSession(false);
 		if (session != null) {
 			String userName = (String) session.getAttribute("userName");
@@ -81,15 +80,11 @@ public class RequestController {
 	}
 	@RequestMapping(value = "/deleterequest", method = RequestMethod.POST, consumes="application/json")
 	public String deleteRequest(@RequestBody String details, HttpServletRequest request, HttpServletResponse response, ModelMap model){
-		String[] toDelete = details.split("\\[");
-		String[] professorEmail = toDelete[1].split("\\]");
-		String[] studentName = toDelete[2].split("\\]");
-		String pEmail = professorEmail[0].replaceAll("^\"|\"$", "");
-		String sName = studentName[0].replaceAll("^\"|\"$", "");
+		String[] receivedDetails = requestService.split(details);
 		HttpSession session = request.getSession(false);
 		if (session != null) {
 			String userName = (String) session.getAttribute("userName");
-			int Result = requestService.deleteRequest(pEmail, sName);
+			int Result = requestService.deleteRequest(receivedDetails[0], receivedDetails[1]);
 			return "studenthome";
 		}else {
 		return "login";

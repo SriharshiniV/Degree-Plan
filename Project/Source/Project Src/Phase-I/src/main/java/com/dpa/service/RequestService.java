@@ -13,5 +13,6 @@ public interface RequestService {
 	List<Request> getAcceptedRequests(String userName);
 	int deleteRequest(String pEmail, String sName);
 	String[] splitString(String details);
+	String[] split(String details);
 
 }

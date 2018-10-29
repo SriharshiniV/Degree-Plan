@@ -67,4 +67,16 @@ public class RequestServiceImpl implements RequestService{
 		return requestDetails;
 	}
 
+	@Override
+	public String[] split(String details) {
+		// TODO Auto-generated method stub
+		String[] toDelete = details.split("\\[");
+		String[] professorEmail = toDelete[1].split("\\]");
+		String[] studentName = toDelete[2].split("\\]");
+		String pEmail = professorEmail[0].replaceAll("^\"|\"$", "");
+		String sName = studentName[0].replaceAll("^\"|\"$", "");
+		String[] requestDetails = {pEmail, sName};
+		return requestDetails;
+	}
+
 }

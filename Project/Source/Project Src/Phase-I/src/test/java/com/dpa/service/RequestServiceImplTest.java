@@ -18,37 +18,17 @@ import com.dpa.dao.RequestDao;
 import com.dpa.model.Login;
 
 public class RequestServiceImplTest {
+	@Mock
+	RequestDao requestdao;
 
-	@Test
-	public void testSendRequest() {
-		/* fail("Not yet implemented"); */
+	@InjectMocks
+	private RequestServiceImpl requestService;
+
+	@Before
+	public void initMocks() {
+		MockitoAnnotations.initMocks(this);
 	}
-
-	@Test
-	public void testGetSentRequests() {
-		/* fail("Not yet implemented"); */
-	}
-
-	@Test
-	public void testGetReceivedRequests() {
-		/* fail("Not yet implemented"); */
-	}
-
-	@Test
-	public void testAcceptRequest() {
-		/* fail("Not yet implemented"); */
-	}
-
-	@Test
-	public void testGetAcceptedRequests() {
-		/* fail("Not yet implemented"); */
-	}
-
-	@Test
-	public void testDeleteRequest() {
-		
-	}
-
+	
 	@Test
 	public void testSplitString() {
 		RequestService requestService = new RequestServiceImpl();
@@ -56,5 +36,18 @@ public class RequestServiceImplTest {
 		String[] result = requestService.splitString(details);
 		assertEquals(4, result.length);
 	}
-
+	@Test
+	public void testSplit() {
+		RequestService requestService = new RequestServiceImpl();
+		String details = "{'professorEmail':['BryantBarett@unt.edu'], 'userName':['sharanya']}";
+		String[] result = requestService.split(details);
+		assertEquals(2, result.length);
+	}
+	
+	@Test
+	public void testDeleteRequest() {
+		when(requestdao.deleteRequest(anyString(), anyString())).thenReturn(1);
+		int result = requestService.deleteRequest(anyString(), anyString());
+		assertEquals(1, result);
+	}
 }
