@@ -1,7 +1,5 @@
 package com.dpa.controllers;
 
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,11 +18,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.dpa.model.DegreePlan;
 import com.dpa.service.DegreePlanService;
 
+//handles the view, submit, save and all other degree plan action requests
 @Controller
 public class DegreePlanController {
 	@Autowired
 	DegreePlanService degreePlanService;
-	
+//gets mandatory and optional courses form the database and makes them available to the view degreepla.jsp
 	@RequestMapping(value = "/degreeplan", method = RequestMethod.POST)
 	public String openDegreePlan(@RequestParam String selectPlan, HttpServletRequest request, HttpServletResponse response, ModelMap model){
 		model.put("major", selectPlan);
@@ -43,7 +42,7 @@ public class DegreePlanController {
 			return "login";
 		}
 	}
-	
+//redirects user to the degree plan page with the success message upon success else to the degree plan with error message
 	@RequestMapping(value = "/degreeplanform", method = RequestMethod.POST)
 	public String submitDegreePlan(@ModelAttribute DegreePlan degreePlan, HttpServletRequest request, HttpServletResponse response, ModelMap model){
 		System.out.println(degreePlan);
@@ -54,7 +53,8 @@ public class DegreePlanController {
 			model.put("success", "Degree Plan Submitted Successfully");
 			return "degreeplan";
 		} else {
-			return "login";
+			model.put("error", "Submission Failed");
+			return "degreeplan";
 		}
 	}
 

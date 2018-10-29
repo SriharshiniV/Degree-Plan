@@ -14,18 +14,19 @@ import com.dpa.model.Register;
 import com.dpa.security.Hashing;
 import com.dpa.service.RegisterService;
 
+//Controls all the user registration related URL's
 @Controller
 public class RegisterController {
 	@Autowired
 	RegisterService registerService;
-
+//directs user to the registration form
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public String login() {
+	public String register() {
 		return "register";
 	}
-
+//handles the register request
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String handleLoginRequest(@ModelAttribute Register register, ModelMap model) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+	public String handleRegisterRequest(@ModelAttribute Register register, ModelMap model) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		String uPwd = register.getPassword();
 		Hashing hashing = new Hashing();
 		String pwd = hashing.hashString(uPwd, "MD5");

@@ -51,6 +51,9 @@ public class DegreePlanDaoImpl implements DegreePlanDao{
 		int result = jdbcTemplate.update(sql, new Object[] {userName, degreePlan.getName(), degreePlan.getStudentId(), degreePlan.getLocalAddress(), degreePlan.getEmail(), degreePlan.getDegree(), degreePlan.getMajor(), degreePlan.getMinor(), degreePlan.getInterestArea(), degreePlan.getMajorProfessor(), degreePlan.getCoMajorProfessor(), degreePlan.getTotalCreditHours(), "submitted"});
 		int coreReturn = insertCoreCourses(degreePlan, userName);
 		int courseReturn = insertOptionalCourses(degreePlan, userName);
+		String sql2 =  "update majorprofessor set degreePlanStatus = ? where studentName = ?";
+		JdbcTemplate jdbcTemp1 = new JdbcTemplate(dataSource);
+		jdbcTemp.update(sql2, new Object[] {"yes", userName});
 		return result;
 	}
 

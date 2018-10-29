@@ -2,6 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ include file="../common/header.jspf"%>
 
+										<!-- login page -->
 <div class="container">
 
 		<form name="loginForm" action="/dpa/login" class="form-horizontal" method="POST" >

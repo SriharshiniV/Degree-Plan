@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.dpa.dao.RegisterDao;
 import com.dpa.model.Register;
 
+//calls the registerDao to insert user into the database
 @Service
 public class RegisterServiceImpl implements RegisterService{
 	@Autowired

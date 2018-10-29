@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.dpa.jdbc.ProfessorRowMapper;
 import com.dpa.model.Register;
 
+//This service class retrieves professor list to display when requested by student
 @Service
 public class RetrieveStaffDaoImpl implements RetrieveStaffDao{
 	@Autowired 

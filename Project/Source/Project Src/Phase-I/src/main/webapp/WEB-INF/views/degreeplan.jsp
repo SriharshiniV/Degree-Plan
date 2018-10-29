@@ -314,11 +314,13 @@
 			</div>			
 
 			<div class="form-group">
-				<div class="col-sm-offset-4 col-sm-4">
-					<input type="submit" value="submit" class="btn btn-primary btn-block" />
+				<div class="col-sm-offset-4 col-sm-2">
+					<input type="submit" value="Save" name = "act" class="btn btn-primary btn-block" />
+				</div>
+				<div class="col-sm-offset-2 col-sm-2">
+					<input type="submit" value="submit" name = "act" class="btn btn-primary btn-block" />
 				</div>
 			</div>
-			
 		</form>
 </div>
 

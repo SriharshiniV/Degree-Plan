@@ -17,8 +17,6 @@ import org.mockito.MockitoAnnotations;
 
 import com.dpa.dao.DegreePlanDao;
 import com.dpa.model.Course;
-import com.dpa.model.DegreePlan;
-import com.dpa.model.Login;
 
 public class DegreePlanServiceImplTest {
 	@Mock

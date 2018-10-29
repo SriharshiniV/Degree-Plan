@@ -15,6 +15,7 @@ import com.dpa.jdbc.ProfessorRowMapper;
 import com.dpa.model.Register;
 import com.dpa.model.Request;
 
+//This class is gets the advisors students and students major professor 
 @Service
 public class RetrieveUsersDaoImpl implements RetrieveUsersDao{
 	@Autowired 

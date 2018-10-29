@@ -24,6 +24,7 @@ public class RequestController {
 	@Autowired
 	RequestService requestService;
 	
+//returns advisor request form	
 	@RequestMapping(value = "/sendrequest", method = RequestMethod.GET)
 	public String login(HttpServletRequest request, HttpServletResponse response, Model model) {
 		HttpSession session = request.getSession(false);
@@ -32,6 +33,7 @@ public class RequestController {
 		} 
 		return "advisorrequest";
 	}
+//calls send request of requestService and redirects student to studenthome
 	@RequestMapping(value = "/sendrequest", method = RequestMethod.POST)
 	public String sendRequest(HttpServletRequest request, HttpServletResponse response, @ModelAttribute Request sendRequest, ModelMap model) {
 		HttpSession session = request.getSession(false);
@@ -41,6 +43,7 @@ public class RequestController {
 		int result = requestService.sendRequest(sendRequest);
 		return "studenthome";
 	}
+//calls getSentRequests method of requestService and redirects student to sentrequests
 	@RequestMapping(value = "/sentrequests", method = RequestMethod.GET)
 	public String getSentRequests(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
 		HttpSession session = request.getSession(false);
@@ -53,7 +56,7 @@ public class RequestController {
 		return "login";
 		}
 	}
-	
+//calls getReceivedRequests method of requestService and redirects professor to receivedrequests
 	@RequestMapping(value = "/receivedrequests", method = RequestMethod.GET)
 	public String getReceivedRequests(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
 		HttpSession session = request.getSession(false);
@@ -66,6 +69,7 @@ public class RequestController {
 		return "login";
 		}
 	}
+//calls acceptRequest method of requestService and redirects professor to professorhome	
 	@RequestMapping(value = "/acceptrequest", method = RequestMethod.POST, consumes="application/json")
 	public String acceptRequest(@RequestBody String details, HttpServletRequest request, HttpServletResponse response, ModelMap model){
 		String[] requestDetails = requestService.splitString(details);
@@ -78,6 +82,7 @@ public class RequestController {
 		return "login";
 		}
 	}
+//calls deleteRequest method of requestService and redirects user to their home
 	@RequestMapping(value = "/deleterequest", method = RequestMethod.POST, consumes="application/json")
 	public String deleteRequest(@RequestBody String details, HttpServletRequest request, HttpServletResponse response, ModelMap model){
 		String[] receivedDetails = requestService.split(details);

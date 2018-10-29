@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.dpa.jdbc.LoginRowMapper;
 import com.dpa.model.Login;
 
+//Checks if the combination of username, password and role exist in the database
 @Service
 public class LoginDaoImpl implements LoginDao {
 

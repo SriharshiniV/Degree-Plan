@@ -13,6 +13,7 @@ public class RegisterDaoImpl implements RegisterDao {
 	@Autowired 
 	DataSource dataSource;
 
+	//insert the new users into the database
 	public int insertUserDetails(Register register) {
 		// TODO Auto-generated method stub
 		String role = register.getRole();

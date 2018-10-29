@@ -29,11 +29,12 @@ public class LoginController {
 	@Autowired
 	RetrieveUsersService retrieveUsersService;
 
+//It redirects all the users to the login page
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
 		return "login";
 	}
-
+//This method is called upon hitting login button and validates user
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String handleLoginRequest(@RequestParam String userName, @RequestParam String password,
 			@RequestParam String role, ModelMap model, HttpServletRequest request, HttpServletResponse response) throws NoSuchAlgorithmException, UnsupportedEncodingException {
