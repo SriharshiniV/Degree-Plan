@@ -1,0 +1,15 @@
+Deliverable 3:
+
+We have to submit two files as a part of deliverable 3:
+
+Deliverable-3.pdf
+inspection-code-SHAN.docx
+
+
+Path to each of the files:
+
+Deliverable-3.pdf : Shan\Project\Documents\Project Reports\Deliverable-3.pdf
+inspection-code-SHAN.docx : Shan\inspection-code-SHAN.docx
+
+We have additionally performed manually testing for screen validations .
+Manual Testing DPA.docx :Shan\Project\Documents\Error Documentation\Manual Testing\Manual Testing DPA.docx
