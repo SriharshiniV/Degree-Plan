@@ -103,7 +103,7 @@
 	</form>
 	<div class="form-group">
 		<div class="col-sm-offset-4 col-sm-4">
-			<input type="submit" value="login" class="btn btn-default" />
+			<input type="accept" value="login" class="btn btn-default" />
 		</div>
 	</div>
 </div>
