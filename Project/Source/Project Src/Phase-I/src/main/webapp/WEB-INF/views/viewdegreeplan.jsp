@@ -101,6 +101,11 @@
 		</tbody>
 	</table
 	</form>
+	<div class="form-group">
+		<div class="col-sm-offset-4 col-sm-4">
+			<input type="submit" value="login" class="btn btn-default" />
+		</div>
+	</div>
 </div>
 <div class="footer">
 	<div class="container-fluid footer1"><h5 style = "text-align:center;">&#169; 2018 SHAN CSCE UNT</h5></div>
