@@ -1,5 +1,6 @@
 package com.dpa.service;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,19 @@ public class RetrieveUsersServiceImpl implements RetrieveUsersService{
 	public List<Request> getMyStudents(String userName) {
 		// TODO Auto-generated method stub
 		List<Request> myStudents = retrieveStudentsDao.getMyStudents(userName);
+		Iterator myStudent = myStudents.iterator();
+		while(myStudent.hasNext()) {
+			Request temp = (Request) myStudent.next();
+			try {
+			if((temp.getDegreePlanStatus()).equals("yes")) {
+				temp.setDegreePlanStatus("View Degree Plan");
+			}else {
+				temp.setDegreePlanStatus("Not Yet Submitted");
+			}
+			}catch(Exception e) {
+				temp.setDegreePlanStatus("Not Yet Submitted");
+			}
+		}
 		return myStudents;
 	}
 	public List<Request> getMyAdvisors(String userName) {

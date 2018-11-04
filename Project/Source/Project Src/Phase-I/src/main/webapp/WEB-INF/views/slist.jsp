@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="container" id="myStudents">
 	<table class="table table-striped" id="requestTable">
-		<h4 align="center">My Students</h4>
+		<h4 align="center">Student List</h4>
 		<thead>
 			<tr>
 				<th>Name</th>

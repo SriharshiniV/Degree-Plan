@@ -45,7 +45,7 @@ public class RequestDaoImplTest {
 	}
 	
 	@Test
-public void testSendAdvisorRequest() {
+	public void testSendAdvisorRequest() {
 		int mockresult=1;
 		when(mockJDBCTemplate.update(Matchers.anyString(),objCap.capture() ))
 		.thenReturn(mockresult);
@@ -84,11 +84,5 @@ public void testSendAdvisorRequest() {
 		Assert.assertEquals(mockRequestList, actualRequestList);
 		
 	}
-	
-	
-	
-	
-	
-	
 	
 }

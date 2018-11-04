@@ -76,7 +76,7 @@
 					<td class="col-sm-2">${receivedRequest.admissionYear}</td>
 					<td>${receivedRequest.message}</td>
 					<td><input type="button" class="btn btn-primary acceptRequest" value = "Accept Request" id="${theCount.count}"/></td>
-					<td><input type="button" class="btn btn-warning rejectRequest" value = "Reject Request" id="${theCount.count}"/> </td>
+					<td><input type="button" class="btn btn-warning rejectRequest" value = "Reject Request" id="${theCount.count}"/></td>
 					<td style="visibility:hidden;">${receivedRequest.professorName}</td>
 					<td style="visibility:hidden;">${receivedRequest.professorEmail}</td>
 				</tr>

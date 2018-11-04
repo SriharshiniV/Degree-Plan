@@ -34,7 +34,7 @@
 			<select class="form-control field" id ="department" name="department">
 			  <option value="Select">Select</option>
 			  <option value="CS">Computer Science</option>
-			  <option value="CE">Computer Engineer</option>
+			  <option value="CE">Computer Engineering</option>
 			</select>
 		</div>
 	</div>

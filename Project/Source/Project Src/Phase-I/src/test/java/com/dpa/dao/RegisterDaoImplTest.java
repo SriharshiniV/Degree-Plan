@@ -60,7 +60,6 @@ public class RegisterDaoImplTest {
 		when(mockJDBCTemplate.update(Matchers.anyString(),objCap.capture()))
 		.thenReturn(mockresult);
 		Register register=new Register();
-	
 	RegisterDaoImpl mockobj=new RegisterDaoImpl();
 	int actualresult=mockobj.insertUserDetails(register);
 	Assert.assertEquals(actualresult, mockresult);

@@ -10,13 +10,23 @@ public class Request {
 	private long admissionYear;
 	private String message;
 	private String requestStatus;
+	private String degreePlanStatus;
 	
 	
+	public String getDegreePlanStatus() {
+		return degreePlanStatus;
+	}
+
+	public void setDegreePlanStatus(String degreePlanStatus) {
+		this.degreePlanStatus = degreePlanStatus;
+	}
+
 	public Request() {
 	}
 	
 	public Request(String userName, String professorName, String professorEmail, String department,
-			String admissionSemester, long admissionYear, String message, String requestStatus) {
+			String admissionSemester, long admissionYear, String message, String requestStatus,
+			String degreePlanStatus) {
 		super();
 		this.userName = userName;
 		this.professorName = professorName;
@@ -26,6 +36,7 @@ public class Request {
 		this.admissionYear = admissionYear;
 		this.message = message;
 		this.requestStatus = requestStatus;
+		this.degreePlanStatus = degreePlanStatus;
 	}
 
 	@Override
@@ -33,8 +44,9 @@ public class Request {
 		return "Request [userName=" + userName + ", professorName=" + professorName + ", professorEmail="
 				+ professorEmail + ", department=" + department + ", admissionSemester=" + admissionSemester
 				+ ", admissionYear=" + admissionYear + ", message=" + message + ", requestStatus=" + requestStatus
-				+ "]";
+				+ ", degreePlanStatus=" + degreePlanStatus + "]";
 	}
+
 	public String getUserName() {
 		return userName;
 	}

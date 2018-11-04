@@ -11,7 +11,8 @@ public class StudentExtractor {
 		// TODO Auto-generated method stub
 		Request request = new Request();
 		request.setUserName(rs.getString(1));
-		request.setDepartment(rs.getString(2));;
+		request.setDepartment(rs.getString(2));
+		request.setDegreePlanStatus(rs.getString(5));
 		return request;
 	}
 

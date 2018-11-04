@@ -60,8 +60,6 @@ public class LoginDaoImplTest {
 		LoginDaoImpl mockObj = new LoginDaoImpl();
 		List<Login> actualLoginList = mockObj.validateUser("user", "password", "role");
 		Assert.assertEquals(mockLoginList, actualLoginList);
-
-
 	}
 
 }

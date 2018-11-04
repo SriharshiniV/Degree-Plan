@@ -1,5 +1,6 @@
 package com.dpa.controllers;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,11 +12,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.dpa.model.Courses;
 import com.dpa.model.DegreePlan;
+import com.dpa.model.GRE;
 import com.dpa.service.DegreePlanService;
 
 //handles the view, submit, save and all other degree plan action requests
@@ -25,8 +31,9 @@ public class DegreePlanController {
 	DegreePlanService degreePlanService;
 //gets mandatory and optional courses form the database and makes them available to the view degreepla.jsp
 	@RequestMapping(value = "/degreeplan", method = RequestMethod.POST)
-	public String openDegreePlan(@RequestParam String selectPlan, HttpServletRequest request, HttpServletResponse response, ModelMap model){
+	public String openDegreePlan(@RequestParam String selectPlan,@RequestParam String majProfessor, HttpServletRequest request, HttpServletResponse response, ModelMap model){
 		model.put("major", selectPlan);
+		model.put("majorProfessor", majProfessor);
 		HttpSession session = request.getSession(false);
 		if (session != null) {
 			String userName = (String) session.getAttribute("userName");
@@ -57,5 +64,21 @@ public class DegreePlanController {
 			return "degreeplan";
 		}
 	}
-
+	
+	//method that returns a vieDegreePlan page with the model data of the page
+		@RequestMapping(value = "/viewdegreeplan", method = RequestMethod.GET)
+		public String viewPlan(@RequestParam(value = "uName", required = false) String uName, HttpServletRequest request, HttpServletResponse response, ModelMap model){
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+				String userName = (String) session.getAttribute("userName");
+				model.addAttribute("degreePlan", degreePlanService.viewDegreePlan(uName, userName));
+				model.addAttribute("gre", degreePlanService.getGREScores(uName));
+				model.addAttribute("courses", degreePlanService.getCourses(uName));
+				return "viewdegreeplan";
+			} else {
+				return "login";
+			}
+		}
 }
+
+

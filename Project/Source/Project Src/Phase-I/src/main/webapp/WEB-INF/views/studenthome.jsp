@@ -15,7 +15,7 @@
 			<tbody>
 				<c:forEach items="${myAdvisors}" var="myAdvisor" varStatus="theCount">
 					<tr>
-						<td>${myAdvisor.professorName}</td>
+						<td id="profName">${myAdvisor.professorName}</td>
 						<td>${myAdvisor.professorEmail}</td>
 						<td><input type="button" class="btn btn-primary sendMessage" value = "Send Message" id="${theCount.count}"/></td>
 					</tr>
@@ -34,6 +34,9 @@
 			  <option value="computerEngineering">Computer Engineering</option>
 			</select>
 			</div>
+			<c:forEach items="${myAdvisors}" var="myAdvisor" varStatus="theCount">
+				<input type="text" class="form-control field" name="majProfessor" value="${myAdvisor.professorName}" style="visibility:hidden;">
+			</c:forEach>
 		</form>
 	</div>
 </div>

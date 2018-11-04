@@ -58,7 +58,7 @@
 			<label class="control-label col-sm-2" for="degreeToBeEarned">Degree To Be Earned</label>
 				<div class="col-sm-4">
 					<input type="text" class="form-control field" id="degree"
-						name="degree" value="M.S.(Master of Science)" required>
+						name="degree" value="M.S" required>
 				</div>
 				<label class="control-label col-sm-1" for="major">Major</label>
 				<div class="col-sm-5">
@@ -86,7 +86,7 @@
 			<label class="control-label col-sm-2" for="majorProf">Major Professor</label>
 				<div class="col-sm-4">
 					<input type="text" class="form-control field" id="majorProf"
-						name="majorProfessor" placeholder="Enter Major Professor Name" required>
+						name="majorProfessor" placeholder="Enter Major Professor Name" value = "${majorProfessor}" required>
 				</div>
 				<label class="control-label col-sm-2" for="co_major_prof">Co-Major Professor</label>
 				<div class="col-sm-4">
