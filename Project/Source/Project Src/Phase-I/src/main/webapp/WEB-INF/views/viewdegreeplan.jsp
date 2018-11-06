@@ -2,8 +2,15 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ include file="../common/studentheader.jspf"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div class="container">
-	<form name="viewDegreePlan"  action="#" class="form-horizontal" onsubmit="" method="POST">
+<div class="container" id="dPView">
+	<form name="viewDegreePlan"  action="/dpa/submitToAdminSpecialist" class="form-horizontal" onsubmit="" method="POST">
+		<input type="text" name = "sName" id= "sName" value = "${degreePlan.name}" style="visibility:hidden" required>
+		<div align = "center">
+			<font color="green">${success}</font>
+		</div>
+		<div align = "center">
+			<font color="red">${error}</font>
+		</div>
 		<div class="form-group">
 			<h4 style="text-align:center;">
 			<strong>Master's Degree Plan</strong><br>
@@ -99,18 +106,43 @@
 				<td colspan="2">Total Semester Hours Requires: ${degreePlan.totalCreditHours}</td>
 			</tr>
 		</tbody>
-	</table
+	</table>
+	<div class="form-group">
+	<label class = "col-sm-1" for="sign" id="signLabel" style="visibility:hidden">Signature</label>
+		<div class = "col-sm-11">
+			<input type="text" class="form-control field" id="sign"
+				name="sign" placeholder="Please type Full Name" style="visibility:hidden" required>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<input type="submit" value="Submit to AdminSpecialist" class="btn btn-primary btn-block" id="acceptDP" style="visibility:hidden" />
+	</div>
 	</form>
 	<div class="form-group">
-		<div class="col-sm-offset-4 col-sm-4">
-			<input type="accept" value="login" class="btn btn-default" />
+		<div>
+			<input type="submit" value="Accept DegreePlan" class="btn btn-default" id="acceptDegreePlan" onclick="signDP()"/>
+			<input type="submit" value="Reject DegreePlan" class="btn btn-default" id="rejectDegreePlan" onclick="rejectDP()"/>
 		</div>
 	</div>
 </div>
+
 <div class="footer">
 	<div class="container-fluid footer1"><h5 style = "text-align:center;">&#169; 2018 SHAN CSCE UNT</h5></div>
 	<div class="container-fluid footer2"><h5 style = "text-align:center;">Contact Us: +1 xxx-xxx-xxxx</h5></div>
 </div>
+<script>
+function signDP(){
+	document.getElementById("sign").style.visibility = "visible";
+	document.getElementById("signLabel").style.visibility = "visible";
+	document.getElementById("acceptDegreePlan").style.visibility = "hidden";
+	document.getElementById("rejectDegreePlan").style.visibility = "hidden";
+	document.getElementById("acceptDP").style.visibility = "visible";
+}
+function rejectDP(){
+	var sName = document.getElementById("sName").value;
+	window.location.href="/dpa/rejectDP?sName=" + sName ;
+}
+</script>
 <script src="/webjars/jquery/1.9.1/jquery.min.js"></script>
 <script src="/webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </body>

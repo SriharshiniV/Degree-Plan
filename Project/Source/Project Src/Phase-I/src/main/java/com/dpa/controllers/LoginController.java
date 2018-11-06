@@ -57,6 +57,8 @@ public class LoginController {
 			} else if(role.equals("professor") || role.equals("chair") || role.equals("associateChair")) {
 				model.addAttribute("myStudents", retrieveUsersService.getMyStudents(userName));
 				return "professorhome";
+			}else if(role.equals("adminspecialist")) {
+				return "adminspecialisthome";
 			}else {
 				return "temp";
 			}

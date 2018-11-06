@@ -42,7 +42,7 @@
 					  <option value="professor">Professor</option>
 					  <option value="chair">Chair</option>
 					  <option value="associateChair">Associate Chair</option>
-					  <option value="adminSpecialist">Admin Specialist</option>
+					  <option value="adminspecialist">Admin Specialist</option>
 					</select>
 				</div>
 			</div>

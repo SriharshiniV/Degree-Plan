@@ -5,14 +5,11 @@ public class Courses {
 	private String semesterTaken;
 	private int cHrs;
 	private String grade;
-	public Courses() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	private String courseCatergory;
 	@Override
 	public String toString() {
 		return "Courses [course=" + course + ", semesterTaken=" + semesterTaken + ", cHrs=" + cHrs + ", grade=" + grade
-				+ "]";
+				+ ", courseCatergory=" + courseCatergory + "]";
 	}
 	public String getCourse() {
 		return course;
@@ -38,7 +35,15 @@ public class Courses {
 	public void setGrade(String grade) {
 		this.grade = grade;
 	}
-	
-	
+	public String getCourseCatergory() {
+		return courseCatergory;
+	}
+	public void setCourseCatergory(String courseCatergory) {
+		this.courseCatergory = courseCatergory;
+	}
+	public Courses() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 }

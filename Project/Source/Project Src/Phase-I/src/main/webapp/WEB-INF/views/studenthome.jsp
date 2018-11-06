@@ -38,12 +38,23 @@
 				<input type="text" class="form-control field" name="majProfessor" value="${myAdvisor.professorName}" style="visibility:hidden;">
 			</c:forEach>
 		</form>
+		<form action="/dpa/viewDPStatus" method = "POST">
+		<input type="submit" value="Degree Plan Status" style = "background-color:#e6ffb3" class="btn btn-default col-sm-4"/>
+		<p class = "col-sm-offset-1 col-sm-2" id="degreePStatus">${degreePlanStatus}</p>
+		<p class = "col-sm-4" id="viewComments">${rejectComments} 
+		<input type="text" class="form-control field" name="majorProfessor" value="${myAdvisor.professorName}" style="visibility:hidden;">
+		</form>
+		<form id="updateDP" action="/dpa/updateDegreePlan" method="POST"><a href="#" onclick="document.getElementById('updateDP').submit();">${resubmitDP}</a>
+		</form>
 	</div>
 </div>
 
 <script>
 	function selectForm(){
 		$("#degreePlan").css("visibility", "visible");
+	}
+	function viewdpStatus(){
+		$("#degreePStatus").css("visibility", "visible");
 	}
 </script>
 

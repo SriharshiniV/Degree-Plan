@@ -9,6 +9,7 @@ public class CoursesExtractor {
 
 	public Courses extractData(ResultSet rs) throws SQLException {
 		Courses courses = new Courses();
+		courses.setCourseCatergory(rs.getString(2));
 		courses.setCourse(rs.getString(3));
 		courses.setSemesterTaken(rs.getString(4));
 		courses.setcHrs(rs.getInt(5));

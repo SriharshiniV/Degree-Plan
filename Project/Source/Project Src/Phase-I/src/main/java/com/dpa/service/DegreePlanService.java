@@ -27,4 +27,16 @@ public interface DegreePlanService {
 
 	List<Courses> getCourses(String sName);
 
+	int submitToAdminSpecialist(String userName, String sName, String sign);
+
+	int dPProfessorreject(String userName, String studentName, String comments);
+
+	String getDPStatus(String userName, String majorProfessor);
+
+	String getComments(String userName, String majorProfessor);
+
+	DegreePlan getDegreePlan(String userName);
+
+	int updateDegreePlan(DegreePlan degreePlan, String userName);
+
 }

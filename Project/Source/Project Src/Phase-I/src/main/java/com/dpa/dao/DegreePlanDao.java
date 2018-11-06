@@ -21,5 +21,17 @@ public interface DegreePlanDao {
 
 	List<Courses> getCourses(String sName);
 
+	int submitDPToAdminSpecialist(String userName, String sName, String sign);
+
+	int dPProfessorReject(String userName, String studentName, String comments);
+
+	String getDPStatus(String userName, String majorProfessor);
+
+	String getComments(String userName, String majorProfessor);
+
+	DegreePlan getDegreePlanData(String userName);
+
+	int updateDegreePlan(DegreePlan degreePlan, String userName);
+
 
 }
