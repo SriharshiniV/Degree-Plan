@@ -39,4 +39,6 @@ public interface DegreePlanService {
 
 	int updateDegreePlan(DegreePlan degreePlan, String userName);
 
+	int getDegreePlans();
+
 }

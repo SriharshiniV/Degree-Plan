@@ -196,4 +196,10 @@ public class DegreePlanServiceImpl implements DegreePlanService{
 		return result;
 	}
 
+	@Override
+	public int getDegreePlans() {
+		int result = degreePlanDao.getDegreePlans();
+		return result;
+	}
+
 }

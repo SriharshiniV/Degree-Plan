@@ -33,5 +33,7 @@ public interface DegreePlanDao {
 
 	int updateDegreePlan(DegreePlan degreePlan, String userName);
 
+	int getDegreePlans();
+
 
 }

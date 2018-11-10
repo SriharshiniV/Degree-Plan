@@ -326,5 +326,11 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 
 			return result;
 		}
+//this method will get the degree plans of the students submitted to admin specialist
+		@Override
+		public int getDegreePlans() {
+			
+			return 0;
+		}
 
 }

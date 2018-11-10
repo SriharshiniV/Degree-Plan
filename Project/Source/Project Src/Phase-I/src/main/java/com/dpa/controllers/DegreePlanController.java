@@ -134,6 +134,9 @@ public class DegreePlanController {
 			if (session != null) {
 				String userName = (String) session.getAttribute("userName");
 				String dpStatus = degreePlanService.getDPStatus(userName, majorProfessor);
+				if(dpStatus.equals("submitted")) {
+					dpStatus = "With Professor";
+				}
 				model.put("degreePlanStatus", dpStatus);
 				List<Request> myAdvisors = retrieveUsersService.getMyAdvisors(userName);
 				model.addAttribute("myAdvisors", myAdvisors);

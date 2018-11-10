@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.dpa.model.Login;
 import com.dpa.model.Request;
 import com.dpa.security.Hashing;
+import com.dpa.service.DegreePlanService;
 import com.dpa.service.LoginService;
 import com.dpa.service.RetrieveUsersService;
 
@@ -28,7 +29,8 @@ public class LoginController {
 	LoginService loginService;
 	@Autowired
 	RetrieveUsersService retrieveUsersService;
-
+	@Autowired
+	DegreePlanService degreePlanService;
 //It redirects all the users to the login page
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login() {
@@ -58,6 +60,7 @@ public class LoginController {
 				model.addAttribute("myStudents", retrieveUsersService.getMyStudents(userName));
 				return "professorhome";
 			}else if(role.equals("adminspecialist")) {
+				model.addAttribute("myStudents", degreePlanService.getDegreePlans());
 				return "adminspecialisthome";
 			}else {
 				return "temp";

@@ -5,6 +5,7 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +19,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import com.dpa.jdbc.ProfessorRowMapper;
 import com.dpa.model.Register;
 
-import junit.framework.Assert;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({ RetrieveStaffDaoImpl.class, JdbcTemplate.class })
