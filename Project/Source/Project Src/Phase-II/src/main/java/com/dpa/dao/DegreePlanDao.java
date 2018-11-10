@@ -33,7 +33,11 @@ public interface DegreePlanDao {
 
 	int updateDegreePlan(DegreePlan degreePlan, String userName);
 
-	int getDegreePlans();
+	List<DegreePlan> getDegreePlans();
+
+	DegreePlan getReceivedDegreePlan(String sName, String sId);
+
+	int submitDPToAssociateChair(int studentId, String sName);
 
 
 }

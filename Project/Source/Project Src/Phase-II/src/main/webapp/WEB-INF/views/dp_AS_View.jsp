@@ -1,10 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ include file="../common/professorheader.jspf"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="container" id="dPView">
-	<form name="viewDegreePlan"  action="/dpa/submitToAdminSpecialist" class="form-horizontal" onsubmit="" method="POST">
+	<form name="viewDegreePlan"  action="/dpa/submitToAssociateChair" class="form-horizontal" onsubmit="" method="POST">
 		<input type="text" name = "sName" id= "sName" value = "${degreePlan.name}" style="visibility:hidden" required>
+		<input type="text" name = "studentId" id= "sId" value = "${degreePlan.studentId}" style="visibility:hidden" required>
 		<div align = "center">
 			<font color="green">${success}</font>
 		</div>
@@ -17,7 +15,7 @@
 			<strong>Department of Computer Science And Engineering </strong>		
 			</h4>
 		</div>
-		<table class="table table-striped" id="viewDPTable">
+		<table class="table table-striped" id="receivedDPTable">
 		<tbody>
 				<tr>
 					<td colspan="2">Name: ${degreePlan.name}</td>
@@ -99,7 +97,7 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	<table class="table table-striped" id="viewDPTable">
+	<table class="table table-striped" id="r1DPTable">
 		<tbody>
 			<tr>
 				<td colspan="2">Admission to candidacy is recommended: </td>
@@ -107,20 +105,19 @@
 			</tr>
 		</tbody>
 	</table>
-	<div class="form-group">
-	<label class = "col-sm-1" for="sign" id="signLabel" style="visibility:hidden">Signature</label>
-		<div class = "col-sm-11">
-			<input type="text" class="form-control field" id="sign"
-				name="sign" placeholder="Please type Full Name" style="visibility:hidden" required>
-		</div>
-	</div>
+	<table class="table table-striped" id="r2DPTable">
+		<tbody>
+			<tr>
+				<td colspan="4">Advisor or Major Professor: ${degreePlan.professorSignature}</td>
+			</tr>
+		</tbody>
+	</table>
 	<div class="col-sm-4">
-		<input type="submit" value="Submit to AdminSpecialist" class="btn btn-primary btn-block" id="acceptDP" style="visibility:hidden" />
+		<input type="submit" value="Submit to Associate Chair" class="btn btn-primary btn-block" id="acceptDP" />
 	</div>
 	</form>
 	<div class="form-group">
 		<div>
-			<input type="submit" value="Accept DegreePlan" class="btn btn-default" id="acceptDegreePlan" onclick="signDP()"/>
 			<input type="submit" value="Reject DegreePlan" class="btn btn-default" id="rejectDegreePlan" onclick="rejectDP()"/>
 		</div>
 	</div>
@@ -131,13 +128,6 @@
 	<div class="container-fluid footer2"><h5 style = "text-align:center;">Contact Us: +1 xxx-xxx-xxxx</h5></div>
 </div>
 <script>
-function signDP(){
-	document.getElementById("sign").style.visibility = "visible";
-	document.getElementById("signLabel").style.visibility = "visible";
-	document.getElementById("acceptDegreePlan").style.visibility = "hidden";
-	document.getElementById("rejectDegreePlan").style.visibility = "hidden";
-	document.getElementById("acceptDP").style.visibility = "visible";
-}
 function rejectDP(){
 	var sName = document.getElementById("sName").value;
 	window.location.href="/dpa/rejectDP?sName=" + sName ;

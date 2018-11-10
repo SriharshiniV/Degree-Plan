@@ -197,8 +197,21 @@ public class DegreePlanServiceImpl implements DegreePlanService{
 	}
 
 	@Override
-	public int getDegreePlans() {
-		int result = degreePlanDao.getDegreePlans();
+	public List<DegreePlan> getDegreePlans() {
+		List<DegreePlan> degreePlans = new ArrayList<DegreePlan>();
+		degreePlans = degreePlanDao.getDegreePlans();
+		return degreePlans;
+	}
+
+	@Override
+	public DegreePlan getReceivedDP(String sName, String sId) {
+		DegreePlan dp = degreePlanDao.getReceivedDegreePlan(sName, sId);
+		return dp;
+	}
+
+	@Override
+	public int submitToAssociateChair(int studentId, String sName) {
+		int result = degreePlanDao.submitDPToAssociateChair(studentId, sName);
 		return result;
 	}
 

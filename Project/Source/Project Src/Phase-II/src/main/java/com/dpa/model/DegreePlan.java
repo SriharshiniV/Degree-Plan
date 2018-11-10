@@ -25,6 +25,35 @@ public class DegreePlan {
 	private Courses opCourse7;
 	private Courses opCourse8;
 	private int totalCreditHours;
+	private String dpStatus;
+	private String professorSignature;
+	private String associateChairSignature;
+	private String chairSignature;
+	
+	public String getProfessorSignature() {
+		return professorSignature;
+	}
+	public void setProfessorSignature(String professorSignature) {
+		this.professorSignature = professorSignature;
+	}
+	public String getAssociateChairSignature() {
+		return associateChairSignature;
+	}
+	public void setAssociateChairSignature(String associateChairSignature) {
+		this.associateChairSignature = associateChairSignature;
+	}
+	public String getChairSignature() {
+		return chairSignature;
+	}
+	public void setChairSignature(String chairSignature) {
+		this.chairSignature = chairSignature;
+	}
+	public String getDpStatus() {
+		return dpStatus;
+	}
+	public void setDpStatus(String dpStatus) {
+		this.dpStatus = dpStatus;
+	}
 	public DegreePlan() {
 		super();
 		// TODO Auto-generated constructor stub

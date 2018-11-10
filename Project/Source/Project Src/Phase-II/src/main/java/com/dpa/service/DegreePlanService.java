@@ -39,6 +39,10 @@ public interface DegreePlanService {
 
 	int updateDegreePlan(DegreePlan degreePlan, String userName);
 
-	int getDegreePlans();
+	List<DegreePlan> getDegreePlans();
+
+	DegreePlan getReceivedDP(String sName, String sId);
+
+	int submitToAssociateChair(int studentId, String sName);
 
 }

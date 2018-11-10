@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -100,6 +101,26 @@ public class DegreePlanController {
 			}
 		}
 		
+		//This method submits the degree plan to the administrative specialist
+		@RequestMapping(value = "/submitToAssociateChair", method = RequestMethod.POST)
+		public String submitToAssociateChair(@RequestParam String sName, @RequestParam int studentId, HttpServletRequest request, HttpServletResponse response, ModelMap model){
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+				String userName = (String) session.getAttribute("userName");
+				int result = degreePlanService.submitToAssociateChair(studentId, sName);
+				if(result != 0) {
+					model.put("success", "Degree Plan Successfully submitted to Associate Chair");
+					model.addAttribute("degreePlans", degreePlanService.getDegreePlans());
+					return "adminspecialisthome";
+				}else {
+					model.put("error", "Submission Failed, try again");
+					return "adminspecialisthome";	
+				}
+			} else {
+				return "login";
+			}
+		}
+		
 		//It redirects professor to add reject comments page
 		@RequestMapping(value = "/rejectDP", method = RequestMethod.GET)
 		public String rejectComments(@RequestParam(value = "sName", required = false) String sName, ModelMap model) {
@@ -108,15 +129,15 @@ public class DegreePlanController {
 		}
 		
 		//This method submits the degree plan to the administrative specialist
-		@RequestMapping(value = "/professorReject", method = RequestMethod.POST)
+		@RequestMapping(value = "/degreePlanReject", method = RequestMethod.POST)
 		public String dPProfessorReject(@RequestParam String studentName, @RequestParam String comments, HttpServletRequest request, HttpServletResponse response, ModelMap model){
 			HttpSession session = request.getSession(false);
 			if (session != null) {
 				String userName = (String) session.getAttribute("userName");
 				int result = degreePlanService.dPProfessorreject(userName, studentName, comments);
 				if(result != 0) {
-					model.addAttribute("myStudents", retrieveUsersService.getMyStudents(userName));
-					return "professorhome";
+					model.put("success", "Comments submitted to the student");
+					return "rejectcomments";
 				}else {
 					model.addAttribute("degreePlan", degreePlanService.viewDegreePlan(studentName, userName));
 					model.addAttribute("gre", degreePlanService.getGREScores(studentName));
@@ -140,7 +161,7 @@ public class DegreePlanController {
 				model.put("degreePlanStatus", dpStatus);
 				List<Request> myAdvisors = retrieveUsersService.getMyAdvisors(userName);
 				model.addAttribute("myAdvisors", myAdvisors);
-				if(dpStatus.equals("Professor Rejected")) {
+				if(dpStatus.equals("Professor Rejected") || dpStatus.equals("AdminSpecialist Rejected")) {
 					String rejectComments = degreePlanService.getComments(userName, majorProfessor);
 					model.put("rejectComments", rejectComments);
 					model.put("resubmitDP", "Update and resubmit the Degree Plan");
@@ -174,13 +195,32 @@ public class DegreePlanController {
 			HttpSession session = request.getSession(false);
 			if (session != null) {
 				String userName = (String) session.getAttribute("userName");
-				int result = degreePlanService.updateDegreePlan(degreePlan, userName);
+				degreePlanService.updateDegreePlan(degreePlan, userName);
 				model.put("success", "Degree Plan Submitted Successfully");
 				return "degreeplan";
 			} else {
 				model.put("error", "Submission Failed");
 				return "degreeplan";
 			}
+		}
+		
+		//This method gets the submitted degree plan data
+		@RequestMapping(value = "/receivedDegreePlan", method = RequestMethod.POST)
+		public String receivedDegreePlan(@RequestBody String studentDetails, HttpServletRequest request, HttpServletResponse response, ModelMap model) {
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+			String[] sDetails = studentDetails.split("=");
+			String[] sD = sDetails[1].split("&");
+			String sName = sD[0];
+			String sId = sDetails[2];
+			model.addAttribute("degreePlan", degreePlanService.getReceivedDP(sName, sId));
+			model.addAttribute("gre", degreePlanService.getGREScores(sName));
+			model.addAttribute("courses", degreePlanService.getCourses(sName));
+				return "dp_AS_View";
+			} else {
+				return "login";
+			}
+
 		}
 }
 

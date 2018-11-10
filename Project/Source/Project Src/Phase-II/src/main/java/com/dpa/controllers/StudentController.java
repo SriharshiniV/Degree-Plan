@@ -21,7 +21,7 @@ public class StudentController {
 	RetrieveUsersService retrieveUsersService;
 
 	@RequestMapping(value = "/studenthome", method = RequestMethod.GET)
-	public String login(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
+	public String studentHome(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
 		HttpSession session = request.getSession(false);
 		if (session != null) {
 			String userName = (String) session.getAttribute("userName");
