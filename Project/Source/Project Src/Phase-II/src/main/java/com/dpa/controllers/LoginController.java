@@ -61,11 +61,12 @@ public class LoginController {
 				model.addAttribute("myStudents", retrieveUsersService.getMyStudents(userName));
 				return "professorhome";
 			}else if(role.equals("chair")) {
+				model.addAttribute("receivedDegreePlansLevel3", degreePlanService.getReceivedDegreePlansLevel3(userName));
 				model.addAttribute("myStudents", retrieveUsersService.getMyStudents(userName));
 				return "chairhome";
 			}else if(role.equals("associateChair")) {
 				model.addAttribute("myStudents", retrieveUsersService.getMyStudents(userName));
-				
+				model.addAttribute("receivedDegreePlansLevel2", degreePlanService.getReceivedDegreePlansLevel2(userName));
 				return "associatechairhome";
 			}else if(role.equals("adminspecialist")) {
 				model.addAttribute("degreePlans", degreePlanService.getDegreePlans());

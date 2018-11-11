@@ -215,4 +215,42 @@ public class DegreePlanServiceImpl implements DegreePlanService{
 		return result;
 	}
 
+	@Override
+	public List<DegreePlan> getReceivedDegreePlansLevel2(String userName) {
+		List<DegreePlan> degreePlans = new ArrayList<DegreePlan>();
+		degreePlans = degreePlanDao.receivedDegreePlansLevel2(userName);
+		return degreePlans;
+	}
+
+	@Override
+	public int submitToASL2(String userName, String sName, String sign) {
+		int result = degreePlanDao.submitDPToASL2(userName, sName, sign);
+		return result;
+	}
+
+	@Override
+	public int submitToChair(int studentId, String sName) {
+		int result = degreePlanDao.submitDPToChair(studentId, sName);
+		return result;
+	}
+
+	@Override
+	public List<DegreePlan> getReceivedDegreePlansLevel3(String userName) {
+		List<DegreePlan> degreePlans = new ArrayList<DegreePlan>();
+		degreePlans = degreePlanDao.receivedDegreePlansLevel3(userName);
+		return degreePlans;
+	}
+
+	@Override
+	public int submitToASL3(String userName, String sName, String sign) {
+		int result = degreePlanDao.submitDPToASL3(userName, sName, sign);
+		return result;
+	}
+
+	@Override
+	public int sendApprovaltoStudent(int studentId, String sName) {
+		int result = degreePlanDao.sendApprovaltoStudent(studentId, sName);
+		return result;
+	}
+
 }

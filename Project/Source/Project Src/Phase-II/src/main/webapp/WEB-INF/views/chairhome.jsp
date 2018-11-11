@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <script src="/webjars/jquery/1.9.1/jquery.min.js"></script>
-<%@ include file="../common/associatechairheader.jspf"%>
+<%@ include file="../common/chairheader.jspf"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div id="toView">
 <div class="container" id="myStudents">
@@ -40,11 +40,11 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach items="${receivedDegreePlansLevel2}" var="receivedDegreePlanLevel2" varStatus="theCount">
+			<c:forEach items="${receivedDegreePlansLevel3}" var="receivedDegreePlanLevel3" varStatus="theCount">
 				<tr>
-					<td>${receivedDegreePlanLevel2.name}</td>
-					<td>${receivedDegreePlanLevel2.studentId}</td>
-					<td><input type="button" class="btn btn-primary receiveDPL2" value = "View Degree Plan" id="${theCount.count}"/></td>
+					<td>${receivedDegreePlanLevel3.name}</td>
+					<td>${receivedDegreePlanLevel3.studentId}</td>
+					<td><input type="button" class="btn btn-primary receiveDPL3" value = "View Degree Plan" id="${theCount.count}"/></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -68,13 +68,13 @@ $(document).ready(function(){
 		}
 	}
 });
-$('.receiveDPL2').click(function(){
+$('.receiveDPL3').click(function(){
 	var id = $(this).attr('id');
 	var requestRow = document.getElementById("dpReceivedFromAS").rows[id].innerHTML;
 	var receivedName = requestRow.split(">",4);
 	var sName = receivedName[1].split("<",1);
 	var studentId = receivedName[3].split("<",1);
-	$.post('receivedDegreePlanAS', { sN: sName, sId : studentId}, 
+	$.post('receivedDegreePlanAS2', { sN: sName, sId : studentId}, 
     function(result){
          $('#toView').html(result);
 	});

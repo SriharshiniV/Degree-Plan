@@ -27,7 +27,7 @@
 					<td>${degreePlan.name}</td>
 					<td>${degreePlan.studentId}</td>
 					<td>${degreePlan.email}</td>
-					<td>${degreePlan.dpStatus}</td>
+					<td>${degreePlan.degreePlanStatus}</td>
 					<td><input type="button" class="btn btn-primary viewDP" value = "View Degree Plan" id="${theCount.count}"/></td>
 				</tr>
 			</c:forEach>
