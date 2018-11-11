@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ include file="../common/header.jspf"%>
-<form name ="rejectCommentsForm" action="/dpa/professorReject" class="form-horizontal" method = "POST">
+<form name ="rejectCommentsForm" action="/dpa/degreePlanReject" class="form-horizontal" method = "POST">
 <div class="form-group">
+		<div align = "center">
+			<font color="green">${success}</font>
+		</div>
 	<label class="control-label col-sm-4" style="font-size:18px" for="studentName">Student Name
 	</label>
 		<div class="col-sm-4">

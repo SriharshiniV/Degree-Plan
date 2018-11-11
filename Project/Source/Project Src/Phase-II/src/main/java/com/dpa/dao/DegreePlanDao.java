@@ -33,7 +33,23 @@ public interface DegreePlanDao {
 
 	int updateDegreePlan(DegreePlan degreePlan, String userName);
 
-	int getDegreePlans();
+	List<DegreePlan> getDegreePlans();
+
+	DegreePlan getReceivedDegreePlan(String sName, String sId);
+
+	int submitDPToAssociateChair(int studentId, String sName);
+
+	List<DegreePlan> receivedDegreePlansLevel2(String userName);
+
+	int submitDPToASL2(String userName, String sName, String sign);
+
+	int submitDPToChair(int studentId, String sName);
+
+	List<DegreePlan> receivedDegreePlansLevel3(String userName);
+
+	int submitDPToASL3(String userName, String sName, String sign);
+
+	int sendApprovaltoStudent(int studentId, String sName);
 
 
 }

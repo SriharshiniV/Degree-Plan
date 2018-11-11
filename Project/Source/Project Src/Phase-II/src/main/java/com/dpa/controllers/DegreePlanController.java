@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +28,8 @@ public class DegreePlanController {
 	DegreePlanService degreePlanService;
 	@Autowired
 	RetrieveUsersService retrieveUsersService;
+	@Autowired 
+	RetrieveUsersService retrieveStudents;
 	
 //gets mandatory and optional courses form the database and makes them available to the view degreepla.jsp
 	@RequestMapping(value = "/degreeplan", method = RequestMethod.POST)
@@ -90,7 +93,7 @@ public class DegreePlanController {
 				int result = degreePlanService.submitToAdminSpecialist(userName, sName, sign);
 				if(result != 0) {
 					model.put("success", "Degree Plan Successfully submitted to Admin Specialist");
-				return "viewdegreeplan";
+					return "viewdegreeplan";
 				}else {
 					model.put("error", "Submission Failed, try again");
 					return "viewdegreeplan";	
@@ -100,6 +103,111 @@ public class DegreePlanController {
 			}
 		}
 		
+		//This method submits the degree plan to the administrative specialist
+		@RequestMapping(value = "/submitToAS", method = RequestMethod.POST)
+		public String submitToASL2(@RequestParam String sign, @RequestParam String sName, HttpServletRequest request, HttpServletResponse response, ModelMap model){
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+				String userName = (String) session.getAttribute("userName");
+				int result = degreePlanService.submitToASL2(userName, sName, sign);
+				if(result != 0) {
+					model.put("success", "Degree Plan approved");
+					model.addAttribute("receivedDegreePlansLevel2", degreePlanService.getReceivedDegreePlansLevel2(userName));
+					model.addAttribute("myStudents", retrieveStudents.getMyStudents(userName));
+					return "associatechairhome";
+				}else {
+					model.put("error", "Approval Failed");
+					model.addAttribute("receivedDegreePlansLevel2", degreePlanService.getReceivedDegreePlansLevel2(userName));
+					model.addAttribute("myStudents", retrieveStudents.getMyStudents(userName));
+					return "associatechairhome";	
+				}
+			} else {
+				return "login";
+			}
+		}
+		
+		@RequestMapping(value = "/submitToAS2", method = RequestMethod.POST)
+		public String submitToASL3(@RequestParam String sign, @RequestParam String sName, HttpServletRequest request, HttpServletResponse response, ModelMap model){
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+				String userName = (String) session.getAttribute("userName");
+				int result = degreePlanService.submitToASL3(userName, sName, sign);
+				if(result != 0) {
+					model.put("success", "Degree Plan approved");
+					model.addAttribute("receivedDegreePlansLevel3", degreePlanService.getReceivedDegreePlansLevel3(userName));
+					model.addAttribute("myStudents", retrieveStudents.getMyStudents(userName));
+					return "associatechairhome";
+				}else {
+					model.put("error", "Approval Failed");
+					model.addAttribute("receivedDegreePlansLevel3", degreePlanService.getReceivedDegreePlansLevel3(userName));
+					model.addAttribute("myStudents", retrieveStudents.getMyStudents(userName));
+					return "associatechairhome";	
+				}
+			} else {
+				return "login";
+			}
+		}
+		
+		//This method submits the degree plan to the administrative specialist
+		@RequestMapping(value = "/submitToAssociateChair", method = RequestMethod.POST)
+		public String submitToAssociateChair(@RequestParam String sName, @RequestParam int studentId, HttpServletRequest request, HttpServletResponse response, ModelMap model){
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+				String userName = (String) session.getAttribute("userName");
+				int result = degreePlanService.submitToAssociateChair(studentId, sName);
+				if(result != 0) {
+					model.put("success", "Degree Plan Successfully submitted to Associate Chair");
+					model.addAttribute("degreePlans", degreePlanService.getDegreePlans());
+					return "adminspecialisthome";
+				}else {
+					model.put("error", "Submission Failed, try again");
+					return "adminspecialisthome";	
+				}
+			} else {
+				return "login";
+			}
+		}
+		
+		//This method submits the degree plan to the administrative specialist
+		@RequestMapping(value = "/submitToChair", method = RequestMethod.POST)
+		public String submitToChair(@RequestParam String sName, @RequestParam int studentId, HttpServletRequest request, HttpServletResponse response, ModelMap model){
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+				String userName = (String) session.getAttribute("userName");
+				int result = degreePlanService.submitToChair(studentId, sName);
+				if(result != 0) {
+					model.put("success", "Degree Plan Successfully submitted to Associate Chair");
+					model.addAttribute("degreePlans", degreePlanService.getDegreePlans());
+					return "adminspecialisthome";
+				}else {
+					model.put("error", "Submission Failed, try again");
+					return "adminspecialisthome";	
+				}
+			} else {
+				return "login";
+			}
+		}
+		
+		//This method submits the degree plan to the administrative specialist
+		@RequestMapping(value = "/sendApprovaltoStudent", method = RequestMethod.POST)
+		public String sendApprovaltoStudent(@RequestParam String sName, @RequestParam int studentId, HttpServletRequest request, HttpServletResponse response, ModelMap model){
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+				String userName = (String) session.getAttribute("userName");
+				int result = degreePlanService.sendApprovaltoStudent(studentId, sName);
+				if(result != 0) {
+					model.put("success", "Approval Sent to student");
+					model.addAttribute("degreePlans", degreePlanService.getDegreePlans());
+					return "adminspecialisthome";
+				}else {
+					model.put("error", "Sending Failed, try again");
+					return "adminspecialisthome";	
+				}
+			} else {
+				return "login";
+			}
+		}
+				
 		//It redirects professor to add reject comments page
 		@RequestMapping(value = "/rejectDP", method = RequestMethod.GET)
 		public String rejectComments(@RequestParam(value = "sName", required = false) String sName, ModelMap model) {
@@ -108,15 +216,15 @@ public class DegreePlanController {
 		}
 		
 		//This method submits the degree plan to the administrative specialist
-		@RequestMapping(value = "/professorReject", method = RequestMethod.POST)
+		@RequestMapping(value = "/degreePlanReject", method = RequestMethod.POST)
 		public String dPProfessorReject(@RequestParam String studentName, @RequestParam String comments, HttpServletRequest request, HttpServletResponse response, ModelMap model){
 			HttpSession session = request.getSession(false);
 			if (session != null) {
 				String userName = (String) session.getAttribute("userName");
 				int result = degreePlanService.dPProfessorreject(userName, studentName, comments);
 				if(result != 0) {
-					model.addAttribute("myStudents", retrieveUsersService.getMyStudents(userName));
-					return "professorhome";
+					model.put("success", "Comments submitted to the student");
+					return "rejectcomments";
 				}else {
 					model.addAttribute("degreePlan", degreePlanService.viewDegreePlan(studentName, userName));
 					model.addAttribute("gre", degreePlanService.getGREScores(studentName));
@@ -140,10 +248,12 @@ public class DegreePlanController {
 				model.put("degreePlanStatus", dpStatus);
 				List<Request> myAdvisors = retrieveUsersService.getMyAdvisors(userName);
 				model.addAttribute("myAdvisors", myAdvisors);
-				if(dpStatus.equals("Professor Rejected")) {
+				if(dpStatus.equals("Professor Rejected") || dpStatus.equals("AdminSpecialist Rejected") || dpStatus.equals("AssociateChair Rejected")) {
 					String rejectComments = degreePlanService.getComments(userName, majorProfessor);
 					model.put("rejectComments", rejectComments);
 					model.put("resubmitDP", "Update and resubmit the Degree Plan");
+				}else if(dpStatus.equals("Degree Plan approved in the CSCE Department")) {
+					model.put("downloadDP","Download the Approved Degree Plan");
 				}
 				return "studenthome";
 			} else {
@@ -174,7 +284,7 @@ public class DegreePlanController {
 			HttpSession session = request.getSession(false);
 			if (session != null) {
 				String userName = (String) session.getAttribute("userName");
-				int result = degreePlanService.updateDegreePlan(degreePlan, userName);
+				degreePlanService.updateDegreePlan(degreePlan, userName);
 				model.put("success", "Degree Plan Submitted Successfully");
 				return "degreeplan";
 			} else {
@@ -182,6 +292,69 @@ public class DegreePlanController {
 				return "degreeplan";
 			}
 		}
+		
+		//This method gets the submitted degree plan data
+		@RequestMapping(value = "/receivedDegreePlan", method = RequestMethod.POST)
+		public String receivedDegreePlan(@RequestBody String studentDetails, HttpServletRequest request, HttpServletResponse response, ModelMap model) {
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+			String[] sDetails = studentDetails.split("=");
+			String[] sD = sDetails[1].split("&");
+			String sName = sD[0];
+			String sId = sDetails[2];
+			DegreePlan degreePlan = degreePlanService.getReceivedDP(sName, sId);
+			model.addAttribute("degreePlan", degreePlan);
+			model.addAttribute("gre", degreePlanService.getGREScores(sName));
+			model.addAttribute("courses", degreePlanService.getCourses(sName));
+				if((degreePlan.getDegreePlanStatus()).equals("With Administrative Specialist")) {
+					return "dp_AS_View";
+				}else if((degreePlan.getDegreePlanStatus()).equals("Chair Approved")){
+					return "dp_AS_S_View";
+				}else {
+					return "dp_AS_C_View";
+				}
+			} else {
+				return "login";
+			}
+		}
+		
+		//This method gets the submitted degree plan data
+		@RequestMapping(value = "/receivedDegreePlanAS", method = RequestMethod.POST)
+		public String receivedDegreePlanAS(@RequestBody String studentDetails, HttpServletRequest request, HttpServletResponse response, ModelMap model) {
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+			String[] sDetails = studentDetails.split("=");
+			String[] sD = sDetails[1].split("&");
+			String sName = sD[0];
+			String sId = sDetails[2];
+			model.addAttribute("degreePlan", degreePlanService.getReceivedDP(sName, sId));
+			model.addAttribute("gre", degreePlanService.getGREScores(sName));
+			model.addAttribute("courses", degreePlanService.getCourses(sName));
+				return "dpAssociateChairView";
+			} else {
+				return "login";
+			}
+
+		}
+		//This method gets the submitted degree plan data
+		@RequestMapping(value = "/receivedDegreePlanAS2", method = RequestMethod.POST)
+		public String receivedDegreePlanAS2(@RequestBody String studentDetails, HttpServletRequest request, HttpServletResponse response, ModelMap model) {
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+			String[] sDetails = studentDetails.split("=");
+			String[] sD = sDetails[1].split("&");
+			String sName = sD[0];
+			String sId = sDetails[2];
+			model.addAttribute("degreePlan", degreePlanService.getReceivedDP(sName, sId));
+			model.addAttribute("gre", degreePlanService.getGREScores(sName));
+			model.addAttribute("courses", degreePlanService.getCourses(sName));
+				return "dpChairView";
+			} else {
+				return "login";
+			}
+
+		}
 }
+
 
 

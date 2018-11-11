@@ -25,9 +25,56 @@ public class DegreePlan {
 	private Courses opCourse7;
 	private Courses opCourse8;
 	private int totalCreditHours;
+	private String degreePlanStatus;
+	private String professorSignature;
+	private String associateChairSignature;
+	private String chairSignature;
+	
+	public String getDegreePlanStatus() {
+		return degreePlanStatus;
+	}
+	public void setDegreePlanStatus(String degreePlanStatus) {
+		this.degreePlanStatus = degreePlanStatus;
+	}
 	public DegreePlan() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public DegreePlan(String name, int studentId, String localAddress, String email, String degree, String major,
+			String minor, String interestArea, String majorProfessor, String coMajorProfessor, GRE gre, Courses courseA,
+			Courses courseB, Courses courseC, Courses courseD, Courses opCourse1, Courses opCourse2, Courses opCourse3,
+			Courses opCourse4, Courses opCourse5, Courses opCourse6, Courses opCourse7, Courses opCourse8,
+			int totalCreditHours, String degreePlanStatus, String professorSignature, String associateChairSignature,
+			String chairSignature) {
+		super();
+		this.name = name;
+		this.studentId = studentId;
+		this.localAddress = localAddress;
+		this.email = email;
+		this.degree = degree;
+		this.major = major;
+		this.minor = minor;
+		this.interestArea = interestArea;
+		this.majorProfessor = majorProfessor;
+		this.coMajorProfessor = coMajorProfessor;
+		this.gre = gre;
+		this.courseA = courseA;
+		this.courseB = courseB;
+		this.courseC = courseC;
+		this.courseD = courseD;
+		this.opCourse1 = opCourse1;
+		this.opCourse2 = opCourse2;
+		this.opCourse3 = opCourse3;
+		this.opCourse4 = opCourse4;
+		this.opCourse5 = opCourse5;
+		this.opCourse6 = opCourse6;
+		this.opCourse7 = opCourse7;
+		this.opCourse8 = opCourse8;
+		this.totalCreditHours = totalCreditHours;
+		this.degreePlanStatus = degreePlanStatus;
+		this.professorSignature = professorSignature;
+		this.associateChairSignature = associateChairSignature;
+		this.chairSignature = chairSignature;
 	}
 	@Override
 	public String toString() {
@@ -38,7 +85,26 @@ public class DegreePlan {
 				+ ", courseD=" + courseD + ", opCourse1=" + opCourse1 + ", opCourse2=" + opCourse2 + ", opCourse3="
 				+ opCourse3 + ", opCourse4=" + opCourse4 + ", opCourse5=" + opCourse5 + ", opCourse6=" + opCourse6
 				+ ", opCourse7=" + opCourse7 + ", opCourse8=" + opCourse8 + ", totalCreditHours=" + totalCreditHours
-				+ "]";
+				+ ", degreePlanStatus=" + degreePlanStatus + ", professorSignature=" + professorSignature + ", associateChairSignature="
+				+ associateChairSignature + ", chairSignature=" + chairSignature + "]";
+	}
+	public String getProfessorSignature() {
+		return professorSignature;
+	}
+	public void setProfessorSignature(String professorSignature) {
+		this.professorSignature = professorSignature;
+	}
+	public String getAssociateChairSignature() {
+		return associateChairSignature;
+	}
+	public void setAssociateChairSignature(String associateChairSignature) {
+		this.associateChairSignature = associateChairSignature;
+	}
+	public String getChairSignature() {
+		return chairSignature;
+	}
+	public void setChairSignature(String chairSignature) {
+		this.chairSignature = chairSignature;
 	}
 	public String getName() {
 		return name;

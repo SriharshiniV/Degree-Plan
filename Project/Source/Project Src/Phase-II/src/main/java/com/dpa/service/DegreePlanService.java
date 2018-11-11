@@ -39,6 +39,22 @@ public interface DegreePlanService {
 
 	int updateDegreePlan(DegreePlan degreePlan, String userName);
 
-	int getDegreePlans();
+	List<DegreePlan> getDegreePlans();
+
+	DegreePlan getReceivedDP(String sName, String sId);
+
+	int submitToAssociateChair(int studentId, String sName);
+
+	List<DegreePlan> getReceivedDegreePlansLevel2(String userName);
+
+	int submitToASL2(String userName, String sName, String sign);
+
+	int submitToChair(int studentId, String sName);
+
+	List<DegreePlan> getReceivedDegreePlansLevel3(String userName);
+
+	int submitToASL3(String userName, String sName, String sign);
+
+	int sendApprovaltoStudent(int studentId, String sName);
 
 }

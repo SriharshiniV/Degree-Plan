@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.dpa.model.DegreePlan;
 import com.dpa.model.Login;
 import com.dpa.model.Request;
 import com.dpa.security.Hashing;
@@ -56,14 +57,22 @@ public class LoginController {
 				List<Request> myAdvisors = retrieveUsersService.getMyAdvisors(userName);
 				model.addAttribute("myAdvisors", myAdvisors);
 				return "studenthome";
-			} else if(role.equals("professor") || role.equals("chair") || role.equals("associateChair")) {
+			} else if(role.equals("professor")) {
 				model.addAttribute("myStudents", retrieveUsersService.getMyStudents(userName));
 				return "professorhome";
+			}else if(role.equals("chair")) {
+				model.addAttribute("receivedDegreePlansLevel3", degreePlanService.getReceivedDegreePlansLevel3(userName));
+				model.addAttribute("myStudents", retrieveUsersService.getMyStudents(userName));
+				return "chairhome";
+			}else if(role.equals("associateChair")) {
+				model.addAttribute("myStudents", retrieveUsersService.getMyStudents(userName));
+				model.addAttribute("receivedDegreePlansLevel2", degreePlanService.getReceivedDegreePlansLevel2(userName));
+				return "associatechairhome";
 			}else if(role.equals("adminspecialist")) {
-				model.addAttribute("myStudents", degreePlanService.getDegreePlans());
+				model.addAttribute("degreePlans", degreePlanService.getDegreePlans());
 				return "adminspecialisthome";
 			}else {
-				return "temp";
+				return "login";
 			}
 		}
 	}

@@ -12,14 +12,17 @@ import org.springframework.stereotype.Service;
 
 import com.dpa.jdbc.CourseRowMapper;
 import com.dpa.jdbc.CoursesRowMapper;
+import com.dpa.jdbc.DPRowMapper;
 import com.dpa.jdbc.DegreePlanRowMapper;
 import com.dpa.jdbc.LoginRowMapper;
+import com.dpa.jdbc.MyAdvisorRowMapper;
 import com.dpa.jdbc.OptionalCourseRowMapper;
 import com.dpa.model.Course;
 import com.dpa.model.Courses;
 import com.dpa.model.DegreePlan;
 import com.dpa.model.GRE;
 import com.dpa.model.Login;
+import com.dpa.model.Request;
 
 @Service
 public class DegreePlanDaoImpl implements DegreePlanDao {
@@ -193,15 +196,26 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 	@Override
 	public int dPProfessorReject(String userName, String studentName, String comments) {
 		String sql = "select name from register where userName = '" + userName + "'";
+		String sql3 = "select role from register where userName = '" + userName + "'";
 		JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
+		JdbcTemplate jdbctem3 = new JdbcTemplate(dataSource);
 		String profName = jdbctem.queryForObject(sql, String.class);
+		String role = jdbctem3.queryForObject(sql3, String.class);
 		String degreePlanStatus = "No";
-		String sql2 =  "update majorProfessor set degreePlanStatus=? where studentName = ? and professorName=?";
+		String sql2 =  "update majorProfessor set degreePlanStatus=? where studentName = ?";
 		JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
-		jdbcTemp.update(sql2, new Object[] {degreePlanStatus, studentName, profName});
-		degreePlanStatus = "Professor Rejected";
-		String sql1 =  "update degreeplan set degreePlanStatus=?, rejectComments = ? where name = ? and majorProfessor=?";
-		int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, comments, studentName, profName});
+		jdbcTemp.update(sql2, new Object[] {degreePlanStatus, studentName});
+		if(role.equals("professor")) {
+			degreePlanStatus = "Professor Rejected";
+		}else if(role.equals("adminspecialist")) {
+			degreePlanStatus = "AdminSpecialist Rejected";
+		}else if(role.equals("associatechair")){
+			degreePlanStatus = "AssociateChair Rejected";
+		}else if(role.equals("adminspecialist")) {
+			degreePlanStatus = "Chair Rejected";
+		}
+		String sql1 =  "update degreeplan set degreePlanStatus=?, rejectComments = ? where name = ?";
+		int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, comments, studentName});
 		return result;
 	}
 
@@ -328,9 +342,99 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 		}
 //this method will get the degree plans of the students submitted to admin specialist
 		@Override
-		public int getDegreePlans() {
-			
-			return 0;
+		public List<DegreePlan> getDegreePlans() {
+			List<DegreePlan> degreePlans = new ArrayList<DegreePlan>();
+			String dPStatus = "With Administrative Specialist";
+			String dPStatus1 = "With Associate Chair";
+			String dPStatus2 = "With Chair";
+			String dPStatus3 = "Associate Chair Approved";
+			String dPStatus4 = "Chair Approved";
+			String dPStatus5 = "Degree Plan approved in the CSCE Department";
+			String sql1 = "select name, studentId, email, degreePlanStatus from degreeplan where degreePlanStatus='" + dPStatus + "' OR degreePlanStatus='" + dPStatus1 + "' OR degreePlanStatus='" + dPStatus2 + "' OR degreePlanStatus='" + dPStatus3 + "' OR degreePlanStatus='" + dPStatus4 + "' OR degreePlanStatus='" + dPStatus5 + "'";
+			JdbcTemplate jdbctem1 = new JdbcTemplate(dataSource);
+			degreePlans = jdbctem1.query(sql1, new DPRowMapper());
+			return degreePlans;
+		}
+
+		@Override
+		public DegreePlan getReceivedDegreePlan(String sName, String sId) {
+			String sql1 = "select * from degreeplan where name= '" + sName + "' and studentId = '" + sId + "'";
+			JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
+			DegreePlan degreePlan = (DegreePlan) jdbctem.queryForObject(sql1, new BeanPropertyRowMapper(DegreePlan.class));
+			return degreePlan;
+		}
+
+		@Override
+		public int submitDPToAssociateChair(int studentId, String sName) {
+			// submit degree plan to associate chair
+			JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
+			String degreePlanStatus = "With Associate Chair";
+			String sql1 =  "update degreeplan set degreePlanStatus=? where name = ? and studentId=?";
+			JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+			int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, sName, studentId});
+			return result;
+		}
+
+		@Override
+		public List<DegreePlan> receivedDegreePlansLevel2(String userName) {
+			List<DegreePlan> degreePlans = new ArrayList<DegreePlan>();
+			String dPStatus = "With Associate Chair";
+			String sql1 = "select name, studentId, email, degreePlanStatus from degreeplan where degreePlanStatus='" + dPStatus + "'";
+			JdbcTemplate jdbctem1 = new JdbcTemplate(dataSource);
+			degreePlans = jdbctem1.query(sql1, new DPRowMapper());
+			return degreePlans;
+		}
+
+		@Override
+		public int submitDPToASL2(String userName, String sName, String sign) {
+			// submit degree plan to administrative specialist
+			String degreePlanStatus = "Associate Chair Approved";
+			String sql1 =  "update degreeplan set degreePlanStatus=?, associateChairSignature = ? where name = ?";
+			JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+			int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, sign, sName});
+			return result;
+		}
+
+		@Override
+		public int submitDPToChair(int studentId, String sName) {
+			// submit degree plan to associate chair
+			JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
+			String degreePlanStatus = "With Chair";
+			String sql1 =  "update degreeplan set degreePlanStatus=? where name = ? and studentId=?";
+			JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+			int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, sName, studentId});
+			return result;
+		}
+
+		@Override
+		public List<DegreePlan> receivedDegreePlansLevel3(String userName) {
+			List<DegreePlan> degreePlans = new ArrayList<DegreePlan>();
+			String dPStatus = "With Chair";
+			String sql1 = "select name, studentId, email, degreePlanStatus from degreeplan where degreePlanStatus='" + dPStatus + "'";
+			JdbcTemplate jdbctem1 = new JdbcTemplate(dataSource);
+			degreePlans = jdbctem1.query(sql1, new DPRowMapper());
+			return degreePlans;
+		}
+
+		@Override
+		public int submitDPToASL3(String userName, String sName, String sign) {
+			// submit degree plan to administrative specialist
+			String degreePlanStatus = "Chair Approved";
+			String sql1 =  "update degreeplan set degreePlanStatus=?, associateChairSignature = ? where name = ?";
+			JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+			int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, sign, sName});
+			return result;
+		}
+
+		@Override
+		public int sendApprovaltoStudent(int studentId, String sName) {
+			// send degree plan approval to student
+			JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
+			String degreePlanStatus = "Degree Plan approved in the CSCE Department";
+			String sql1 =  "update degreeplan set degreePlanStatus=? where name = ? and studentId=?";
+			JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+			int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, sName, studentId});
+			return result;
 		}
 
 }
