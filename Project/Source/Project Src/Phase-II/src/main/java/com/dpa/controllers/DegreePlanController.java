@@ -252,6 +252,8 @@ public class DegreePlanController {
 					String rejectComments = degreePlanService.getComments(userName, majorProfessor);
 					model.put("rejectComments", rejectComments);
 					model.put("resubmitDP", "Update and resubmit the Degree Plan");
+				}else if(dpStatus.equals("Degree Plan approved in the CSCE Department")) {
+					model.put("downloadDP","Download the Approved Degree Plan");
 				}
 				return "studenthome";
 			} else {

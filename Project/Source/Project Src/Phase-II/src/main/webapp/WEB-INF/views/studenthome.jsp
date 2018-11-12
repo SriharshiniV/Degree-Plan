@@ -46,6 +46,11 @@
 		</form>
 		<form id="updateDP" action="/dpa/updateDegreePlan" method="POST"><a href="#" onclick="document.getElementById('updateDP').submit();">${resubmitDP}</a>
 		</form>
+		</form>
+	</div>
+	<div class="col-sm-offset-5 col-sm-4">
+		<form id="updateDP" action="/dpa/downloadApprovedDP method="POST"><a href="#" onclick="document.getElementById('downloadDP').submit();">${downloadDP}</a>
+			</form>
 	</div>
 </div>
 
