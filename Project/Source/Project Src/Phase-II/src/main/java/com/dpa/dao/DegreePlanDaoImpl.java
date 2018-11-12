@@ -211,7 +211,7 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 			degreePlanStatus = "AdminSpecialist Rejected";
 		}else if(role.equals("associatechair")){
 			degreePlanStatus = "AssociateChair Rejected";
-		}else if(role.equals("adminspecialist")) {
+		}else if(role.equals("chair")) {
 			degreePlanStatus = "Chair Rejected";
 		}
 		String sql1 =  "update degreeplan set degreePlanStatus=?, rejectComments = ? where name = ?";
@@ -420,7 +420,7 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 		public int submitDPToASL3(String userName, String sName, String sign) {
 			// submit degree plan to administrative specialist
 			String degreePlanStatus = "Chair Approved";
-			String sql1 =  "update degreeplan set degreePlanStatus=?, associateChairSignature = ? where name = ?";
+			String sql1 =  "update degreeplan set degreePlanStatus=?, chairSignature = ? where name = ?";
 			JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
 			int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, sign, sName});
 			return result;

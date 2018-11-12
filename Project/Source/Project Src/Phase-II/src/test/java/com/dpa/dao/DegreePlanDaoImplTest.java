@@ -151,8 +151,6 @@ public void testDPProfessorReject() {
 	DegreePlanDaoImpl mockObj= new DegreePlanDaoImpl();
 	int actualresult= mockObj.dPProfessorReject("userName", "sName", "comments");
 	Assert.assertEquals(actualresult, mockval);
-
-
 }*/
 
 //getDPStatus(String userName, String majorProfessor)
@@ -212,6 +210,3 @@ public void testReceivedDegreePlansLevel3() {
 	
 }
 }
-
-
-	

@@ -252,7 +252,7 @@ public class DegreePlanController {
 				model.put("degreePlanStatus", dpStatus);
 				List<Request> myAdvisors = retrieveUsersService.getMyAdvisors(userName);
 				model.addAttribute("myAdvisors", myAdvisors);
-				if(dpStatus.equals("Professor Rejected") || dpStatus.equals("AdminSpecialist Rejected") || dpStatus.equals("AssociateChair Rejected")) {
+				if(dpStatus.equals("Professor Rejected") || dpStatus.equals("AdminSpecialist Rejected") || dpStatus.equals("AssociateChair Rejected") || dpStatus.equals("Chair Rejected")) {
 					String rejectComments = degreePlanService.getComments(userName, majorProfessor);
 					model.put("rejectComments", rejectComments);
 					model.put("resubmitDP", "Update and resubmit the Degree Plan");
