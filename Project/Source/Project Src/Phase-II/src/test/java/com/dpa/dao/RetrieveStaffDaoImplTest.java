@@ -46,7 +46,7 @@ public class RetrieveStaffDaoImplTest {
 	List<Register> mockProfList = new ArrayList<Register>();
 	mockProfList.add(new Register());
 		when(mockJDBCTemplate.query(Matchers.anyString(), Matchers.any(ProfessorRowMapper.class)))
-		.thenReturn(mockProfList );
+		.thenReturn(mockProfList);
 		
 		RetrieveStaffDaoImpl mockrsdi = new RetrieveStaffDaoImpl();	
 		List<Register> actualprofList=mockrsdi.getStaffDirectory();

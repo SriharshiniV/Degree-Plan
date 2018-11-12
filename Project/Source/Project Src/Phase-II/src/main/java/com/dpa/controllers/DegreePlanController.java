@@ -15,8 +15,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.dpa.General.Pdf;
+import com.dpa.model.Courses;
 import com.dpa.model.DegreePlan;
+import com.dpa.model.GRE;
 import com.dpa.model.Request;
 import com.dpa.service.DegreePlanService;
 import com.dpa.service.RetrieveUsersService;
@@ -350,6 +354,26 @@ public class DegreePlanController {
 			model.addAttribute("courses", degreePlanService.getCourses(sName));
 				return "dpChairView";
 			} else {
+				return "login";
+			}
+
+		}
+		
+		//This method will download the approved degree plan
+		@RequestMapping(value = "/viewApprovedDP", method = RequestMethod.POST)
+		public String downloadApprovedDP(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+				String userName = (String) session.getAttribute("userName");
+				DegreePlan degreePlan = degreePlanService.getDegreePlan(userName);
+				GRE gre = degreePlanService.getGREScores(userName);
+				List<Courses> courses = degreePlanService.getCourses(userName);
+				List<Request> myAdvisors = retrieveUsersService.getMyAdvisors(userName);
+				model.addAttribute("myAdvisors", myAdvisors);
+				Pdf pdf = new Pdf();
+				int r = pdf.generatePdf(degreePlan, gre, courses);
+				return "studenthome";
+			}else {
 				return "login";
 			}
 

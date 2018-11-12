@@ -49,7 +49,7 @@
 		</form>
 	</div>
 	<div class="col-sm-offset-5 col-sm-4">
-		<form id="updateDP" action="/dpa/downloadApprovedDP method="POST"><a href="#" onclick="document.getElementById('downloadDP').submit();">${downloadDP}</a>
+		<form id="downloadDP" action="/dpa/viewApprovedDP" method="POST"><a href="#" onclick="document.getElementById('downloadDP').submit();">${downloadDP}</a>
 			</form>
 	</div>
 </div>
