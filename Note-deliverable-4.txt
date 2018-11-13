@@ -1,0 +1,11 @@
+Deliverable 4:
+
+We have to submit two files as a part of deliverable 4.
+
+Deliverable-4.pdf
+Inspection-code-SHAN.docx
+
+Path to each of the files:
+
+Deliverable-4.pdf: Shan\Project\Documents\Project Reports\Deliverable-4.pdf
+inspection-code-SHAN-docx: Shan\inspection-code-SHAN.docx
