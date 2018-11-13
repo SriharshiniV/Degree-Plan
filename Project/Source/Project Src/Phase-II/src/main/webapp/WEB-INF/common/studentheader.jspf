@@ -30,7 +30,9 @@
 		var selectBox = document.getElementById("accountOptions");
 	    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 	    if(selectedValue == "MyAccount"){
-	    
+	    	$.post('account',function(result){
+         	$('#toReplace').html(result);
+		 	});
 	    }else if(selectedValue == "Logout"){
 	     $.ajax({
          type: "GET",

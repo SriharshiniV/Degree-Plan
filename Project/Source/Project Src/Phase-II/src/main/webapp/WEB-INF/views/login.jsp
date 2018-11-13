@@ -74,7 +74,7 @@
 	}
 	function validateUserName(){
 		var usename =document.forms["loginForm"]["userName"].value;	
-	 		if (!(/[A-Za-z0-9_]+/).test(JSON.stringify(usename))) {
+	 		if ((!(/[A-Za-z0-9_]+/).test(JSON.stringify(usename)))&&(usename!="") ) {
 				document.getElementById("errorUserNameContent").innerHTML = "Username should not contain special characters";
 	 			document.forms["loginForm"]["userName"].value="";
 	 			var1= false;
@@ -88,7 +88,7 @@
 	function validatePassword() {
 		var pwd = document.forms["loginForm"]["password"].value;
         var patternpass=/[A-Za-z0-9]+/;
-		if((! patternpass.test(JSON.stringify(pwd)))){
+		if((! patternpass.test(JSON.stringify(pwd)))&&(pwd!="")){
 			document.getElementById("errorPasswordContent").innerHTML = "Password should not contain special characters";
 		 	document.forms["loginForm"]["Password"].value="";
 		  	var2= false;

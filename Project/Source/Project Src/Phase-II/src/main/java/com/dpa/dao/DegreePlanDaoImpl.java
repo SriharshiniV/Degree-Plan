@@ -60,7 +60,7 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 						degreePlan.getGre().getQuantitative(), degreePlan.getGre().getAnalytical(),
 						degreePlan.getGre().getDateTaken() });
 		String sql = "INSERT INTO degreeplan "
-				+ "(name, studentId, localAddress, email, degree, major, minor, interestArea, majorProfessor, coMajorProfessor, totalCreditHours, degreePlanStatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+				+ "(name, studentId, localAddress, email, degree, major, minor, interestArea, majorProfessor, coMajorProfessor, totalCreditHours, degreePlanStatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		int result = jdbcTemplate.update(sql,
 				new Object[] {degreePlan.getName(), degreePlan.getStudentId(), degreePlan.getLocalAddress(),
