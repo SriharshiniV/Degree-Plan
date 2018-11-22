@@ -15,7 +15,7 @@
 				</h3>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-4" for="userName">UserName
+				<label class="control-label col-sm-4" style="font-size:18px" for="userName">UserName
 				</label>
 				<div class="col-sm-4">
 					<input type="text" class="form-control field" id="userName"
@@ -25,7 +25,7 @@
 			</div>
 
 			<div class="form-group">
-				<label class="control-label col-sm-4" for="password">Password</label>
+				<label class="control-label col-sm-4" style="font-size:18px" for="password">Password</label>
 				<div class="col-sm-4">
 					<input type="Password" class="form-control field" id="password"
 						name="password" placeholder="Enter password" onblur="validatePassword()" required>
@@ -34,7 +34,7 @@
 			</div>
 			
 			<div class="form-group">
-			<label class="control-label col-sm-4" for="role">role</label>
+			<label class="control-label col-sm-4" style="font-size:18px" for="role">role</label>
 				<div class="col-sm-4">
 					<select class="form-control field" id ="role" name="role">
 					  <option value="admin">Admin</option>

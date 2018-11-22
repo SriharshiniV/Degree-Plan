@@ -1,5 +1,9 @@
 package com.dpa.controllers;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 
@@ -361,7 +365,7 @@ public class DegreePlanController {
 		
 		//This method will download the approved degree plan
 		@RequestMapping(value = "/viewApprovedDP", method = RequestMethod.POST)
-		public String downloadApprovedDP(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
+		public void  downloadApprovedDP(HttpServletRequest request, HttpServletResponse response, ModelMap model) {
 			HttpSession session = request.getSession(false);
 			if (session != null) {
 				String userName = (String) session.getAttribute("userName");
@@ -372,11 +376,20 @@ public class DegreePlanController {
 				model.addAttribute("myAdvisors", myAdvisors);
 				Pdf pdf = new Pdf();
 				int r = pdf.generatePdf(degreePlan, gre, courses);
-				return "studenthome";
-			}else {
-				return "login";
+				
+				String dataDirectory = request.getServletContext().getRealPath("../../../");
+		        Path file = Paths.get(dataDirectory, "DegreePlan.pdf");
+		            response.setContentType("application/pdf");
+		            response.addHeader("Content-Disposition", "attachment; filename="+"DegreePlan.pdf");
+		            try
+		            {
+		                Files.copy(file, response.getOutputStream());
+		                response.getOutputStream().flush();
+		            }
+		            catch (IOException ex) {
+		                ex.printStackTrace();
+		            }
 			}
-
 		}
 }
 

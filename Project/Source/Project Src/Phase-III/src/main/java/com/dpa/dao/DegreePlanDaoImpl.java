@@ -389,9 +389,12 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 		public int submitDPToASL2(String userName, String sName, String sign) {
 			// submit degree plan to administrative specialist
 			String degreePlanStatus = "Associate Chair Approved";
-			String sql1 =  "update degreeplan set degreePlanStatus=?, associateChairSignature = ? where name = ?";
+			String sql =  "update degreeplan set degreePlanStatus=? where name = ?";
+			JdbcTemplate jdbcTemp1 = new JdbcTemplate(dataSource);
+			jdbcTemp1.update(sql, new Object[] {degreePlanStatus, sName});
+			String sql1 =  "update degreeplan set associateChairSignature = ? where name = ?";
 			JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
-			int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, sign, sName});
+			int result = jdbcTemp.update(sql1, new Object[] {sign, sName});
 			return result;
 		}
 

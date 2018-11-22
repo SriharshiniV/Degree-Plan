@@ -7,7 +7,7 @@
 				</h4>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-4" for="Name">Name
+				<label class="control-label col-sm-4" style="font-size:18px" for="Name">Name
 				</label>
 				<div class="col-sm-4">
 					<input type="text" class="form-control field" id="name"
@@ -17,7 +17,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-4" for="Email">Email
+				<label class="control-label col-sm-4" style="font-size:18px" for="Email">Email
 				</label>
 				<div class="col-sm-4">
 					<input type="email" class="form-control field" id="Email"
@@ -26,7 +26,7 @@
 			</div>
 			<div class="form-group">
 			<div class="form-group">
-				<label class="control-label col-sm-4" for="role">Role
+				<label class="control-label col-sm-4" style="font-size:18px" for="role">Role
 				</label>
 				<div class="col-sm-4">
 					<input type="text" class="form-control field" id="role"
@@ -34,7 +34,7 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-sm-4" for="UserName">UserName
+				<label class="control-label col-sm-4" style="font-size:18px" for="UserName">UserName
 				</label>
 				<div class="col-sm-4">
 					<input type="text" class="form-control field" id="UserName"

@@ -272,7 +272,7 @@
 					<input type="submit" value="Save" name = "act" class="btn btn-primary btn-block" />
 				</div>
 				<div class="col-sm-offset-2 col-sm-2">
-					<input type="submit" value="Update" name = "act" class="btn btn-primary btn-block" />
+					<input type="submit" value="Update and Resubmit" name = "act" class="btn btn-primary btn-block" />
 				</div>
 			</div>
 		</form>

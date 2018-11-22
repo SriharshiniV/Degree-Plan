@@ -41,6 +41,7 @@ public class MyAccountController {
 			String userName = (String) session.getAttribute("userName");
 			int result = accountInformationService.updateAccountDetails(register);
 			if(result != 0) {
+				model.addAttribute("accountDetails", accountInformationService.getAccountDetails(userName));
 				model.put("success", "Account details updated Successfully");
 				return "accountdetaills";
 			}else {
