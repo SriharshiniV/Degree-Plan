@@ -25,7 +25,6 @@ public class LoginDaoImpl implements LoginDao {
 		String sql = "select * from login where userName='" + userName + "' and password= '" + password + "' and role= '" + role +"'";
 		JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
 		loginList = jdbctem.query(sql, new LoginRowMapper());
-		
 		return loginList;
 	}
 

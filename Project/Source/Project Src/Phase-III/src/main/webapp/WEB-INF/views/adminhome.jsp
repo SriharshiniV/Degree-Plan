@@ -13,9 +13,11 @@
 		  <option value="ManageAdminSpecialist">Manage Admin Specialist</option>
 		</select>
 	</div>
+	<form action="/dpa/approveUsers" class="form-horizontal" method="GET">
 	<div class="col-sm-offset-1 col-sm-4">
 		<input type="submit" value="Verify and Approve Students/Professors" class="btn btn-block btn-primary" />
 	</div>
+	</form>
 	<br/><br/><br/><br/><br/><br/><br/>
 	<div class="col-sm-4">
 		<input type="submit" value="DELETE" id = "unhide2" name = "delete" class="btn  btn-block btn-warning" style="display: none;" />

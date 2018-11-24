@@ -12,12 +12,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dpa.model.Register;
 import com.dpa.security.Hashing;
+import com.dpa.service.AdminService;
 import com.dpa.service.RegisterService;
 import com.dpa.service.RetrieveUsersService;
 
@@ -25,6 +27,10 @@ import com.dpa.service.RetrieveUsersService;
 public class AdminController {
 	@Autowired
 	RegisterService registerService;
+	@Autowired
+	RetrieveUsersService retrieveUsersService;
+	@Autowired
+	AdminService adminService;
 	
 //directs user to adminhome	
 	@RequestMapping(value = "/adminhome", method = RequestMethod.GET)
@@ -56,4 +62,49 @@ public class AdminController {
 			return "adduser";
 		}
 	}
+	
+	//Approve Users
+		@RequestMapping(value = "/approveUsers", method = RequestMethod.GET)
+		public String approveUsers(HttpServletRequest request, HttpServletResponse response, Model model) {
+			model.addAttribute("toBeApprovedUsers", retrieveUsersService.getNeedApprovalList());
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+				String userName = (String) session.getAttribute("userName");
+			} 
+			return "toApproveList";
+		}
+		
+		//Approve User
+		@RequestMapping(value = "/approveUser", method = RequestMethod.POST)
+		public String approveUser(@RequestBody String userName, HttpServletRequest request, HttpServletResponse response, ModelMap model) {
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+			String[] sUname = userName.split("=");
+			String uName = sUname[1];
+			adminService.ApproveUser(uName);
+			model.put("success", "User Approved");
+			model.addAttribute("toBeApprovedUsers", retrieveUsersService.getNeedApprovalList());
+				return "toApproveList";
+			} else {
+				return "login";
+			}
+
+		}
+		
+		//Reject User
+		@RequestMapping(value = "/rejectUser", method = RequestMethod.POST)
+		public String rejectUser(@RequestBody String userName, HttpServletRequest request, HttpServletResponse response, ModelMap model) {
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+			String[] sUname = userName.split("=");
+			String uName = sUname[1];
+			adminService.rejectUser(uName);
+			model.put("success", "User Rejected");
+			model.addAttribute("toBeApprovedUsers", retrieveUsersService.getNeedApprovalList());
+				return "toApproveList";
+			} else {
+				return "login";
+			}
+
+		}
 }

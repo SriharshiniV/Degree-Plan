@@ -13,4 +13,6 @@ public interface RetrieveUsersService {
 
 	List<Register> getStudentList();
 
+	List<Register> getNeedApprovalList();
+
 }

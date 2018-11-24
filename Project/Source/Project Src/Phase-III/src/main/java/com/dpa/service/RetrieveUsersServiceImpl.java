@@ -15,6 +15,8 @@ import com.dpa.model.Request;
 public class RetrieveUsersServiceImpl implements RetrieveUsersService{
 	@Autowired
 	RetrieveUsersDao retrieveStudentsDao;
+	@Autowired
+	RetrieveUsersDao retrieveUsersDao;
 	public List<Request> getMyStudents(String userName) {
 		// TODO Auto-generated method stub
 		List<Request> myStudents = retrieveStudentsDao.getMyStudents(userName);
@@ -42,6 +44,11 @@ public class RetrieveUsersServiceImpl implements RetrieveUsersService{
 		// TODO Auto-generated method stub
 		List<Register> students = retrieveStudentsDao.getStudentList();
 		return students;
+	}
+	@Override
+	public List<Register> getNeedApprovalList() {
+		List<Register> needApprovalList = retrieveUsersDao.getToApprovalList();
+		return needApprovalList;
 	}
 
 }

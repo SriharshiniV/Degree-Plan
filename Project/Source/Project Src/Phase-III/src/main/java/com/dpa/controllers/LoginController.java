@@ -45,10 +45,21 @@ public class LoginController {
 		Hashing hashing = new Hashing();
 		String pwd = hashing.hashString(password, "MD5");
 		result = loginService.checkCredentials(userName, pwd, role);
+		int appStatus = 0;
+		for(Login l:result) {  
+		    if((l.getApprovalStatus()).equals("pending")) {
+		    	appStatus = 1;
+		    }
+		} 
 		if (result.isEmpty() == true) {
 			model.put("errorMsg", "Invalid Credentials");
 			return "login";
-		} else {
+		}
+		else if(appStatus == 1) {
+			model.put("errorMsg", "Need Admin Approval(Usually takes 3-5 days)");
+			return "login";
+		}
+		else {
 			HttpSession session = request.getSession();
 			session.setAttribute("userName",userName); 
 			if (role.equals("admin")) {

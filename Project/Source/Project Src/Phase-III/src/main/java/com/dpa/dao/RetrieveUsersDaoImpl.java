@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
+import com.dpa.jdbc.ApproveRowMapper;
 import com.dpa.jdbc.MyAdvisorRowMapper;
 import com.dpa.jdbc.MyStudentRowMapper;
 import com.dpa.jdbc.ProfessorRowMapper;
@@ -48,6 +49,16 @@ public class RetrieveUsersDaoImpl implements RetrieveUsersDao{
 		JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
 		studentList = jdbctem.query(sql, new ProfessorRowMapper());
 		return studentList;	
+	}
+
+	@Override
+	public List<Register> getToApprovalList() {
+		List<Register> toApproveList = new ArrayList<Register>();
+		String approvalStatus = "pending";
+		String sql = "select * from register where approvalStatus='" + approvalStatus + "'";
+		JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
+		toApproveList = jdbctem.query(sql, new ApproveRowMapper());
+		return toApproveList;	
 	}
 
 }

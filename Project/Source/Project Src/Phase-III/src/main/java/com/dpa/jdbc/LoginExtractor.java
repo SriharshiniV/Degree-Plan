@@ -12,6 +12,7 @@ public class LoginExtractor {
 		login.setUserName(rs.getString(1));
 		login.setPassword(rs.getString(2));
 		login.setRole(rs.getString(3));
+		login.setApprovalStatus(rs.getString(4));
 		
 		return login;
 	}

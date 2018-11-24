@@ -63,7 +63,5 @@ public class RegisterDaoImplTest {
 	RegisterDaoImpl mockobj=new RegisterDaoImpl();
 	int actualresult=mockobj.insertUserDetails(register);
 	Assert.assertEquals(actualresult, mockresult);
-
-	
 	}
 }

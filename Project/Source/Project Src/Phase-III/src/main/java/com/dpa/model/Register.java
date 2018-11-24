@@ -7,6 +7,13 @@ public class Register {
 	private String role;
 	private String userName;
 	private String password;
+	private String approvalStatus;
+	public String getApprovalStatus() {
+		return approvalStatus;
+	}
+	public void setApprovalStatus(String approvalStatus) {
+		this.approvalStatus = approvalStatus;
+	}
 	@Override
 	public String toString() {
 		return "Register [name=" + name + ", email=" + email + ", role=" + role + ", userName=" + userName

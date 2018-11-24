@@ -5,6 +5,13 @@ public class Login {
 	private String userName;
 	private String password;
 	private String role;
+	private String approvalStatus;
+	public String getApprovalStatus() {
+		return approvalStatus;
+	}
+	public void setApprovalStatus(String approvalStatus) {
+		this.approvalStatus = approvalStatus;
+	}
 	@Override
 	public String toString() {
 		return "Login [userName=" + userName + ", password=" + password + ", role=" + role + "]";
