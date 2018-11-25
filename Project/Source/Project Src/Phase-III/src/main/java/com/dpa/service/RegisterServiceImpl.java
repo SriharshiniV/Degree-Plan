@@ -11,16 +11,16 @@ import com.dpa.model.Register;
 public class RegisterServiceImpl implements RegisterService{
 	@Autowired
 	RegisterDao registerDao;
-	public int insertUser(Register register) {
+	public int insertUser(Register register, String approvalStatus) {
 		// TODO Auto-generated method stub
-		String role = register.getRole();
+		/*String role = register.getRole();
 		String approvalStatus;
 		if(role.equals("professor") || role.equals("student"))
 		{
 			approvalStatus = "pending";
 		}else {
 			approvalStatus = "approved";
-		}
+		}*/
 		register.setApprovalStatus(approvalStatus);
 		int result = registerDao.insertUserDetails(register);
 		return result;

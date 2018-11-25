@@ -4,6 +4,6 @@ import com.dpa.model.Register;
 
 public interface RegisterService {
 
-	int insertUser(Register register);
+	int insertUser(Register register, String approvalStatus);
 	
 }

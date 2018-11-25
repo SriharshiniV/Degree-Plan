@@ -1,5 +1,6 @@
 package com.dpa.dao;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -22,11 +23,13 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import com.dpa.jdbc.CourseRowMapper;
 import com.dpa.jdbc.CoursesRowMapper;
 import com.dpa.jdbc.DPRowMapper;
+import com.dpa.jdbc.InterestAreaRowMapper;
 import com.dpa.jdbc.OptionalCourseRowMapper;
 import com.dpa.model.Course;
 import com.dpa.model.Courses;
 import com.dpa.model.DegreePlan;
 import com.dpa.model.GRE;
+import com.dpa.model.InterestArea;
 import com.dpa.model.Register;
 
 
@@ -207,6 +210,28 @@ public void testReceivedDegreePlansLevel3() {
 	DegreePlanDaoImpl mockObj= new DegreePlanDaoImpl();
 	List <DegreePlan> actualDPList=mockObj.receivedDegreePlansLevel3("userName");
 	Assert.assertEquals(actualDPList,mockDPList);
-	
 }
+
+//phase 3 tests
+
+	@Test
+	public void testgetDPI() {
+		String real="sample text";
+		when(mockJDBCTemplate.queryForObject(Matchers.anyString(), Matchers.any(Class.class)))
+		.thenReturn(real);
+		DegreePlanDaoImpl mockObj= new DegreePlanDaoImpl();
+		String result = mockObj.getDPI();
+		assertEquals(real, result);
+	}
+	
+	@Test
+	public void testgetInterestAreas() {
+		List <InterestArea> mockDPList=new ArrayList<InterestArea>() ;
+		mockDPList.add(new InterestArea());
+		when(mockJDBCTemplate.query(Matchers.anyString(), Matchers.any(InterestAreaRowMapper.class)))
+		.thenReturn(mockDPList);
+		DegreePlanDaoImpl mockObj= new DegreePlanDaoImpl();
+		List <InterestArea> actualDPList=mockObj.getInterestAreas();
+		Assert.assertEquals(actualDPList,mockDPList);
+	}
 }

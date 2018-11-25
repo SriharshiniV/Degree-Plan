@@ -31,7 +31,15 @@ public class RegisterController {
 		Hashing hashing = new Hashing();
 		String pwd = hashing.hashString(uPwd, "MD5");
 		register.setPassword(pwd);
-		int result = registerService.insertUser(register);
+		String role = register.getRole();
+		String approvalStatus;
+		if(role.equals("professor") || role.equals("student"))
+		{
+			approvalStatus = "pending";
+		}else {
+			approvalStatus = "approved";
+		}
+		int result = registerService.insertUser(register, approvalStatus);
 		if (result == 1) {
 			model.put("succ", "Registered Sucessfully, Please Login");
 			return "login";

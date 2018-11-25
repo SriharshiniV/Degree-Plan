@@ -53,7 +53,15 @@ public class AdminController {
 		Hashing hashing = new Hashing();
 		String pwd = hashing.hashString(register.getPassword(), "MD5");
 		register.setPassword(pwd);
-		int result = registerService.insertUser(register);
+		String role = register.getRole();
+		String approvalStatus;
+		if(role.equals("professor") || role.equals("student"))
+		{
+			approvalStatus = "pending";
+		}else {
+			approvalStatus = "approved";
+		}
+		int result = registerService.insertUser(register, approvalStatus);
 		if (result == 1) {
 			model.put("success", "User registered successfully");
 			return "adduser";
