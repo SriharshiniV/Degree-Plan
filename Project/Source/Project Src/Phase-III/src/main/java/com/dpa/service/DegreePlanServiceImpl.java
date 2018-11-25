@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dpa.dao.DegreePlanDao;
+import com.dpa.model.CoreUpdate;
 import com.dpa.model.Course;
 import com.dpa.model.Courses;
 import com.dpa.model.DegreePlan;
@@ -279,6 +280,134 @@ public class DegreePlanServiceImpl implements DegreePlanService{
 			}
 		}
 		return interestAreas1;
+	}
+//this method updates degree plan information
+	@Override
+	public int updateDPIInfo(String dpi) {
+		int result = degreePlanDao.updateDPIInfo(dpi);
+		return result;
+	}
+	//this method updates the corecourses
+	@Override
+	public int updateDPICC(CoreUpdate coreUpdate) {
+		int result = degreePlanDao.updateDPICC(coreUpdate);
+		return result;
+	}
+	
+	
+	public CoreUpdate checkChangedCourse(CoreUpdate coreUpdate) {
+		List<CoreUpdate> changeCC = new ArrayList<CoreUpdate>();
+		List<Course> groupACS = getGroupACourses("computerScience");
+		List<Course> groupBCS = getGroupBCourses("computerScience");
+		List<Course> groupCCS = getGroupCCourses("computerScience");
+		List<Course> groupDCS = getGroupDCourses("computerScience");
+		List<Course> groupA = getGroupACourses("CE");
+		List<Course> groupB = getGroupBCourses("CE");
+		List<Course> groupC = getGroupCCourses("CE");
+		List<Course> groupD = getGroupDCourses("CE");
+		
+		//check for CS courses
+		//check for group A
+		if((groupACS.get(0).getCourseName()).equals(coreUpdate.getCoreA1())){
+			coreUpdate.setCoreA1("notChanged");
+		}
+		if((groupACS.get(1).getCourseName()).equals(coreUpdate.getCoreA2())){
+			coreUpdate.setCoreA2("notChanged");
+		}
+		if((groupACS.get(2).getCourseName()).equals(coreUpdate.getCoreA3())){
+			coreUpdate.setCoreA3("notChanged");
+		}
+		
+		//check for group B
+		if((groupBCS.get(0).getCourseName()).equals(coreUpdate.getCoreB1())){
+			coreUpdate.setCoreB1("notChanged");
+		}
+		if((groupBCS.get(1).getCourseName()).equals(coreUpdate.getCoreB2())){
+			coreUpdate.setCoreB2("notChanged");
+		}
+		if((groupBCS.get(2).getCourseName()).equals(coreUpdate.getCoreB3())){
+			coreUpdate.setCoreB3("notChanged");
+		}
+		
+		//check for group C
+		if((groupCCS.get(0).getCourseName()).equals(coreUpdate.getCoreC1())){
+			coreUpdate.setCoreC1("notChanged");
+		}
+		if((groupCCS.get(1).getCourseName()).equals(coreUpdate.getCoreC2())){
+			coreUpdate.setCoreC2("notChanged");
+		}
+		if((groupCCS.get(2).getCourseName()).equals(coreUpdate.getCoreC3())){
+			coreUpdate.setCoreC3("notChanged");
+		}
+		
+		//check for group D
+		if((groupDCS.get(0).getCourseName()).equals(coreUpdate.getCoreD1())){
+			coreUpdate.setCoreD1("notChanged");
+		}
+		if((groupDCS.get(1).getCourseName()).equals(coreUpdate.getCoreD2())){
+			coreUpdate.setCoreD2("notChanged");
+		}
+		if((groupDCS.get(2).getCourseName()).equals(coreUpdate.getCoreD3())){
+			coreUpdate.setCoreD3("notChanged");
+		}
+		
+		//check for CE courses
+		//check for group A
+		if((groupA.get(0).getCourseName()).equals(coreUpdate.getCsCoreA1())){
+			coreUpdate.setCsCoreA1("notChanged");
+		}
+		if((groupA.get(1).getCourseName()).equals(coreUpdate.getCsCoreA2())){
+			coreUpdate.setCsCoreA2("notChanged");
+		}
+		if((groupA.get(2).getCourseName()).equals(coreUpdate.getCsCoreA3())){
+			coreUpdate.setCsCoreA3("notChanged");
+		}
+		
+		//check for group B
+		if((groupB.get(0).getCourseName()).equals(coreUpdate.getCsCoreB1())){
+			coreUpdate.setCsCoreB1("notChanged");
+		}
+		if((groupB.get(1).getCourseName()).equals(coreUpdate.getCsCoreB2())){
+			coreUpdate.setCsCoreB2("notChanged");
+		}
+		if((groupB.get(2).getCourseName()).equals(coreUpdate.getCsCoreB3())){
+			coreUpdate.setCsCoreB3("notChanged");
+		}
+		
+		//check for group C
+		if((groupC.get(0).getCourseName()).equals(coreUpdate.getCsCoreC1())){
+			coreUpdate.setCsCoreC1("notChanged");
+		}
+		if((groupC.get(1).getCourseName()).equals(coreUpdate.getCsCoreC2())){
+			coreUpdate.setCsCoreC2("notChanged");
+		}
+		if((groupC.get(2).getCourseName()).equals(coreUpdate.getCsCoreC3())){
+			coreUpdate.setCsCoreC3("notChanged");
+		}
+		
+		//check for group D
+		if((groupD.get(0).getCourseName()).equals(coreUpdate.getCsCoreD1())){
+			coreUpdate.setCsCoreD1("notChanged");
+		}
+		if((groupD.get(1).getCourseName()).equals(coreUpdate.getCsCoreD2())){
+			coreUpdate.setCsCoreD2("notChanged");
+		}
+		if((groupD.get(2).getCourseName()).equals(coreUpdate.getCsCoreD3())){
+			coreUpdate.setCsCoreD3("notChanged");
+		}
+		return coreUpdate;
+	}
+
+	@Override
+	public int addOpCourse(String oPName) {
+		int result = degreePlanDao.addOpCourse(oPName);
+		return result;
+	}
+
+	@Override
+	public int deleteOpCourse(String oPName) {
+		int result = degreePlanDao.deleteOpCourse(oPName);
+		return result;
 	}
 
 }

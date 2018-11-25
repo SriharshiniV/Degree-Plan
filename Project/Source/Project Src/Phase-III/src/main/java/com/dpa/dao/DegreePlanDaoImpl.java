@@ -18,6 +18,7 @@ import com.dpa.jdbc.InterestAreaRowMapper;
 import com.dpa.jdbc.LoginRowMapper;
 import com.dpa.jdbc.MyAdvisorRowMapper;
 import com.dpa.jdbc.OptionalCourseRowMapper;
+import com.dpa.model.CoreUpdate;
 import com.dpa.model.Course;
 import com.dpa.model.Courses;
 import com.dpa.model.DegreePlan;
@@ -456,6 +457,184 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 			JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
 			List<InterestArea> interestAreas= jdbctem.query(sql, new InterestAreaRowMapper());
 			return interestAreas;
+		}
+		//This method updates degree plan information
+		@Override
+		public int updateDPIInfo(String dpi) {
+			JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
+			String sql1 =  "update dpi set information=?";
+			JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+			int result = jdbcTemp.update(sql1, new Object[] {dpi});
+			return result;
+		}
+
+		@Override
+		public int updateDPICC(CoreUpdate coreUpdate) {
+			if(!((coreUpdate.getCoreA1()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCoreA1(), "A", "CS", 1});
+				
+			}
+			if(!((coreUpdate.getCoreA2()).equals("notChanged"))) {
+				System.out.println(coreUpdate.getCoreA2());
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCoreA2(), "A", "CS", 2});
+				
+			}
+			if(!((coreUpdate.getCoreA3()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCoreA3(), "A", "CS", 3});
+				
+			}
+			if(!((coreUpdate.getCoreB1()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCoreB1(), "B", "CS", 1});
+				
+			}
+			if(!((coreUpdate.getCoreB2()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCoreB2(), "B", "CSCE", 2});
+				
+			}
+			if(!((coreUpdate.getCoreB3()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCoreB3(), "B", "CSCE", 3});
+				
+			}
+			if(!((coreUpdate.getCoreC1()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCoreC1(), "C", "CS", 1});
+				
+			}
+			if(!((coreUpdate.getCoreC2()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCoreC2(), "C", "CS", 2});
+				
+			}
+			if(!((coreUpdate.getCoreC3()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCoreC3(), "C", "CS", 3});
+				
+			}
+			if(!((coreUpdate.getCoreD1()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCoreD1(), "D", "CS", 1});
+				
+			}
+			if(!((coreUpdate.getCoreC1()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCoreD2(), "D", "CS", 2});
+				
+			}
+			if(!((coreUpdate.getCoreC1()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCoreD3(), "D", "CS", 3});
+				
+			}
+			
+			//FOR CE
+			if(!((coreUpdate.getCsCoreA1()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCsCoreA1(), "A", "CE", 1});
+				
+			}
+			if(!((coreUpdate.getCsCoreA2()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCsCoreA2(), "A", "CE", 2});
+				
+			}
+			if(!((coreUpdate.getCsCoreA3()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCsCoreA3(), "A", "CE", 3});
+				
+			}
+			if(!((coreUpdate.getCsCoreB1()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCsCoreB1(), "B", "CE", 1});
+				
+			}
+			if(!((coreUpdate.getCsCoreB2()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCsCoreB2(), "B", "CSCE", 2});
+				
+			}
+			if(!((coreUpdate.getCsCoreB3()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCsCoreB3(), "B", "CSCE", 3});
+				
+			}
+			if(!((coreUpdate.getCsCoreC1()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCsCoreC1(), "C", "CE", 1});
+				
+			}
+			if(!((coreUpdate.getCsCoreC2()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCsCoreC2(), "C", "CE", 2});
+				
+			}
+			if(!((coreUpdate.getCsCoreC3()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCsCoreC3(), "C", "CE", 3});
+				
+			}
+			if(!((coreUpdate.getCsCoreD1()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCsCoreD1(), "D", "CE", 1});
+				
+			}
+			if(!((coreUpdate.getCsCoreD2()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCsCoreD2(), "D", "CE", 2});
+				
+			}
+			if(!((coreUpdate.getCsCoreD3()).equals("notChanged"))) {
+				String sql1 =  "update mandatorycourses set CourseName=? where groupId = ? and major = ? and seqNum = ?";
+				JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+				jdbcTemp.update(sql1, new Object[] {coreUpdate.getCsCoreD3(), "D", "CE", 3});
+				
+			}
+			return 1;
+		}
+
+		@Override
+		public int addOpCourse(String oPName) {
+			String sql1 = "INSERT INTO courses "
+					+ "(courseName) VALUES (?)";
+			JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
+			int result = jdbcTemp.update(sql1, new Object[] {oPName});
+			return result;
+		}
+
+		@Override
+		public int deleteOpCourse(String oPName) {
+			String sql = "delete from courses where courseName='" + oPName + "'";  
+			JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);  
+			jdbcTemplate.update(sql);
+			return 1;
 		}
 
 }

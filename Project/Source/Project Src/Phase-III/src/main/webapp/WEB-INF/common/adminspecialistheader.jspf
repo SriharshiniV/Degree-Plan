@@ -73,7 +73,7 @@
 	}
 </script>
 </head>
-<body>
+<body id="toChangeWhole">
 <nav class="navbar navbar-default" >
  	<div class="container-fluid firstHeader">
       	<h3 style = "text-align:center;">DPA CSCE UNT</h3>

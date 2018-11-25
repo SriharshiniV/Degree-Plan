@@ -20,7 +20,7 @@
 	$('.interestArea').click(function(){
 		var id = $(this).attr('id');
 		var currValue = document.getElementById(id).text;
-		$.post('getInterestCourses', {major : "CE", interest: currValue}, 
+		$.post('getInterestCourses', {major : "computerScience", interest: currValue}, 
 	    function(result){
 	         $('#toChange').html(result);
 		});
@@ -29,7 +29,7 @@
 		var id = $(this).attr('id');
 		var rId = parseInt(id) + 1;
 		var currValue = document.getElementById(id).text;
-		$.post('getInterestCourses', {major : "CS", interest: currValue}, 
+		$.post('getInterestCourses', {major : "CE", interest: currValue}, 
 	    function(result){
 	         $('#toChange').html(result);
 		});

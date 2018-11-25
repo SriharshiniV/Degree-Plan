@@ -2,6 +2,7 @@ package com.dpa.dao;
 
 import java.util.List;
 
+import com.dpa.model.CoreUpdate;
 import com.dpa.model.Course;
 import com.dpa.model.Courses;
 import com.dpa.model.DegreePlan;
@@ -55,6 +56,14 @@ public interface DegreePlanDao {
 	String getDPI();
 
 	List<InterestArea> getInterestAreas();
+
+	int updateDPIInfo(String dpi);
+
+	int updateDPICC(CoreUpdate coreUpdate);
+
+	int addOpCourse(String oPName);
+
+	int deleteOpCourse(String oPName);
 
 
 }
