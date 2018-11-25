@@ -31,7 +31,7 @@
 	    var selectedValue = selectBox.options[selectBox.selectedIndex].value;
 	    if(selectedValue == "MyAccount"){
 	    	$.post('account',function(result){
-         	$('#toReplace').html(result);
+         	$('#toChange').html(result);
 		 	});
 	    }else if(selectedValue == "Logout"){
 	     $.ajax({
@@ -54,7 +54,7 @@
         type: "GET",
         url: "staffdirectory",
         success: function (result) {
-            $('#toReplace').html(result);
+            $('#toChange').html(result);
         },
         error: function (result) {
             // do something.
@@ -67,11 +67,22 @@
         type: "GET",
         url: "sentrequests",
         success: function (result) {
-            $('#toReplace').html(result);
+            $('#toChange').html(result);
         }
     });
 	}
-	
+	function dpiInformation(){
+		$.post('viewDPI',  
+	    function(result){
+	         $('#toChange').html(result);
+		});
+	}
+	function contactUs(){
+		$.post('contactUs',  
+	    function(result){
+	         $('#toChange').html(result);
+		});
+	}
 </script>
 </head>
 <body>
@@ -83,10 +94,10 @@
     	<div class="navbar-header tocolor">
   			<ul class="nav navbar-nav">
       			<li class="colorli"><a href="studenthome">Home</a></li>
-            	<li class="colorli"><a href="#">DPI</a></li>
+            	<li class="colorli"><a href="javascript:dpiInformation();">DPI</a></li>
             	<li class="colorli"><a href="javascript:showStaffList();">StaffDirectory</a></li>
             	<li class="colorli"><a href="javascript:showSentRequests();">Sent Requests</a></li>
-            	<li class="colorli"><a href="#">Help</a></li>
+            	<li class="colorli"><a href="javascript:contactUs();">Contact Us</a></li>
     		</ul>
     	</div>
     	<ul class="nav navbar-nav navbar-right">

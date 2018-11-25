@@ -217,9 +217,11 @@ public class DegreePlanController {
 		}
 				
 		//It redirects professor to add reject comments page
-		@RequestMapping(value = "/rejectDP", method = RequestMethod.GET)
-		public String rejectComments(@RequestParam(value = "sName", required = false) String sName, ModelMap model) {
-			model.put("studentName", sName);
+		@RequestMapping(value = "/rejectDP", method = RequestMethod.POST)
+		public String rejectComments(@RequestBody String sName, ModelMap model) {
+			String[] sUname = sName.split("=");
+			String studentName = sUname[1];
+			model.put("studentName", studentName);
 			return "rejectcomments";
 		}
 		
@@ -317,6 +319,8 @@ public class DegreePlanController {
 				if((degreePlan.getDegreePlanStatus()).equals("With Administrative Specialist")) {
 					return "dp_AS_View";
 				}else if((degreePlan.getDegreePlanStatus()).equals("Chair Approved")){
+					return "dp_AS_S_View";
+				}else if((degreePlan.getDegreePlanStatus()).equals("Degree Plan approved in the CSCE Department")){
 					return "dp_AS_S_View";
 				}else {
 					return "dp_AS_C_View";

@@ -1,6 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ include file="../common/professorheader.jspf"%>
 <form name ="rejectCommentsForm" action="/dpa/degreePlanReject" class="form-horizontal" method = "POST">
 <div class="form-group">
 		<div align = "center">
@@ -27,4 +24,3 @@
 	</div>
 </form>
 
-<%@ include file="../common/footer.jspf"%>

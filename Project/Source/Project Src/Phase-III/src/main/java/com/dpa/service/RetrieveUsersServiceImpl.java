@@ -50,5 +50,10 @@ public class RetrieveUsersServiceImpl implements RetrieveUsersService{
 		List<Register> needApprovalList = retrieveUsersDao.getToApprovalList();
 		return needApprovalList;
 	}
+	@Override
+	public List<Register> getstaffList() {
+		List<Register> staffList = retrieveUsersDao.getstaffList();
+		return staffList;
+	}
 
 }

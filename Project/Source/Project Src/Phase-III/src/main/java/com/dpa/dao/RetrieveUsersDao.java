@@ -15,4 +15,6 @@ public interface RetrieveUsersDao {
 
 	List<Register> getToApprovalList();
 
+	List<Register> getstaffList();
+
 }

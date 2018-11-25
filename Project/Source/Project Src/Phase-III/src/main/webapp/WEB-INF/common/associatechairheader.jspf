@@ -52,10 +52,22 @@
         type: "GET",
         url: "receivedrequests",
         success: function (result) {
-            $('#toView').html(result);
+            $('#toChange').html(result);
         }
     });
     }	
+    function dpiInformation(){
+		$.post('viewDPI',  
+	    function(result){
+	         $('#toChange').html(result);
+		});
+	}
+	function contactUs(){
+		$.post('contactUs',  
+	    function(result){
+	         $('#toChange').html(result);
+		});
+	}
 </script>
 </head>
 <body>
@@ -67,10 +79,10 @@
     	<div class="navbar-header tocolor">
   			<ul class="nav navbar-nav">
       			<li class="colorli"><a href="associatechairhome">Home</a></li>
-            	<li class="colorli"><a href="#">DPI</a></li>
+            	<li class="colorli"><a href="javascript:dpiInformation();">DPI</a></li>
             	<li class="colorli"><a href="studentlist">Student List</a></li>
             	<li class="colorli"><a href="javascript:showReceivedRequests();">Received Requests</a></li>
-            	<li class="colorli"><a href="#">Help</a></li>
+            	<li class="colorli"><a href="javascript:contactUs();">Contact Us</a></li>
     		</ul>
     	</div>
     	<ul class="nav navbar-nav navbar-right">

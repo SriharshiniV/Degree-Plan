@@ -53,9 +53,27 @@
          });
 	    }
 	}
+	function dpiInformation(){
+		$.post('viewDPI',  
+	    function(result){
+	         $('#toChange').html(result);
+		});
+	}
+	function staffDirectory(){
+	$.post('staffDirectory',  
+	    function(result){
+	         $('#toChange').html(result);
+		});
+	}
+	function contactUs(){
+		$.post('contactUs',  
+	    function(result){
+	         $('#toChange').html(result);
+		});
+	}
 </script>
 </head>
-<body onload="openSelect();">
+<body>
 <nav class="navbar navbar-default" >
  	<div class="container-fluid firstHeader">
       	<h3 style = "text-align:center;">DPA CSCE UNT</h3>
@@ -64,10 +82,11 @@
     	<div class="navbar-header tocolor">
   			<ul class="nav navbar-nav">
       			<li class="colorli"><a href="adminspecialisthome">Home</a></li>
-            	<li class="colorli"><a href="#">DPI</a></li>
-            	<li class="colorli"><a href="#">StaffDirectory</a></li>
-            	<li class="colorli"><a href="#">StudentList</a></li>
-            	<li class="colorli"><a href="#">Help</a></li>
+            	<li class="colorli"><a href="javascript:dpiInformation();">DPI</a></li>
+            	<li class="colorli"><a href="javascript:staffDirectory();">StaffDirectory</a></li>
+            	<li class="colorli"><a href="slistAS">StudentList</a></li>
+            	<li class="colorli"><a href="updateDPI">Update DPI</a></li>
+            	<li class="colorli"><a href="javascript:contactUs();">Contact Us</a></li>
     		</ul>
     	</div>
     	<ul class="nav navbar-nav navbar-right">

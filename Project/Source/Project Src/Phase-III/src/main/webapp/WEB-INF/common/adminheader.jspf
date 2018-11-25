@@ -52,6 +52,25 @@
          });
 	    }
 	}
+	function dpiInformation(){
+		$.post('viewDPI',  
+	    function(result){
+	         $('#toChange').html(result);
+		});
+	}
+	
+	function staffDirectory(){
+	$.post('staffDirectory',  
+	    function(result){
+	         $('#toChange').html(result);
+		});
+	}
+	function contactUs(){
+		$.post('contactUs',  
+	    function(result){
+	         $('#toChange').html(result);
+		});
+	}
 </script>
 </head>
 <body id="whole">
@@ -63,10 +82,10 @@
     	<div class="navbar-header tocolor">
   			<ul class="nav navbar-nav">
       			<li class="colorli"><a href="adminhome">Home</a></li>
-            	<li class="colorli"><a href="#">DPI</a></li>
-            	<li class="colorli"><a href="#">StaffDirectory</a></li>
+            	<li class="colorli"><a href="javascript:dpiInformation();">DPI</a></li>
+            	<li class="colorli"><a href="javascript:staffDirectory();">StaffDirectory</a></li>
             	<li class="colorli"><a href="slist">StudentList</a></li>
-            	<li class="colorli"><a href="#">Help</a></li>
+            	<li class="colorli"><a href="javascript:contactUs();">Contact Us</a></li>
     		</ul>
     	</div>
     	<ul class="nav navbar-nav navbar-right">

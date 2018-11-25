@@ -3,7 +3,7 @@
 <script src="/webjars/jquery/1.9.1/jquery.min.js"></script>
 <%@ include file="../common/associatechairheader.jspf"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div id="toView">
+<div id="toChange">
 <div class="container" id="myStudents">
 	<div align = "center">
 		<font color="green">${success}</font>
@@ -76,7 +76,7 @@ $('.receiveDPL2').click(function(){
 	var studentId = receivedName[3].split("<",1);
 	$.post('receivedDegreePlanAS', { sN: sName, sId : studentId}, 
     function(result){
-         $('#toView').html(result);
+         $('#toChange').html(result);
 	});
 });
 </script>

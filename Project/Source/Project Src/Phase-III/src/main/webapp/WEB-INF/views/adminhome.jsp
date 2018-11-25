@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ include file="../common/adminheader.jspf"%>
 
-<div class="container-fluid">
+<div class="container-fluid" id="toChange">
 	<div class="col-sm-4 applyBox">
 		<h4 align="center">Manage Users</h4><br/>
 		<select class="form-control field openSelectBox" id ="manageUsers" name="manageUsers" onchange="callController();">
@@ -53,10 +53,9 @@ function callController(){
     	document.getElementById("unhide3").value = "UPDATE " + selectedValue;
     }
 }
-function openSelect(){	
-    var elements = document.getElementsByClassName("openSelectBox");
-    elements[0].click();
-}
+	window.onload = function () {
+        document.getElementById("manageUsers").click();
+    };
 </script>
 
 <%@ include file="../common/footer.jspf"%>

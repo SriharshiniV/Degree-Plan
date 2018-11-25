@@ -3,7 +3,7 @@
 <%@ include file="../common/header.jspf"%>
 
 										<!-- login page -->
-<div class="container">
+<div class="container" id="toChange">
 
 		<form name="loginForm" action="/dpa/login" class="form-horizontal" method="POST" >
 			<div align = "center">

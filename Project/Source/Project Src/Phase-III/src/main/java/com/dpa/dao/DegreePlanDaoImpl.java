@@ -14,6 +14,7 @@ import com.dpa.jdbc.CourseRowMapper;
 import com.dpa.jdbc.CoursesRowMapper;
 import com.dpa.jdbc.DPRowMapper;
 import com.dpa.jdbc.DegreePlanRowMapper;
+import com.dpa.jdbc.InterestAreaRowMapper;
 import com.dpa.jdbc.LoginRowMapper;
 import com.dpa.jdbc.MyAdvisorRowMapper;
 import com.dpa.jdbc.OptionalCourseRowMapper;
@@ -21,6 +22,7 @@ import com.dpa.model.Course;
 import com.dpa.model.Courses;
 import com.dpa.model.DegreePlan;
 import com.dpa.model.GRE;
+import com.dpa.model.InterestArea;
 import com.dpa.model.Login;
 import com.dpa.model.Request;
 
@@ -438,6 +440,22 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 			JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
 			int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, sName, studentId});
 			return result;
+		}
+
+		@Override
+		public String getDPI() {
+			String sql =  "select information from dpi";
+			JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
+			String result = jdbctem.queryForObject(sql, String.class);
+			return result;
+		}
+
+		@Override
+		public List<InterestArea> getInterestAreas() {
+			String sql =  "select * from interestareas";
+			JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
+			List<InterestArea> interestAreas= jdbctem.query(sql, new InterestAreaRowMapper());
+			return interestAreas;
 		}
 
 }

@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ include file="../common/studentheader.jspf"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div id="toReplace">
+<div id="toChange">
 	<div class="container" id="myAdvisor">
 		<table class="table table-striped" id="requestTable">
 			<h4 align="center">My Advisor</h4>

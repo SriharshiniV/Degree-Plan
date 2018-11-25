@@ -107,4 +107,21 @@ public class AdminController {
 			}
 
 		}
+		
+		//returns staff list
+		@RequestMapping(value = "/staffDirectory", method = RequestMethod.POST)
+		public String staffDirectory(HttpServletRequest request, HttpServletResponse response, Model model) {
+			HttpSession session = request.getSession(false);
+			if (session != null) {
+				String userName = (String) session.getAttribute("userName");
+				model.addAttribute("staffLists", retrieveUsersService.getstaffList());
+			} 
+			return "staffList";
+		}
+		
+		//returns contact us page
+		@RequestMapping(value = "/contactUs", method = RequestMethod.POST)
+		public String contactUs(HttpServletRequest request, HttpServletResponse response, Model model) {
+			return "contactUs";
+		}
 }

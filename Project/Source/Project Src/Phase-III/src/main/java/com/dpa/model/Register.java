@@ -8,16 +8,17 @@ public class Register {
 	private String userName;
 	private String password;
 	private String approvalStatus;
+	
+	@Override
+	public String toString() {
+		return "Register [name=" + name + ", email=" + email + ", role=" + role + ", userName=" + userName
+				+ ", password=" + password + ", approvalStatus=" + approvalStatus + "]";
+	}
 	public String getApprovalStatus() {
 		return approvalStatus;
 	}
 	public void setApprovalStatus(String approvalStatus) {
 		this.approvalStatus = approvalStatus;
-	}
-	@Override
-	public String toString() {
-		return "Register [name=" + name + ", email=" + email + ", role=" + role + ", userName=" + userName
-				+ ", password=" + password + "]";
 	}
 	public String getName() {
 		return name;

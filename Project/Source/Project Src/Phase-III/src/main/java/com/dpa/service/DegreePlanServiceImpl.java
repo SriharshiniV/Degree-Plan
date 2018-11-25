@@ -12,6 +12,7 @@ import com.dpa.model.Course;
 import com.dpa.model.Courses;
 import com.dpa.model.DegreePlan;
 import com.dpa.model.GRE;
+import com.dpa.model.InterestArea;
 
 @Service
 public class DegreePlanServiceImpl implements DegreePlanService{
@@ -251,6 +252,33 @@ public class DegreePlanServiceImpl implements DegreePlanService{
 	public int sendApprovaltoStudent(int studentId, String sName) {
 		int result = degreePlanDao.sendApprovaltoStudent(studentId, sName);
 		return result;
+	}
+//gets degree plan information
+	@Override
+	public String getDPI() {
+		String result = degreePlanDao.getDPI();
+		return result;
+	}
+
+	@Override
+	public List<InterestArea> getInterestAreas() {
+		List<InterestArea> interestAreas1 = new ArrayList<InterestArea>();
+		List<InterestArea> interestAreas = degreePlanDao.getInterestAreas();
+		Iterator interestArea = interestAreas.iterator();
+		while(interestArea.hasNext()) {
+			InterestArea mand1 = (InterestArea) interestArea.next();
+			if(((mand1.getMajor()).equals("CS")) || ((mand1.getMajor()).equals("CSCE"))){
+				interestAreas1.add(mand1);
+			}
+		}
+		Iterator interestArea1 = interestAreas.iterator();
+		while(interestArea1.hasNext()) {
+			InterestArea mand2 = (InterestArea) interestArea1.next();
+			if(((mand2.getMajor()).equals("CE")) || ((mand2.getMajor()).equals("CSCE"))){
+				interestAreas1.add(mand2);
+			}
+		}
+		return interestAreas1;
 	}
 
 }

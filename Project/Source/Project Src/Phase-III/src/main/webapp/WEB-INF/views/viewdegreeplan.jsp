@@ -140,7 +140,10 @@ function signDP(){
 }
 function rejectDP(){
 	var sName = document.getElementById("sName").value;
-	window.location.href="/dpa/rejectDP?sName=" + sName ;
+	$.post('rejectDP', {studentName : sName},
+	    function(result){
+	         $('#toChange').html(result);
+		});
 }
 </script>
 <script src="/webjars/jquery/1.9.1/jquery.min.js"></script>

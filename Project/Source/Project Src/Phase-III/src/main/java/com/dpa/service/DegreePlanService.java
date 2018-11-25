@@ -6,6 +6,7 @@ import com.dpa.model.Course;
 import com.dpa.model.Courses;
 import com.dpa.model.DegreePlan;
 import com.dpa.model.GRE;
+import com.dpa.model.InterestArea;
 
 public interface DegreePlanService {
 
@@ -56,5 +57,9 @@ public interface DegreePlanService {
 	int submitToASL3(String userName, String sName, String sign);
 
 	int sendApprovaltoStudent(int studentId, String sName);
+
+	String getDPI();
+
+	List<InterestArea> getInterestAreas();
 
 }

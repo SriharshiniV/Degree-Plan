@@ -3,7 +3,7 @@
 <script src="/webjars/jquery/1.9.1/jquery.min.js"></script>
 <%@ include file="../common/professorheader.jspf"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div id="toView">
+<div id="toChange">
 <div class="container" id="myStudents">
 	<table class="table table-striped" id="myStudentsTable">
 		<h4 align="center">My Students</h4>

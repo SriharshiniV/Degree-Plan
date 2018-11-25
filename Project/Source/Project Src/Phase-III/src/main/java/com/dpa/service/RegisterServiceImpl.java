@@ -13,6 +13,15 @@ public class RegisterServiceImpl implements RegisterService{
 	RegisterDao registerDao;
 	public int insertUser(Register register) {
 		// TODO Auto-generated method stub
+		String role = register.getRole();
+		String approvalStatus;
+		if(role.equals("professor") || role.equals("student"))
+		{
+			approvalStatus = "pending";
+		}else {
+			approvalStatus = "approved";
+		}
+		register.setApprovalStatus(approvalStatus);
 		int result = registerDao.insertUserDetails(register);
 		return result;
 	}

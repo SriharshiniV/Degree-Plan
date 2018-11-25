@@ -97,4 +97,16 @@ public class UserListController {
 		return "login";
 		}
 	}
+	
+	@RequestMapping(value = "/slistAS", method = RequestMethod.GET)
+	public String getStudents1(HttpServletRequest request, HttpServletResponse response, Model model) {
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			String userName = (String) session.getAttribute("userName");
+			model.addAttribute("students", retrieveStudents.getStudentList());
+			return "slistAS";
+		} else {
+		return "login";
+		}
+	}
 }

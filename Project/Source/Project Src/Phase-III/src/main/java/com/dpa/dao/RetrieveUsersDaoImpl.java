@@ -13,6 +13,7 @@ import com.dpa.jdbc.ApproveRowMapper;
 import com.dpa.jdbc.MyAdvisorRowMapper;
 import com.dpa.jdbc.MyStudentRowMapper;
 import com.dpa.jdbc.ProfessorRowMapper;
+import com.dpa.jdbc.StaffRowMapper;
 import com.dpa.model.Register;
 import com.dpa.model.Request;
 
@@ -59,6 +60,18 @@ public class RetrieveUsersDaoImpl implements RetrieveUsersDao{
 		JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
 		toApproveList = jdbctem.query(sql, new ApproveRowMapper());
 		return toApproveList;	
+	}
+
+	@Override
+	public List<Register> getstaffList() {
+		List<Register> staffList = new ArrayList<Register>();
+		String role1 = "professor";
+		String role2 = "associatechair";
+		String role3 = "chair";
+		String sql = "select * from register where role='" + role1 + "' or role='" + role2 + "'or role='" + role3 + "'";
+		JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
+		staffList = jdbctem.query(sql, new StaffRowMapper());
+		return staffList;	
 	}
 
 }

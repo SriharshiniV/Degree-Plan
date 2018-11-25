@@ -15,4 +15,6 @@ public interface RetrieveUsersService {
 
 	List<Register> getNeedApprovalList();
 
+	List<Register> getstaffList();
+
 }

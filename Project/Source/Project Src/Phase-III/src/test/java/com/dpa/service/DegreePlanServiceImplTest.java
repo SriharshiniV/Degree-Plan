@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 import org.junit.Before;
@@ -21,6 +22,7 @@ import com.dpa.model.Course;
 import com.dpa.model.Courses;
 import com.dpa.model.DegreePlan;
 import com.dpa.model.GRE;
+import com.dpa.model.InterestArea;
 import com.dpa.model.Login;
 
 public class DegreePlanServiceImplTest {
@@ -242,4 +244,22 @@ public class DegreePlanServiceImplTest {
 		int result = degreePlanService.sendApprovaltoStudent(anyInt(), anyString());
 		assertEquals(1, result);
 	}
+	//phase 3 tests
+	
+	@Test
+	public void testgetDPI() {
+		String real="sample text";
+		when(degreePlanDao.getDPI()).thenReturn(real);
+		String result = degreePlanService.getDPI();
+		assertEquals(real, result);
+	}
+	
+	@Test
+	public void testgetInterestAreas() {
+		List<InterestArea> mockInterestAreas = new ArrayList<InterestArea>();
+		when(degreePlanDao.getInterestAreas()).thenReturn(mockInterestAreas);
+		List<InterestArea> result = degreePlanService.getInterestAreas();
+		assertEquals(mockInterestAreas.size(), result.size());
+	}
+	
 }
