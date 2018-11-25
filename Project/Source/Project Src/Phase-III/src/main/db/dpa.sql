@@ -34,7 +34,7 @@ CREATE TABLE `courses` (
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
-INSERT INTO `courses` VALUES ('CSCE 5050 Applications of Cryptography'),('CSCE 5170 Graph Theory'),('CSCE 5200 Information Retrieval and Web Search'),('CSCE 5220 Computer Graphics'),('CSCE 5370 Distributed and Parallel Database Systems'),('CSCE 5380 Data Mining'),('CSCE 5510 Wireless Communications'),('CSCE 5520 Wireless Networks and Protocols'),('CSCE 5530 Computer Network Design'),('CSCE 5540 Introduction to Sensor Networks'),('CSCE 5550 Introduction to Computer Security'),('CSCE 5580 Computer Networks '),('CSCE 5615 (5933) Networks-on-Chip'),('CSCE 5933 LTE Physical Layer'),('CSCE 5933/5390 Topics in CSCE, Topic: Multimedia Computing'),('DSCI 5350 BigData Analytics');
+INSERT INTO `courses` VALUES ('CSCE 5050 Applications of Cryptography'),('CSCE 5170 Graph Theory'),('CSCE 5200 Information Retrieval and Web Search'),('CSCE 5220 Computer Graphics'),('CSCE 5370 Distributed and Parallel Database Systems'),('CSCE 5380 Data Mining'),('CSCE 5510 Wireless Communications'),('CSCE 5520 Wireless Networks and Protocols'),('CSCE 5530 Computer Network Design'),('CSCE 5540 Introduction to Sensor Networks'),('CSCE 5550 Introduction to Computer Security'),('CSCE 5580 Computer Networks '),('CSCE 5615 (5933) Networks-on-Chip'),('CSCE 5932 Internship'),('CSCE 5933 LTE Physical Layer'),('CSCE 5933/5390 Topics in CSCE, Topic: Multimedia Computing'),('DSCI 5350 BigData Analytics');
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -124,7 +124,7 @@ CREATE TABLE `dpi` (
 
 LOCK TABLES `dpi` WRITE;
 /*!40000 ALTER TABLE `dpi` DISABLE KEYS */;
-INSERT INTO `dpi` VALUES ('All the Computer science and Engineering Masters\'s students need to submit a degree plan (A list of courses studied or planninng to study towars their Mater\'s degree). It is recommended that every student have their degree plan approved once they complete 18 credit hours. Students need to choose a major professor submit major professor, get the degree plan approved by the major professor and then submit it to the adminspecialist. All the Interest Areas, Required Courses and optional course information can be found on this page.',1);
+INSERT INTO `dpi` VALUES ('All the Computer science and Engineering Masters\'s students need to submit a degree plan (A list of courses studied or planning to study towars their Mater\'s degree). It is recommended that every student have their degree plan approved once they complete 18 credit hours. Students need to choose a major professor submit major professor, get the degree plan approved by the major professor and then submit it to the adminspecialist. All the Interest Areas, Required Courses and optional course information can be found on this page.',1);
 /*!40000 ALTER TABLE `dpi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,6 +243,7 @@ CREATE TABLE `mandatorycourses` (
   `CourseName` varchar(80) NOT NULL,
   `groupId` varchar(20) DEFAULT NULL,
   `major` varchar(20) DEFAULT NULL,
+  `seqNum` int(11) DEFAULT NULL,
   PRIMARY KEY (`CourseName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -253,7 +254,7 @@ CREATE TABLE `mandatorycourses` (
 
 LOCK TABLES `mandatorycourses` WRITE;
 /*!40000 ALTER TABLE `mandatorycourses` DISABLE KEYS */;
-INSERT INTO `mandatorycourses` VALUES ('CSCE 5150 Analysis of Algorithms','C','CS'),('CSCE 5160 Parallel Processing and Algorithms','B','CE'),('CSCE 5170 Graph Theory','C','CS'),('CSCE 5210 Artificial Intelligence','D','CS'),('CSCE 5350 Fundamentals of Database Systems','D','CS'),('CSCE 5400 Automata Theory','C','CS'),('CSCE 5430 Software Engineering','A','CS'),('CSCE 5440 Real-Time Software Development','C','CE'),('CSCE 5450 Programming Languages','A','CS'),('CSCE 5510 Wireless Communications','A','CE'),('CSCE 5520 Wireless Networks and Protocols','A','CE'),('CSCE 5550 Computer Security','D','CS'),('CSCE 5580 Computer Networks','B','CS'),('CSCE 5580 ComputerNetworks','A','CE'),('CSCE 5610 Computer System Architecture','B','CSCE'),('CSCE 5612 (5933) Embedded Hardware & Software Design','C','CE'),('CSCE 5620 Real-time Operating Systems','C','CE'),('CSCE 5640 Operating System Design','B','CSCE'),('CSCE 5650 Compiler Design','A','CS'),('CSCE 5730 Digital CMOS VLSI Design','D','CE'),('CSCE 5740 Topics in Modern Electronic System Design','D','CE'),('CSCE 5760 Design for Fault Tolerance','D','CE');
+INSERT INTO `mandatorycourses` VALUES ('CSCE 5150 Analysis of Algorithms','C','CS',1),('CSCE 5160 Parallel Processing and Algorithms','B','CE',1),('CSCE 5170 Graph Theory','C','CS',2),('CSCE 5210 Artificial Intelligence','D','CS',1),('CSCE 5350 Fundamentals of Database Systems','D','CS',2),('CSCE 5400 Automata Theory','C','CS',3),('CSCE 5430 Software Engineering','A','CS',1),('CSCE 5440 Real-Time Software Development','C','CE',1),('CSCE 5450 Programming Languages','A','CS',2),('CSCE 5510 Wireless Communications','A','CE',1),('CSCE 5520 Wireless Networks and Protocols','A','CE',2),('CSCE 5550 Computer Security','D','CS',3),('CSCE 5580 Computer Networks','B','CS',1),('CSCE 5580 ComputerNetworks','A','CE',3),('CSCE 5610 Computer System Architecture','B','CSCE',2),('CSCE 5612 (5933) Embedded Hardware & Software Design','C','CE',2),('CSCE 5620 Real-time Operating Systems','C','CE',3),('CSCE 5640 Operating System Design','B','CSCE',3),('CSCE 5650 Compiler Design','A','CS',3),('CSCE 5730 Digital CMOS VLSI Design','D','CE',1),('CSCE 5740 Topics in Modern Electronic System Design','D','CE',2),('CSCE 5760 Design for Fault Tolerance','D','CE',3);
 /*!40000 ALTER TABLE `mandatorycourses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -325,4 +326,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-25  3:53:58
+-- Dump completed on 2018-11-25 17:54:02
