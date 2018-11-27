@@ -5,9 +5,11 @@ We have submitted three files as a part of deliverable 5.
 Deliverable-5.pdf
 system tests.docx
 System Testing DPA.docx
+source code for phase 3.
 
 Path to each of the files:
 
 Deliverable-5.pdf: Shan\Project\Documents\Project Reports\Deliverable-5.pdf
-system tests.docx: Shan\Project\Documents\Error Documentation\Manual Testing\system tests.docx
+system tests.docx: Shan\Project\Documents\Error Documentation\System Testing DPA\system tests.docx
 System Testing DPA.docx: Shan\Project\Documents\Error Documentation\System Testing\System Testing.docx
+source code: Shan\Project\Source\Project Src\Phase-III
