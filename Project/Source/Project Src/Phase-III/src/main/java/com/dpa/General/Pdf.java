@@ -45,7 +45,7 @@ public class Pdf {
 	      table1.addCell("C. Hrs");
 	      table1.addCell("Grade");
        for(Courses course:courses){  
-    	   if(!(course.getCourseCatergory().equals("optional"))){
+    	   if(!((course.getCourseCatergory().equals("optional1")) || (course.getCourseCatergory().equals("optional2")) || (course.getCourseCatergory().equals("optional3")) || (course.getCourseCatergory().equals("optional4")) || (course.getCourseCatergory().equals("optional5")) || (course.getCourseCatergory().equals("optional6")) || (course.getCourseCatergory().equals("optional7")) || (course.getCourseCatergory().equals("optional8")))){
     		   PdfPCell celli = new PdfPCell(new Phrase(course.getCourse()));
     	       celli.setColspan(3);
     	          table1.addCell(celli);
@@ -67,7 +67,7 @@ public class Pdf {
 	      table.addCell("C. Hrs");
 	      table.addCell("Grade");
        for(Courses course:courses){
-    	   if(course.getCourseCatergory().equals("optional")){
+    	   if((course.getCourseCatergory().equals("optional1")) || (course.getCourseCatergory().equals("optional2")) || (course.getCourseCatergory().equals("optional3")) || (course.getCourseCatergory().equals("optional4")) || (course.getCourseCatergory().equals("optional5")) || (course.getCourseCatergory().equals("optional6")) || (course.getCourseCatergory().equals("optional7")) || (course.getCourseCatergory().equals("optional8"))){
     		   PdfPCell celli = new PdfPCell(new Phrase(course.getCourse()));
     	       celli.setColspan(3);
     	          table.addCell(celli);

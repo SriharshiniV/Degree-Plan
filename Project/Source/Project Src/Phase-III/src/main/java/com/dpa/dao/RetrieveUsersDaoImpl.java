@@ -6,6 +6,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import com.dpa.jdbc.MyAdvisorRowMapper;
 import com.dpa.jdbc.MyStudentRowMapper;
 import com.dpa.jdbc.ProfessorRowMapper;
 import com.dpa.jdbc.StaffRowMapper;
+import com.dpa.model.DegreePlan;
 import com.dpa.model.Register;
 import com.dpa.model.Request;
 
@@ -34,11 +36,15 @@ public class RetrieveUsersDaoImpl implements RetrieveUsersDao{
 		return myStudents;
 	}
 
-	public List<Request> getMyAdvisors(String userName) {
-		List<Request> myAdvisors = new ArrayList<Request>();
+	public Request getMyAdvisors(String userName) {
+		Request myAdvisors;
+		try {
 		String sql1 = "select professorName, professorEmail from majorprofessor where studentName='" + userName + "'";
 		JdbcTemplate jdbctem1 = new JdbcTemplate(dataSource);
-		myAdvisors = jdbctem1.query(sql1, new MyAdvisorRowMapper());
+		myAdvisors = (Request) jdbctem1.queryForObject(sql1, new BeanPropertyRowMapper(Request.class));
+		}catch(Exception e){
+			myAdvisors = null;
+		}
 		return myAdvisors;
 	}
 

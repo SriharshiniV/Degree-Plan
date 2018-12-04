@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div class="container">
+<div class="container" id="toChange">
 	<h4><strong>Degree Plan Information</strong></h4>
 	<p>${dpi}</p>
 	<h4><strong>Interest Areas</strong></h4>
@@ -22,6 +22,7 @@
 		var currValue = document.getElementById(id).text;
 		$.post('getInterestCourses', {major : "computerScience", interest: currValue}, 
 	    function(result){
+	    	 $('#ft1').removeClass("navbar navbar-default navbar-fixed-bottom");
 	         $('#toChange').html(result);
 		});
 	});
@@ -31,6 +32,7 @@
 		var currValue = document.getElementById(id).text;
 		$.post('getInterestCourses', {major : "CE", interest: currValue}, 
 	    function(result){
+	    	 $('#ft1').removeClass("navbar navbar-default navbar-fixed-bottom");
 	         $('#toChange').html(result);
 		});
 	});

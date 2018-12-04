@@ -38,9 +38,9 @@ public class RetrieveUsersServiceImplTest {
 
 	@Test
 	public void testGetMyAdvisors() {
-		List<Request> mockList = new ArrayList<Request>();
+		Request mockList = new Request();
 		when(retrieveUsersDao.getMyAdvisors(anyString())).thenReturn(mockList);
-		List<Request> result = retrieveUsersServiceImpl.getMyAdvisors(anyString());
+		Request result = retrieveUsersServiceImpl.getMyAdvisors(anyString());
 		assertEquals(mockList, result);
 	}
 

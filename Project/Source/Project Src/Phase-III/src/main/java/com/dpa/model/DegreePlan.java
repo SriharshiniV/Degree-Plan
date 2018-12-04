@@ -1,51 +1,28 @@
 package com.dpa.model;
 public class DegreePlan {
 	
+	@Override
+	public String toString() {
+		return "DegreePlan [name=" + name + ", studentId=" + studentId + ", localAddress=" + localAddress + ", email="
+				+ email + ", degree=" + degree + ", major=" + major + ", minor=" + minor + ", interestArea="
+				+ interestArea + ", majorProfessor=" + majorProfessor + ", coMajorProfessor=" + coMajorProfessor
+				+ ", gre=" + gre + ", courseA=" + courseA + ", courseB=" + courseB + ", courseC=" + courseC
+				+ ", courseD=" + courseD + ", opCourse1=" + opCourse1 + ", opCourse2=" + opCourse2 + ", opCourse3="
+				+ opCourse3 + ", opCourse4=" + opCourse4 + ", opCourse5=" + opCourse5 + ", opCourse6=" + opCourse6
+				+ ", opCourse7=" + opCourse7 + ", opCourse8=" + opCourse8 + ", totalCreditHours=" + totalCreditHours
+				+ ", degreePlanStatus=" + degreePlanStatus + ", professorSignature=" + professorSignature
+				+ ", associateChairSignature=" + associateChairSignature + ", chairSignature=" + chairSignature
+				+ ", userName=" + userName + "]";
+	}
 	private String name;
 	private int studentId;
 	private String localAddress;
-	private String email;
-	private String degree;
-	private String major;
-	private String minor;
-	private String interestArea;
-	private String majorProfessor;
-	private String coMajorProfessor;
-	private GRE gre;
-	private Courses courseA;
-	private Courses courseB;
-	private Courses courseC;
-	private Courses courseD;
-	private Courses opCourse1;
-	private Courses opCourse2;
-	private Courses opCourse3;
-	private Courses opCourse4;
-	private Courses opCourse5;
-	private Courses opCourse6;
-	private Courses opCourse7;
-	private Courses opCourse8;
-	private int totalCreditHours;
-	private String degreePlanStatus;
-	private String professorSignature;
-	private String associateChairSignature;
-	private String chairSignature;
-	
-	public String getDegreePlanStatus() {
-		return degreePlanStatus;
-	}
-	public void setDegreePlanStatus(String degreePlanStatus) {
-		this.degreePlanStatus = degreePlanStatus;
-	}
-	public DegreePlan() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 	public DegreePlan(String name, int studentId, String localAddress, String email, String degree, String major,
 			String minor, String interestArea, String majorProfessor, String coMajorProfessor, GRE gre, Courses courseA,
 			Courses courseB, Courses courseC, Courses courseD, Courses opCourse1, Courses opCourse2, Courses opCourse3,
 			Courses opCourse4, Courses opCourse5, Courses opCourse6, Courses opCourse7, Courses opCourse8,
 			int totalCreditHours, String degreePlanStatus, String professorSignature, String associateChairSignature,
-			String chairSignature) {
+			String chairSignature, String userName) {
 		super();
 		this.name = name;
 		this.studentId = studentId;
@@ -75,19 +52,51 @@ public class DegreePlan {
 		this.professorSignature = professorSignature;
 		this.associateChairSignature = associateChairSignature;
 		this.chairSignature = chairSignature;
+		this.userName = userName;
 	}
-	@Override
-	public String toString() {
-		return "DegreePlan [name=" + name + ", studentId=" + studentId + ", localAddress=" + localAddress + ", email="
-				+ email + ", degree=" + degree + ", major=" + major + ", minor=" + minor + ", interestArea="
-				+ interestArea + ", majorProfessor=" + majorProfessor + ", coMajorProfessor=" + coMajorProfessor
-				+ ", gre=" + gre + ", courseA=" + courseA + ", courseB=" + courseB + ", courseC=" + courseC
-				+ ", courseD=" + courseD + ", opCourse1=" + opCourse1 + ", opCourse2=" + opCourse2 + ", opCourse3="
-				+ opCourse3 + ", opCourse4=" + opCourse4 + ", opCourse5=" + opCourse5 + ", opCourse6=" + opCourse6
-				+ ", opCourse7=" + opCourse7 + ", opCourse8=" + opCourse8 + ", totalCreditHours=" + totalCreditHours
-				+ ", degreePlanStatus=" + degreePlanStatus + ", professorSignature=" + professorSignature + ", associateChairSignature="
-				+ associateChairSignature + ", chairSignature=" + chairSignature + "]";
+	private String email;
+	private String degree;
+	private String major;
+	private String minor;
+	private String interestArea;
+	private String majorProfessor;
+	private String coMajorProfessor;
+	private GRE gre;
+	private Courses courseA;
+	private Courses courseB;
+	private Courses courseC;
+	private Courses courseD;
+	private Courses opCourse1;
+	private Courses opCourse2;
+	private Courses opCourse3;
+	private Courses opCourse4;
+	private Courses opCourse5;
+	private Courses opCourse6;
+	private Courses opCourse7;
+	private Courses opCourse8;
+	private int totalCreditHours;
+	private String degreePlanStatus;
+	private String professorSignature;
+	private String associateChairSignature;
+	private String chairSignature;
+	private String userName;
+	
+	public DegreePlan() {
+		super();
 	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getDegreePlanStatus() {
+		return degreePlanStatus;
+	}
+	public void setDegreePlanStatus(String degreePlanStatus) {
+		this.degreePlanStatus = degreePlanStatus;
+	}
+		
 	public String getProfessorSignature() {
 		return professorSignature;
 	}

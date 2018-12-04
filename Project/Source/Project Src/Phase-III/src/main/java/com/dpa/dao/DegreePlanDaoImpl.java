@@ -55,26 +55,32 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 	// inserts the degree plan into database
 	@Override
 	public int submitDegreePlan(DegreePlan degreePlan, String userName) {
+		int result;
+		try {
+		int courseReturn = insertOptionalCourses(degreePlan, userName);
+		int coreReturn = insertCoreCourses(degreePlan, userName);
+		String sql = "INSERT INTO degreeplan "
+				+ "(name, studentId, localAddress, email, degree, major, minor, interestArea, majorProfessor, coMajorProfessor, totalCreditHours, degreePlanStatus, userName) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		result = jdbcTemplate.update(sql,
+				new Object[] {degreePlan.getName(), degreePlan.getStudentId(), degreePlan.getLocalAddress(),
+						degreePlan.getEmail(), degreePlan.getDegree(), degreePlan.getMajor(), degreePlan.getMinor(),
+						degreePlan.getInterestArea(), degreePlan.getMajorProfessor(), degreePlan.getCoMajorProfessor(),
+						degreePlan.getTotalCreditHours(), "submitted" , userName});
 		String sql1 = "INSERT INTO gre "
 				+ "(userName, verbal, quantitative, analytical, dateTaken) VALUES (?, ?, ?, ?, ?)";
 		JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
 		jdbcTemp.update(sql1,
-				new Object[] { degreePlan.getName(), degreePlan.getGre().getVerbal(),
+				new Object[] { userName, degreePlan.getGre().getVerbal(),
 						degreePlan.getGre().getQuantitative(), degreePlan.getGre().getAnalytical(),
 						degreePlan.getGre().getDateTaken() });
-		String sql = "INSERT INTO degreeplan "
-				+ "(name, studentId, localAddress, email, degree, major, minor, interestArea, majorProfessor, coMajorProfessor, totalCreditHours, degreePlanStatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-		int result = jdbcTemplate.update(sql,
-				new Object[] {degreePlan.getName(), degreePlan.getStudentId(), degreePlan.getLocalAddress(),
-						degreePlan.getEmail(), degreePlan.getDegree(), degreePlan.getMajor(), degreePlan.getMinor(),
-						degreePlan.getInterestArea(), degreePlan.getMajorProfessor(), degreePlan.getCoMajorProfessor(),
-						degreePlan.getTotalCreditHours(), "submitted" });
-		int coreReturn = insertCoreCourses(degreePlan, userName);
-		int courseReturn = insertOptionalCourses(degreePlan, userName);
 		String sql2 = "update majorprofessor set degreePlanStatus = ? where studentName = ?";
 		JdbcTemplate jdbcTemp1 = new JdbcTemplate(dataSource);
 		jdbcTemp1.update(sql2, new Object[] { "yes", userName });
+		}catch(Exception e) {
+			result = 0;
+			return result;
+		}
 		return result;
 	}
 
@@ -83,37 +89,44 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 		String sql = "INSERT INTO courses_dp "
 				+ "(userName, courseCatergory, courseName, semesterTaken, cHrs, grade) VALUES (?, ?, ?, ?, ?, ?)";
 		JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
-		String courseCategory = "optional";
+		String courseCategory = "optional1";
 		jdbcTemp.update(sql,
-				new Object[] { degreePlan.getName(), courseCategory, degreePlan.getOpCourse1().getCourse(),
+				new Object[] { userName, courseCategory, degreePlan.getOpCourse1().getCourse(),
 						degreePlan.getOpCourse1().getSemesterTaken(), degreePlan.getOpCourse1().getcHrs(),
 						degreePlan.getOpCourse1().getGrade() });
+		String courseCategory1 = "optional2";
 		jdbcTemp.update(sql,
-				new Object[] { degreePlan.getName(), courseCategory, degreePlan.getOpCourse2().getCourse(),
+				new Object[] { userName, courseCategory1, degreePlan.getOpCourse2().getCourse(),
 						degreePlan.getOpCourse2().getSemesterTaken(), degreePlan.getOpCourse2().getcHrs(),
 						degreePlan.getOpCourse2().getGrade() });
+		String courseCategory2 = "optional3";
 		jdbcTemp.update(sql,
-				new Object[] { degreePlan.getName(), courseCategory, degreePlan.getOpCourse3().getCourse(),
+				new Object[] { userName, courseCategory2, degreePlan.getOpCourse3().getCourse(),
 						degreePlan.getOpCourse3().getSemesterTaken(), degreePlan.getOpCourse3().getcHrs(),
 						degreePlan.getOpCourse3().getGrade() });
+		String courseCategory3 = "optional4";
 		jdbcTemp.update(sql,
-				new Object[] { degreePlan.getName(), courseCategory, degreePlan.getOpCourse4().getCourse(),
+				new Object[] { userName, courseCategory3, degreePlan.getOpCourse4().getCourse(),
 						degreePlan.getOpCourse4().getSemesterTaken(), degreePlan.getOpCourse4().getcHrs(),
 						degreePlan.getOpCourse4().getGrade() });
+		String courseCategory4 = "optional5";
 		jdbcTemp.update(sql,
-				new Object[] { degreePlan.getName(), courseCategory, degreePlan.getOpCourse5().getCourse(),
+				new Object[] { userName, courseCategory4, degreePlan.getOpCourse5().getCourse(),
 						degreePlan.getOpCourse5().getSemesterTaken(), degreePlan.getOpCourse5().getcHrs(),
 						degreePlan.getOpCourse5().getGrade() });
+		String courseCategory5 = "optional6";
 		jdbcTemp.update(sql,
-				new Object[] { degreePlan.getName(), courseCategory, degreePlan.getOpCourse6().getCourse(),
+				new Object[] { userName, courseCategory5, degreePlan.getOpCourse6().getCourse(),
 						degreePlan.getOpCourse6().getSemesterTaken(), degreePlan.getOpCourse6().getcHrs(),
 						degreePlan.getOpCourse6().getGrade() });
+		String courseCategory6 = "optional7";
 		jdbcTemp.update(sql,
-				new Object[] { degreePlan.getName(), courseCategory, degreePlan.getOpCourse7().getCourse(),
+				new Object[] { userName, courseCategory6, degreePlan.getOpCourse7().getCourse(),
 						degreePlan.getOpCourse7().getSemesterTaken(), degreePlan.getOpCourse7().getcHrs(),
 						degreePlan.getOpCourse7().getGrade() });
+		String courseCategory7 = "optional8";
 		int result = jdbcTemp.update(sql,
-				new Object[] { userName, courseCategory, degreePlan.getOpCourse8().getCourse(),
+				new Object[] { userName, courseCategory7, degreePlan.getOpCourse8().getCourse(),
 						degreePlan.getOpCourse8().getSemesterTaken(), degreePlan.getOpCourse8().getcHrs(),
 						degreePlan.getOpCourse8().getGrade() });
 		return result;
@@ -127,28 +140,28 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 		JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
 		String courseCategory = "courseA";
 		jdbcTemp.update(sql,
-				new Object[] { degreePlan.getName(), courseCategory, degreePlan.getCourseA().getCourse(),
+				new Object[] { userName, courseCategory, degreePlan.getCourseA().getCourse(),
 						degreePlan.getCourseA().getSemesterTaken(), degreePlan.getCourseA().getcHrs(),
 						degreePlan.getCourseA().getGrade() });
 
 		// inserts core course B
 		courseCategory = "courseB";
 		jdbcTemp.update(sql,
-				new Object[] { degreePlan.getName(), courseCategory, degreePlan.getCourseB().getCourse(),
+				new Object[] { userName, courseCategory, degreePlan.getCourseB().getCourse(),
 						degreePlan.getCourseB().getSemesterTaken(), degreePlan.getCourseB().getcHrs(),
 						degreePlan.getCourseB().getGrade() });
 
 		// inserts core course C
 		courseCategory = "courseC";
 		jdbcTemp.update(sql,
-				new Object[] { degreePlan.getName(), courseCategory, degreePlan.getCourseC().getCourse(),
+				new Object[] { userName, courseCategory, degreePlan.getCourseC().getCourse(),
 						degreePlan.getCourseC().getSemesterTaken(), degreePlan.getCourseC().getcHrs(),
 						degreePlan.getCourseC().getGrade() });
 
 		// inserts core course D
 		courseCategory = "courseD";
 		int result = jdbcTemp.update(sql,
-				new Object[] { degreePlan.getName(), courseCategory, degreePlan.getCourseD().getCourse(),
+				new Object[] { userName, courseCategory, degreePlan.getCourseD().getCourse(),
 						degreePlan.getCourseD().getSemesterTaken(), degreePlan.getCourseD().getcHrs(),
 						degreePlan.getCourseD().getGrade() });
 
@@ -158,10 +171,8 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 //get the degree plan information of a particular student from the database
 	@Override
 	public DegreePlan getDegreePlan(String sName, String userName) {
-		String sql = "select name from register where userName = '" + userName + "'";
 		JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
-		String profName = jdbctem.queryForObject(sql, String.class);
-		String sql1 = "select * from degreeplan where name= '" + sName + "' and majorProfessor = '" + profName + "'";
+		String sql1 = "select * from degreeplan where userName= '" + sName + "'";
 		DegreePlan degreePlan = (DegreePlan) jdbctem.queryForObject(sql1, new BeanPropertyRowMapper(DegreePlan.class));
 		return degreePlan;
 	}
@@ -186,13 +197,10 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 	@Override
 	public int submitDPToAdminSpecialist(String userName, String sName, String sign) {
 		// submit degree plan to administrative specialist
-		String sql = "select name from register where userName = '" + userName + "'";
-		JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
-		String profName = jdbctem.queryForObject(sql, String.class);
 		String degreePlanStatus = "With Administrative Specialist";
-		String sql1 =  "update degreeplan set degreePlanStatus=?, professorSignature = ? where name = ? and majorProfessor=?";
+		String sql1 =  "update degreeplan set degreePlanStatus=?, professorSignature = ? where userName = ?";
 		JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
-		int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, sign, sName, profName});
+		int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, sign, sName});
 		return result;
 	}
 
@@ -200,14 +208,17 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 	public int dPProfessorReject(String userName, String studentName, String comments) {
 		String sql = "select name from register where userName = '" + userName + "'";
 		String sql3 = "select role from register where userName = '" + userName + "'";
+		int sName = Integer.parseInt(studentName);
 		JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
+		String sql4 = "select userName from degreeplan where studentId = '" + sName + "'";
+		String uName = jdbctem.queryForObject(sql4, String.class);
 		JdbcTemplate jdbctem3 = new JdbcTemplate(dataSource);
 		String profName = jdbctem.queryForObject(sql, String.class);
 		String role = jdbctem3.queryForObject(sql3, String.class);
 		String degreePlanStatus = "No";
 		String sql2 =  "update majorProfessor set degreePlanStatus=? where studentName = ?";
 		JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
-		jdbcTemp.update(sql2, new Object[] {degreePlanStatus, studentName});
+		jdbcTemp.update(sql2, new Object[] {degreePlanStatus, uName});
 		if(role.equals("professor")) {
 			degreePlanStatus = "Professor Rejected";
 		}else if(role.equals("adminspecialist")) {
@@ -217,23 +228,28 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 		}else if(role.equals("chair")) {
 			degreePlanStatus = "Chair Rejected";
 		}
-		String sql1 =  "update degreeplan set degreePlanStatus=?, rejectComments = ? where name = ?";
-		int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, comments, studentName});
+		String sql1 =  "update degreeplan set degreePlanStatus=?, rejectComments = ? where userName = ?";
+		int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, comments, uName});
 		return result;
 	}
 
 	@Override
 	public String getDPStatus(String userName, String majorProfessor) {
-		String sql = "select degreePlanStatus from degreeplan where name = '" + userName + "'";
+		String dpStatus;
+		try {
+		String sql = "select degreePlanStatus from degreeplan where userName = '" + userName + "'";
 		JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
-		String dpStatus = jdbctem.queryForObject(sql, String.class);
+		dpStatus = jdbctem.queryForObject(sql, String.class);
+		}catch(Exception e) {
+			dpStatus = "Not yet submitted";
+		}
 		return dpStatus;
 	}
 
 //This program will get the reject comments from the database 
 	@Override
 	public String getComments(String userName, String majorProfessor) {
-		String sql = "select rejectComments from degreeplan where name = '" + userName + "'";
+		String sql = "select rejectComments from degreeplan where userName = '" + userName + "'";
 		JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
 		String comments = jdbctem.queryForObject(sql, String.class);
 		return comments;
@@ -242,7 +258,7 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 	@Override
 	public DegreePlan getDegreePlanData(String userName) {
 		JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
-		String sql1 = "select * from degreeplan where name= '" + userName + "'";
+		String sql1 = "select * from degreeplan where userName= '" + userName + "'";
 		DegreePlan degreePlan = (DegreePlan) jdbctem.queryForObject(sql1, new BeanPropertyRowMapper(DegreePlan.class));
 		return degreePlan;
 	}
@@ -252,10 +268,10 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 		String sql1 = "update gre set userName=?, verbal=?, quantitative=?, analytical=?, dateTaken=? where userName = ?";
 		JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
 		jdbcTemp.update(sql1,
-				new Object[] { degreePlan.getName(), degreePlan.getGre().getVerbal(),
+				new Object[] { userName, degreePlan.getGre().getVerbal(),
 						degreePlan.getGre().getQuantitative(), degreePlan.getGre().getAnalytical(),
 						degreePlan.getGre().getDateTaken(), userName });
-		String sql = "update degreeplan set name=?, studentId=?, localAddress=?, email=?, degree=?, major=?, minor=?, interestArea=?, majorProfessor=?, coMajorProfessor=?, totalCreditHours=?, degreePlanStatus=? where name = ?";
+		String sql = "update degreeplan set name=?, studentId=?, localAddress=?, email=?, degree=?, major=?, minor=?, interestArea=?, majorProfessor=?, coMajorProfessor=?, totalCreditHours=?, degreePlanStatus=? where userName = ?";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		int result = jdbcTemplate.update(sql,
 				new Object[] {degreePlan.getName(), degreePlan.getStudentId(), degreePlan.getLocalAddress(),
@@ -271,75 +287,82 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 	}
 	// inserts optional courses
 		private int updateOptionalCourses(DegreePlan degreePlan, String userName) {
-			String sql = "update courses_dp set courseCatergory=?, courseName=?, semesterTaken=?, cHrs=?, grade=? where userName=?";
+			String sql = "update courses_dp set courseName=?, semesterTaken=?, cHrs=?, grade=? where userName=? and courseCatergory=?";
 			JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
-			String courseCategory = "optional";
+			String courseCategory = "optional1";
 			jdbcTemp.update(sql,
-					new Object[] { courseCategory, degreePlan.getOpCourse1().getCourse(),
+					new Object[] { degreePlan.getOpCourse1().getCourse(),
 							degreePlan.getOpCourse1().getSemesterTaken(), degreePlan.getOpCourse1().getcHrs(),
-							degreePlan.getOpCourse1().getGrade(),userName });
+							degreePlan.getOpCourse1().getGrade(),userName, courseCategory });
+			courseCategory = "optional2";
 			jdbcTemp.update(sql,
-					new Object[] { courseCategory, degreePlan.getOpCourse2().getCourse(),
+					new Object[] { degreePlan.getOpCourse2().getCourse(),
 							degreePlan.getOpCourse2().getSemesterTaken(), degreePlan.getOpCourse2().getcHrs(),
-							degreePlan.getOpCourse2().getGrade(), userName });
+							degreePlan.getOpCourse2().getGrade(), userName, courseCategory });
+			courseCategory = "optional3";
 			jdbcTemp.update(sql,
-					new Object[] { courseCategory, degreePlan.getOpCourse3().getCourse(),
+					new Object[] { degreePlan.getOpCourse3().getCourse(),
 							degreePlan.getOpCourse3().getSemesterTaken(), degreePlan.getOpCourse3().getcHrs(),
-							degreePlan.getOpCourse3().getGrade(), userName });
+							degreePlan.getOpCourse3().getGrade(), userName, courseCategory });
+			courseCategory = "optional4";
 			jdbcTemp.update(sql,
-					new Object[] { courseCategory, degreePlan.getOpCourse4().getCourse(),
+					new Object[] { degreePlan.getOpCourse4().getCourse(),
 							degreePlan.getOpCourse4().getSemesterTaken(), degreePlan.getOpCourse4().getcHrs(),
-							degreePlan.getOpCourse4().getGrade(), userName });
+							degreePlan.getOpCourse4().getGrade(), userName, courseCategory });
+			courseCategory = "optional5";
 			jdbcTemp.update(sql,
-					new Object[] { courseCategory, degreePlan.getOpCourse5().getCourse(),
+					new Object[] { degreePlan.getOpCourse5().getCourse(),
 							degreePlan.getOpCourse5().getSemesterTaken(), degreePlan.getOpCourse5().getcHrs(),
-							degreePlan.getOpCourse5().getGrade(), userName });
+							degreePlan.getOpCourse5().getGrade(), userName, courseCategory });
+			courseCategory = "optional6";
 			jdbcTemp.update(sql,
-					new Object[] { courseCategory, degreePlan.getOpCourse6().getCourse(),
+					new Object[] { degreePlan.getOpCourse6().getCourse(),
 							degreePlan.getOpCourse6().getSemesterTaken(), degreePlan.getOpCourse6().getcHrs(),
-							degreePlan.getOpCourse6().getGrade(), userName });
+							degreePlan.getOpCourse6().getGrade(), userName, courseCategory });
+			courseCategory = "optional7";
 			jdbcTemp.update(sql,
-					new Object[] { courseCategory, degreePlan.getOpCourse7().getCourse(),
+					new Object[] { degreePlan.getOpCourse7().getCourse(),
 							degreePlan.getOpCourse7().getSemesterTaken(), degreePlan.getOpCourse7().getcHrs(),
-							degreePlan.getOpCourse7().getGrade(), userName });
+							degreePlan.getOpCourse7().getGrade(), userName, courseCategory });
+			courseCategory = "optional8";
 			int result = jdbcTemp.update(sql,
-					new Object[] { courseCategory, degreePlan.getOpCourse8().getCourse(),
+					new Object[] { degreePlan.getOpCourse8().getCourse(),
 							degreePlan.getOpCourse8().getSemesterTaken(), degreePlan.getOpCourse8().getcHrs(),
-							degreePlan.getOpCourse8().getGrade(), userName });
+							degreePlan.getOpCourse8().getGrade(), userName, courseCategory });
 			return result;
 		}
 
 		// inserts core courses
 		private int updateCoreCourses(DegreePlan degreePlan, String userName) {
 			// inserts core course A
-			String sql = "update courses_dp set courseCatergory=?, courseName=?, semesterTaken=?, cHrs=?, grade=? where userName=?";
+			String sql = "update courses_dp set courseName=?, semesterTaken=?, cHrs=?, grade=? where userName=? and courseCatergory=?";
 			JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
 			String courseCategory = "courseA";
 			jdbcTemp.update(sql,
-					new Object[] { courseCategory, degreePlan.getCourseA().getCourse(),
+					new Object[] { degreePlan.getCourseA().getCourse(),
 							degreePlan.getCourseA().getSemesterTaken(), degreePlan.getCourseA().getcHrs(),
-							degreePlan.getCourseA().getGrade(), userName });
+							degreePlan.getCourseA().getGrade(), userName, courseCategory});
 
 			// inserts core course B
 			courseCategory = "courseB";
 			jdbcTemp.update(sql,
-					new Object[] { courseCategory, degreePlan.getCourseB().getCourse(),
+					new Object[] {degreePlan.getCourseB().getCourse(),
 							degreePlan.getCourseB().getSemesterTaken(), degreePlan.getCourseB().getcHrs(),
-							degreePlan.getCourseB().getGrade(), userName });
+							degreePlan.getCourseB().getGrade(), userName, courseCategory });
 
 			// inserts core course C
 			courseCategory = "courseC";
 			jdbcTemp.update(sql,
-					new Object[] { courseCategory, degreePlan.getCourseC().getCourse(),
+					new Object[] {degreePlan.getCourseC().getCourse(),
 							degreePlan.getCourseC().getSemesterTaken(), degreePlan.getCourseC().getcHrs(),
-							degreePlan.getCourseC().getGrade(), userName });
+							degreePlan.getCourseC().getGrade(), userName, courseCategory });
 
 			// inserts core course D
 			courseCategory = "courseD";
 			int result = jdbcTemp.update(sql,
-					new Object[] { courseCategory, degreePlan.getCourseD().getCourse(),
+					new Object[] {degreePlan.getCourseD().getCourse(),
 							degreePlan.getCourseD().getSemesterTaken(), degreePlan.getCourseD().getcHrs(),
-							degreePlan.getCourseD().getGrade(), userName });
+							degreePlan.getCourseD().getGrade(), userName, courseCategory });
 
 			return result;
 		}
@@ -353,7 +376,7 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 			String dPStatus3 = "Associate Chair Approved";
 			String dPStatus4 = "Chair Approved";
 			String dPStatus5 = "Degree Plan approved in the CSCE Department";
-			String sql1 = "select name, studentId, email, degreePlanStatus from degreeplan where degreePlanStatus='" + dPStatus + "' OR degreePlanStatus='" + dPStatus1 + "' OR degreePlanStatus='" + dPStatus2 + "' OR degreePlanStatus='" + dPStatus3 + "' OR degreePlanStatus='" + dPStatus4 + "' OR degreePlanStatus='" + dPStatus5 + "'";
+			String sql1 = "select name, studentId, email, degreePlanStatus, userName from degreeplan where degreePlanStatus='" + dPStatus + "' OR degreePlanStatus='" + dPStatus1 + "' OR degreePlanStatus='" + dPStatus2 + "' OR degreePlanStatus='" + dPStatus3 + "' OR degreePlanStatus='" + dPStatus4 + "' OR degreePlanStatus='" + dPStatus5 + "'";
 			JdbcTemplate jdbctem1 = new JdbcTemplate(dataSource);
 			degreePlans = jdbctem1.query(sql1, new DPRowMapper());
 			return degreePlans;
@@ -361,7 +384,7 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 
 		@Override
 		public DegreePlan getReceivedDegreePlan(String sName, String sId) {
-			String sql1 = "select * from degreeplan where name= '" + sName + "' and studentId = '" + sId + "'";
+			String sql1 = "select * from degreeplan where studentId = '" + sId + "'";
 			JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
 			DegreePlan degreePlan = (DegreePlan) jdbctem.queryForObject(sql1, new BeanPropertyRowMapper(DegreePlan.class));
 			return degreePlan;
@@ -372,7 +395,7 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 			// submit degree plan to associate chair
 			JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
 			String degreePlanStatus = "With Associate Chair";
-			String sql1 =  "update degreeplan set degreePlanStatus=? where name = ? and studentId=?";
+			String sql1 =  "update degreeplan set degreePlanStatus=? where userName = ? and studentId=?";
 			JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
 			int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, sName, studentId});
 			return result;
@@ -382,7 +405,7 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 		public List<DegreePlan> receivedDegreePlansLevel2(String userName) {
 			List<DegreePlan> degreePlans = new ArrayList<DegreePlan>();
 			String dPStatus = "With Associate Chair";
-			String sql1 = "select name, studentId, email, degreePlanStatus from degreeplan where degreePlanStatus='" + dPStatus + "'";
+			String sql1 = "select name, studentId, email, degreePlanStatus, userName from degreeplan where degreePlanStatus='" + dPStatus + "'";
 			JdbcTemplate jdbctem1 = new JdbcTemplate(dataSource);
 			degreePlans = jdbctem1.query(sql1, new DPRowMapper());
 			return degreePlans;
@@ -392,10 +415,10 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 		public int submitDPToASL2(String userName, String sName, String sign) {
 			// submit degree plan to administrative specialist
 			String degreePlanStatus = "Associate Chair Approved";
-			String sql =  "update degreeplan set degreePlanStatus=? where name = ?";
+			String sql =  "update degreeplan set degreePlanStatus=? where userName = ?";
 			JdbcTemplate jdbcTemp1 = new JdbcTemplate(dataSource);
 			jdbcTemp1.update(sql, new Object[] {degreePlanStatus, sName});
-			String sql1 =  "update degreeplan set associateChairSignature = ? where name = ?";
+			String sql1 =  "update degreeplan set associateChairSignature = ? where userName = ?";
 			JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
 			int result = jdbcTemp.update(sql1, new Object[] {sign, sName});
 			return result;
@@ -406,9 +429,9 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 			// submit degree plan to associate chair
 			JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
 			String degreePlanStatus = "With Chair";
-			String sql1 =  "update degreeplan set degreePlanStatus=? where name = ? and studentId=?";
+			String sql1 =  "update degreeplan set degreePlanStatus=? where studentId=?";
 			JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
-			int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, sName, studentId});
+			int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, studentId});
 			return result;
 		}
 
@@ -416,7 +439,7 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 		public List<DegreePlan> receivedDegreePlansLevel3(String userName) {
 			List<DegreePlan> degreePlans = new ArrayList<DegreePlan>();
 			String dPStatus = "With Chair";
-			String sql1 = "select name, studentId, email, degreePlanStatus from degreeplan where degreePlanStatus='" + dPStatus + "'";
+			String sql1 = "select name, studentId, email, degreePlanStatus, userName from degreeplan where degreePlanStatus='" + dPStatus + "'";
 			JdbcTemplate jdbctem1 = new JdbcTemplate(dataSource);
 			degreePlans = jdbctem1.query(sql1, new DPRowMapper());
 			return degreePlans;
@@ -426,7 +449,7 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 		public int submitDPToASL3(String userName, String sName, String sign) {
 			// submit degree plan to administrative specialist
 			String degreePlanStatus = "Chair Approved";
-			String sql1 =  "update degreeplan set degreePlanStatus=?, chairSignature = ? where name = ?";
+			String sql1 =  "update degreeplan set degreePlanStatus=?, chairSignature = ? where userName = ?";
 			JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
 			int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, sign, sName});
 			return result;
@@ -437,9 +460,9 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 			// send degree plan approval to student
 			JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
 			String degreePlanStatus = "Degree Plan approved in the CSCE Department";
-			String sql1 =  "update degreeplan set degreePlanStatus=? where name = ? and studentId=?";
+			String sql1 =  "update degreeplan set degreePlanStatus=? where studentId=?";
 			JdbcTemplate jdbcTemp = new JdbcTemplate(dataSource);
-			int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, sName, studentId});
+			int result = jdbcTemp.update(sql1, new Object[] {degreePlanStatus, studentId});
 			return result;
 		}
 
@@ -635,6 +658,14 @@ public class DegreePlanDaoImpl implements DegreePlanDao {
 			JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);  
 			jdbcTemplate.update(sql);
 			return 1;
+		}
+
+		@Override
+		public String getRole(String userName) {
+			String sql = "select role from register where userName = '" + userName + "'";
+			JdbcTemplate jdbctem = new JdbcTemplate(dataSource);
+			String role = jdbctem.queryForObject(sql, String.class);
+			return role;
 		}
 
 }

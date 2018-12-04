@@ -7,7 +7,7 @@
 		<h4 align="center">Manage Users</h4><br/>
 		<select class="form-control field openSelectBox" id ="manageUsers" name="manageUsers" onchange="callController();">
 		  <option value="Select">Select</option>
-		  <option value="ManageChair">Manage Chair</option>
+		  <option id="selChair" value="ManageChair">Manage Chair</option>
 		  <option value="ManageAssociateChair">Manage Associate Chair</option>
 		  <option value="ManageStudents/Professors">Manage Students/Professors</option>
 		  <option value="ManageAdminSpecialist">Manage Admin Specialist</option>
@@ -54,7 +54,8 @@ function callController(){
     }
 }
 	window.onload = function () {
-        document.getElementById("manageUsers").click();
+        document.getElementById('selChair').selected = true;
+        callController();
     };
 </script>
 

@@ -11,13 +11,16 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
+import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import com.dpa.dao.DegreePlanDao;
+import com.dpa.dao.DegreePlanDaoImpl;
 import com.dpa.model.Course;
 import com.dpa.model.Courses;
 import com.dpa.model.DegreePlan;
@@ -262,4 +265,19 @@ public class DegreePlanServiceImplTest {
 		assertEquals(mockInterestAreas.size(), result.size());
 	}
 	
+	@Test
+	public void testAddOpCourse() {
+		when(degreePlanDao.addOpCourse(anyString()))
+		.thenReturn(1);
+		int result = degreePlanService.addOpCourse(anyString());
+		Assert.assertEquals(1,result);
+	}
+
+	@Test
+	public void testDeleteOpCourse() {
+		when(degreePlanDao.deleteOpCourse(anyString()))
+		.thenReturn(1);
+		int result = degreePlanService.deleteOpCourse(anyString());
+		Assert.assertEquals(1,result);
+	}
 }

@@ -13,6 +13,7 @@ public class DPExtractor {
 		dp.setStudentId(rs.getInt(2));
 		dp.setEmail(rs.getString(3));
 		dp.setDegreePlanStatus(rs.getString(4));
+		dp.setUserName(rs.getString(5));
 		return dp;
 	}
 

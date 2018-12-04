@@ -2,9 +2,10 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ include file="../common/professorheader.jspf"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div class="container" id="dPView">
+<div class="container" id="toChange">
 	<form name="viewDegreePlan"  action="/dpa/submitToAdminSpecialist" class="form-horizontal" onsubmit="" method="POST">
-		<input type="text" name = "sName" id= "sName" value = "${degreePlan.name}" style="visibility:hidden" required>
+		<input type="text" name = "sName" id= "sName" value = "${degreePlan.userName}" style="visibility:hidden" required>
+		<input type="text" name = "studentId" id= "sId" value = "${degreePlan.studentId}" style="visibility:hidden" required>
 		<div align = "center">
 			<font color="green">${success}</font>
 		</div>
@@ -126,7 +127,7 @@
 	</div>
 </div>
 
-<div class="footer">
+<div class="footer" id="indp">
 	<div class="container-fluid footer1"><h5 style = "text-align:center;">&#169; 2018 SHAN CSCE UNT</h5></div>
 	<div class="container-fluid footer2"><h5 style = "text-align:center;">Contact Us: +1 xxx-xxx-xxxx</h5></div>
 </div>
@@ -139,9 +140,10 @@ function signDP(){
 	document.getElementById("acceptDP").style.visibility = "visible";
 }
 function rejectDP(){
-	var sName = document.getElementById("sName").value;
+	var sName = document.getElementById("sId").value;
 	$.post('rejectDP', {studentName : sName},
 	    function(result){
+	    	 $('#indp').addClass('navbar navbar-default navbar-fixed-bottom');
 	         $('#toChange').html(result);
 		});
 }

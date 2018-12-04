@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ include file="../common/adminspecialistheader.jspf"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div class="container">
+<div class="container" id="toChange">
 	<h4 align="center"><strong>Update Degree Plan Information</strong></h4>
 	<div align = "center">
 		<font color="green">${success}</font>
@@ -111,7 +111,7 @@
 	</div>
 </div><br>
 
-<div class="footer">
+<div class="footer" id="updatedDP">
 	<div class="container-fluid footer1"><h5 style = "text-align:center;">&#169; 2018 SHAN CSCE UNT</h5></div>
 	<div class="container-fluid footer2"><h5 style = "text-align:center;">Contact Us: +1 xxx-xxx-xxxx</h5></div>
 </div>

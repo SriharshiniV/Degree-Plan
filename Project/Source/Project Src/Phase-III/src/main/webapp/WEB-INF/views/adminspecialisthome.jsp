@@ -30,6 +30,7 @@
 					<td>${degreePlan.degreePlanStatus}</td>
 					<td><input type="button" class="btn btn-primary viewDP" value = "View Degree Plan" id="${theCount.count}"/></td>
 				</tr>
+				<input type="text" class="btn btn-primary viewDP" value = "${degreePlan.userName}" id="toSFL" style="visibility:hidden"/>
 			</c:forEach>
 		</tbody>
 	</table>
@@ -40,8 +41,8 @@ $('.viewDP').click(function(){
 	var id = $(this).attr('id');
 	var requestRow = document.getElementById("receivedDegreePlansTable").rows[id].innerHTML;
 	var receivedName = requestRow.split(">",4);
-	var sName = receivedName[1].split("<",1);
 	var studentId = receivedName[3].split("<",1);
+	var sName = document.getElementById("toSFL").value;
 	$.post('receivedDegreePlan', { sN: sName, sId : studentId}, 
     function(result){
          $('#toChange').html(result);

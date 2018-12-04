@@ -14,6 +14,7 @@ import org.mockito.Mockito;
 import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.dpa.jdbc.MyAdvisorRowMapper;
@@ -64,13 +65,12 @@ public class RetrieveUsersDaoImplTest {
 	public void testGetMyAdvisorsForPopulatedList() {
 
 		
-		mockMyAdvisorRequestList = new ArrayList<Request>();
-		mockMyAdvisorRequestList.add(new Request());
-		when(mockJDBCTemplate.query(Matchers.anyString(), Matchers.any(MyAdvisorRowMapper.class)))
+		Request mockMyAdvisorRequestList = new Request();
+		when(mockJDBCTemplate.queryForObject(Matchers.anyString(), Matchers.any(BeanPropertyRowMapper.class)))
 		.thenReturn(mockMyAdvisorRequestList);
 		
 		RetrieveUsersDaoImpl mockObj = new RetrieveUsersDaoImpl();		
-		List<Request> actualMyAdvisorRequestList = mockObj.getMyAdvisors("userName");
+		Request actualMyAdvisorRequestList = mockObj.getMyAdvisors("userName");
 		Assert.assertEquals(mockMyAdvisorRequestList, actualMyAdvisorRequestList);
 		
 	}

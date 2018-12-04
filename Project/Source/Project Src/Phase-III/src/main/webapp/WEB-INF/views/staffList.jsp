@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div class="container" id="staff">
+<div class="container" id="toChange">
 	<table class="table table-striped" id="requestTable">
 		<h4 align="center">Student List</h4>
 		<thead>

@@ -2,7 +2,7 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ include file="../common/studentheader.jspf"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<div class="container">
+<div class="container" id="toChange">
 		<form name="degreePlanForm"  action="/dpa/updatedegreeplan" class="form-horizontal" onsubmit="return validate()" method="POST">
 			<div align = "center">
 				<font color="green">${success}</font>
@@ -72,7 +72,7 @@
 			<label class="control-label col-sm-2" for="minor">Minor</label>
 				<div class="col-sm-4">
 					<input type="text" class="form-control field" id="minor"
-						name="minor" value="${degreePlan.minor}" required>
+						name="minor" value="${degreePlan.minor}" >
 				</div>
 				<label class="control-label col-sm-2" for="Specialization">Interest Area
 				</label>
@@ -91,10 +91,10 @@
 				<label class="control-label col-sm-2" for="co_major_prof">Co-Major Professor</label>
 				<div class="col-sm-4">
 					<input type="text" class="form-control field" id="coMajorProf"
-						name="coMajorProfessor" value="${degreePlan.coMajorProfessor}" required>
+						name="coMajorProfessor" value="${degreePlan.coMajorProfessor}" >
 				</div>
 			</div>
-			 <!-- gre  -->
+												 <!-- gre  -->
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="gre_score">Most Recent GRE Scores: 
 				</label>
@@ -145,7 +145,7 @@
 				</label>
 				<div class="col-sm-1">
 					<input type="text" class="form-control field" id="grade_a"
-						name="courseA.grade" value="${course.grade}"   required>
+						name="courseA.grade" value="${course.grade}"   >
 				</div>
 				</c:forEach>
 			</div>
@@ -171,7 +171,7 @@
 				</label>
 				<div class="col-sm-1">
 					<input type="text" class="form-control field" id="grade_a"
-						name="courseB.grade" value="${course.grade}"   required>
+						name="courseB.grade" value="${course.grade}"   >
 				</div>
 				</c:forEach>
 			</div
@@ -197,7 +197,7 @@
 				</label>
 				<div class="col-sm-1">
 					<input type="text" class="form-control field" id="grade_a"
-						name="courseC.grade" value="${course.grade}"   required>
+						name="courseC.grade" value="${course.grade}"   >
 				</div>
 				</c:forEach>
 			</div>
@@ -222,7 +222,7 @@
 				</label>
 				<div class="col-sm-1">
 					<input type="text" class="form-control field" id="grade_a"
-						name="courseD.grade" value="${course.grade}"   required>
+						name="courseD.grade" value="${course.grade}"   >
 				</div>
 				</c:forEach>
 			</div>
@@ -278,7 +278,7 @@
 		</form>
 </div>
 
-<div class="footer">
+<div class="footer" id="updatedDP">
 	<div class="container-fluid footer1"><h5 style = "text-align:center;">&#169; 2018 SHAN CSCE UNT</h5></div>
 	<div class="container-fluid footer2"><h5 style = "text-align:center;">Contact Us: +1 xxx-xxx-xxxx</h5></div>
 </div>

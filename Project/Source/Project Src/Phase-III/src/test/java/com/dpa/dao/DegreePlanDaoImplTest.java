@@ -1,6 +1,7 @@
 package com.dpa.dao;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -233,5 +234,23 @@ public void testReceivedDegreePlansLevel3() {
 		DegreePlanDaoImpl mockObj= new DegreePlanDaoImpl();
 		List <InterestArea> actualDPList=mockObj.getInterestAreas();
 		Assert.assertEquals(actualDPList,mockDPList);
+	}
+	
+	@Test
+	public void testAddOpCourse() {
+		when(mockJDBCTemplate.update(Matchers.anyString(), objCap.capture()))
+		.thenReturn(1);
+		DegreePlanDaoImpl mockObj= new DegreePlanDaoImpl();
+		int result = mockObj.addOpCourse(anyString());
+		Assert.assertEquals(1,result);
+	}
+
+	@Test
+	public void testDeleteOpCourse() {
+		when(mockJDBCTemplate.update(Matchers.anyString()))
+		.thenReturn(1);
+		DegreePlanDaoImpl mockObj= new DegreePlanDaoImpl();
+		int result = mockObj.deleteOpCourse(anyString());
+		Assert.assertEquals(1,result);
 	}
 }

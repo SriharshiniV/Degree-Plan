@@ -73,5 +73,7 @@ public interface DegreePlanService {
 
 	int deleteOpCourse(String oPName);
 
+	String getRole(String userName);
+
 
 }

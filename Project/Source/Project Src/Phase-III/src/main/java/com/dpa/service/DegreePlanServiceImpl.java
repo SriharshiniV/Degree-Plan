@@ -155,7 +155,7 @@ public class DegreePlanServiceImpl implements DegreePlanService{
 		Iterator opt = courses.iterator();
 		while(opt.hasNext()) {
 			Courses optional = (Courses) opt.next();
-			if((optional.getCourseCatergory()).equals("optional")){
+			if(((optional.getCourseCatergory()).equals("optional1")) || ((optional.getCourseCatergory()).equals("optional2")) || ((optional.getCourseCatergory()).equals("optional3")) || ((optional.getCourseCatergory()).equals("optional4")) || ((optional.getCourseCatergory()).equals("optional5")) || ((optional.getCourseCatergory()).equals("optional6")) || ((optional.getCourseCatergory()).equals("optional7")) || ((optional.getCourseCatergory()).equals("optional8"))){
 				modifiedCourseList.add(optional);
 			}
 		}
@@ -407,6 +407,12 @@ public class DegreePlanServiceImpl implements DegreePlanService{
 	@Override
 	public int deleteOpCourse(String oPName) {
 		int result = degreePlanDao.deleteOpCourse(oPName);
+		return result;
+	}
+
+	@Override
+	public String getRole(String userName) {
+		String result = degreePlanDao.getRole(userName);
 		return result;
 	}
 

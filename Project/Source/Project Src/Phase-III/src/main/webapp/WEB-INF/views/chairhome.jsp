@@ -42,7 +42,7 @@
 		<tbody>
 			<c:forEach items="${receivedDegreePlansLevel3}" var="receivedDegreePlanLevel3" varStatus="theCount">
 				<tr>
-					<td>${receivedDegreePlanLevel3.name}</td>
+					<td>${receivedDegreePlanLevel3.userName}</td>
 					<td>${receivedDegreePlanLevel3.studentId}</td>
 					<td><input type="button" class="btn btn-primary receiveDPL3" value = "View Degree Plan" id="${theCount.count}"/></td>
 				</tr>

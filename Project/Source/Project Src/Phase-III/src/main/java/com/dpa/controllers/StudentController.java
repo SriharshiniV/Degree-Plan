@@ -25,7 +25,7 @@ public class StudentController {
 		HttpSession session = request.getSession(false);
 		if (session != null) {
 			String userName = (String) session.getAttribute("userName");
-			List<Request> myAdvisors = retrieveUsersService.getMyAdvisors(userName);
+			Request myAdvisors = retrieveUsersService.getMyAdvisors(userName);
 			model.addAttribute("myAdvisors", myAdvisors);
 			return "studenthome";
 		} else {

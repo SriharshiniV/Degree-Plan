@@ -65,5 +65,7 @@ public interface DegreePlanDao {
 
 	int deleteOpCourse(String oPName);
 
+	String getRole(String userName);
+
 
 }

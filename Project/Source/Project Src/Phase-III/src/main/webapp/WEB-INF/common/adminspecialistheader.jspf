@@ -56,12 +56,14 @@
 	function dpiInformation(){
 		$.post('viewDPI',  
 	    function(result){
+	    	 $('#updatedDP').addClass('navbar navbar-default navbar-fixed-bottom');
 	         $('#toChange').html(result);
 		});
 	}
 	function staffDirectory(){
 	$.post('staffDirectory',  
 	    function(result){
+	    	 $('#updatedDP').addClass('navbar navbar-default navbar-fixed-bottom');
 	         $('#toChange').html(result);
 		});
 	}

@@ -16,6 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `adduser`
+--
+
+DROP TABLE IF EXISTS `adduser`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `adduser` (
+  `userName` varchar(60) DEFAULT NULL,
+  `role` varchar(20) NOT NULL,
+  PRIMARY KEY (`role`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `adduser`
+--
+
+LOCK TABLES `adduser` WRITE;
+/*!40000 ALTER TABLE `adduser` DISABLE KEYS */;
+INSERT INTO `adduser` VALUES ('melanie','adminspecialist'),('robert','associatechair'),('bryant','chair');
+/*!40000 ALTER TABLE `adduser` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `courses`
 --
 
@@ -34,7 +58,7 @@ CREATE TABLE `courses` (
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
-INSERT INTO `courses` VALUES ('CSCE 5050 Applications of Cryptography'),('CSCE 5170 Graph Theory'),('CSCE 5200 Information Retrieval and Web Search'),('CSCE 5220 Computer Graphics'),('CSCE 5370 Distributed and Parallel Database Systems'),('CSCE 5380 Data Mining'),('CSCE 5510 Wireless Communications'),('CSCE 5520 Wireless Networks and Protocols'),('CSCE 5530 Computer Network Design'),('CSCE 5540 Introduction to Sensor Networks'),('CSCE 5550 Introduction to Computer Security'),('CSCE 5580 Computer Networks '),('CSCE 5615 (5933) Networks-on-Chip'),('CSCE 5932 Internship'),('CSCE 5933 LTE Physical Layer'),('CSCE 5933/5390 Topics in CSCE, Topic: Multimedia Computing'),('DSCI 5350 BigData Analytics');
+INSERT INTO `courses` VALUES ('CSCE 5050 Applications of Cryptography'),('CSCE 5200 Information Retrieval and Web Search'),('CSCE 5220 Computer Graphics'),('CSCE 5370 Distributed and Parallel Database Systems'),('CSCE 5380 Data Mining'),('CSCE 5530 Computer Network Design'),('CSCE 5540 Introduction to Sensor Networks'),('CSCE 5550 Introduction to Computer Security'),('CSCE 5615 (5933) Networks-on-Chip'),('CSCE 5932 Internship'),('CSCE 5933 LTE Physical Layer'),('CSCE 5933/5390 Topics in CSCE, Topic: Multimedia Computing'),('CSSE 3896 Computer Engineering'),('DSCI 5350 BigData Analytics');
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51,8 +75,7 @@ CREATE TABLE `courses_dp` (
   `courseName` varchar(80) NOT NULL,
   `semesterTaken` varchar(30) DEFAULT NULL,
   `cHrs` int(11) DEFAULT NULL,
-  `grade` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`userName`,`courseName`)
+  `grade` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -62,7 +85,7 @@ CREATE TABLE `courses_dp` (
 
 LOCK TABLES `courses_dp` WRITE;
 /*!40000 ALTER TABLE `courses_dp` DISABLE KEYS */;
-INSERT INTO `courses_dp` VALUES ('sharanya','optional','CSCE 5050 Applications of Cryptography','spring',3,'A'),('sharanya','courseC','CSCE 5170 Graph Theory','spring',3,'A'),('sharanya','optional','CSCE 5200 Information Retrieval and Web Search','Fall',3,'A'),('sharanya','optional','CSCE 5230 Methods of Numerical Computations','Fall',3,'A'),('sharanya','courseD','CSCE 5350 Fundamentals of Database Systems','spring',3,'A'),('sharanya','optional','CSCE 5370 Distributed and Parallel Database Systems','Fall',3,'A'),('sharanya','optional','CSCE 5380 Data Mining','spring',3,'A'),('sharanya','courseA','CSCE 5450 Programming Languages','Fall',3,'A'),('sharanya','optional','CSCE 5530 Computer Network Design','summer',3,'A'),('sharanya','courseB','CSCE 5580 Computer Networks','spring',3,'A'),('sharanya','optional','CSCE 5615 (5933) Networks-on-Chip','spring',3,'A'),('sharanya','optional','CSCE 5933/5390 Topics in CSCE, Topic: Multimedia Computing','spring',3,'A');
+INSERT INTO `courses_dp` VALUES ('rinku','courseC','CSCE 5170 Graph Theory','spring',3,'A'),('rinku','optional7','CSSE 3896 Computer Engineering','spring',3,'A'),('rinku','courseA','CSCE 5430 Software Engineering','Fall',3,'A'),('rinku','optional6','CSCE 5933 LTE Physical Layer','summer',3,''),('rinku','optional5','CSCE 5615 (5933) Networks-on-Chip','Fall',3,''),('rinku','courseD','CSCE 5550 Computer Security','summer',3,'A'),('rinku','optional4','CSCE 5550 Introduction to Computer Security','Fall',3,''),('rinku','courseB','CSCE 5580 Computer Networks','spring',3,'B'),('rinku','optional8','DSCI 5350 BigData Analytics','Fall',3,'A'),('rinku','optional3','CSCE 5540 Introduction to Sensor Networks','spring',3,''),('rinku','optional2','CSCE 5530 Computer Network Design','summer',3,''),('rinku','optional1','CSCE 5200 Information Retrieval and Web Search','summer',3,''),('sharanya','optional1','CSCE 5050 Applications of Cryptography','spring',3,'A'),('sharanya','courseC','CSCE 5170 Graph Theory','spring',3,'A'),('sharanya','optional2','CSCE 5200 Information Retrieval and Web Search','Fall',3,'A'),('sharanya','optional3','CSCE 5230 Methods of Numerical Computations','Fall',3,'A'),('sharanya','courseD','CSCE 5350 Fundamentals of Database Systems','spring',3,'A'),('sharanya','optional4','CSCE 5370 Distributed and Parallel Database Systems','Fall',3,'A'),('sharanya','optional5','CSCE 5380 Data Mining','spring',3,'A'),('sharanya','courseA','CSCE 5450 Programming Languages','Fall',3,'A'),('sharanya','optional6','CSCE 5530 Computer Network Design','summer',3,'A'),('sharanya','courseB','CSCE 5580 Computer Networks','spring',3,'A'),('sharanya','optional7','CSCE 5615 (5933) Networks-on-Chip','spring',3,'A'),('sharanya','optional8','CSCE 5933/5390 Topics in CSCE, Topic: Multimedia Computing','spring',3,'A');
 /*!40000 ALTER TABLE `courses_dp` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,6 +113,7 @@ CREATE TABLE `degreeplan` (
   `associateChairSignature` varchar(256) DEFAULT NULL,
   `chairSignature` varchar(256) DEFAULT NULL,
   `rejectComments` varchar(1000) DEFAULT NULL,
+  `userName` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`studentId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -100,7 +124,7 @@ CREATE TABLE `degreeplan` (
 
 LOCK TABLES `degreeplan` WRITE;
 /*!40000 ALTER TABLE `degreeplan` DISABLE KEYS */;
-INSERT INTO `degreeplan` VALUES ('sharanya',11256784,'2415 charlotte street','sharanyagottimukkula@my.unt.edu','M.S','computerScience','computer engineering','software engineering','Dr. Armin Mikler','Dr. Armin Mikler',36,'Degree Plan approved in the CSCE Department','nanditha','hasrhini','aravnd','Please change optional course 3');
+INSERT INTO `degreeplan` VALUES ('rinku.R',11234536,'1121 west street','rinku@my.unt.edu','M.S','computerScience','','Communications and Networks','Dr. Armin Mikler','',36,'Degree Plan approved in the CSCE Department','Dr. Mikler','Dr. Robert Akl','Dr. Bryant','please change','rinku'),('sharanyag',11256784,'2415 charlotte street','sharanyagottimukkula@my.unt.edu','M.S','computerScience','computer engineering','software engineering','Dr. Armin Mikler','Dr. Armin Mikler',36,'With Administrative Specialist','Dr. Mikler','Dr. Robert Akl','Dr. Robert Akl','please change courses','sharanya');
 /*!40000 ALTER TABLE `degreeplan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,7 +175,7 @@ CREATE TABLE `gre` (
 
 LOCK TABLES `gre` WRITE;
 /*!40000 ALTER TABLE `gre` DISABLE KEYS */;
-INSERT INTO `gre` VALUES ('sharanya',130,130,2,'2018-10-12');
+INSERT INTO `gre` VALUES ('rinku',131,130,2,'2018-12-04'),('sharanya',130,130,2,'2018-11-27');
 /*!40000 ALTER TABLE `gre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -201,7 +225,7 @@ CREATE TABLE `login` (
 
 LOCK TABLES `login` WRITE;
 /*!40000 ALTER TABLE `login` DISABLE KEYS */;
-INSERT INTO `login` VALUES ('aravind','347b7d2417ca30d906dc5edda4056d7b','student','approved'),('bryant','f925916e2754e5e03f75dd58a5733251','chair','approved'),('CSCEUNT_DPA','a39d362c8364f35fe6ce612d1e5dbee3','admin','approved'),('dolly','f925916e2754e5e03f75dd58a5733251','student','approved'),('george','4bc9a9caad572fd65efdea49f8297fc3','student','approved'),('harshini','e6d304912bdaaad6e67c2f6fdf8015cb','student','approved'),('melanie','f925916e2754e5e03f75dd58a5733251','adminspecialist','approved'),('mikler','e63eea102da9e561d9e1281a9e2dd6b6','professor','approved'),('nanditha','8e86ec7899c66248e6bf5d24503bd3f9','student','approved'),('pushpa','df6e3cce545e954073a7fa82beb3ac8d','professor','approved'),('robert','f925916e2754e5e03f75dd58a5733251','associatechair','approved'),('sahithya','f925916e2754e5e03f75dd58a5733251','student','approved'),('sharanya','d232704062b0fea5c8d5b869cddef2a5','student','approved'),('sharmila','f925916e2754e5e03f75dd58a5733251','student','approved');
+INSERT INTO `login` VALUES ('aravind','347b7d2417ca30d906dc5edda4056d7b','student','approved'),('bryant','f925916e2754e5e03f75dd58a5733251','chair','approved'),('chinnu','f925916e2754e5e03f75dd58a5733251','student','approved'),('CSCEUNT_DPA','a39d362c8364f35fe6ce612d1e5dbee3','admin','approved'),('danny','f925916e2754e5e03f75dd58a5733251','student','approved'),('dolly','f925916e2754e5e03f75dd58a5733251','student','approved'),('donny','38e668dd23cb646dea27ddcf45e5b041','chair','approved'),('george','4bc9a9caad572fd65efdea49f8297fc3','student','approved'),('harsh','38e668dd23cb646dea27ddcf45e5b041','professor','pending'),('harsha','f925916e2754e5e03f75dd58a5733251','student','approved'),('harshini','e6d304912bdaaad6e67c2f6fdf8015cb','student','approved'),('melanie','f925916e2754e5e03f75dd58a5733251','adminspecialist','approved'),('mikler','e63eea102da9e561d9e1281a9e2dd6b6','professor','approved'),('nanditha','8e86ec7899c66248e6bf5d24503bd3f9','student','approved'),('priya','38e668dd23cb646dea27ddcf45e5b041','student','approved'),('pushpa','f925916e2754e5e03f75dd58a5733251','professor','approved'),('raghu','f925916e2754e5e03f75dd58a5733251','student','approved'),('rinku','38e668dd23cb646dea27ddcf45e5b041','student','approved'),('robert','f925916e2754e5e03f75dd58a5733251','associatechair','approved'),('sahithya','f925916e2754e5e03f75dd58a5733251','student','approved'),('sharanya','d232704062b0fea5c8d5b869cddef2a5','student','approved'),('sharmila','f925916e2754e5e03f75dd58a5733251','student','approved'),('tweety','f925916e2754e5e03f75dd58a5733251','student','approved');
 /*!40000 ALTER TABLE `login` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -228,7 +252,7 @@ CREATE TABLE `majorprofessor` (
 
 LOCK TABLES `majorprofessor` WRITE;
 /*!40000 ALTER TABLE `majorprofessor` DISABLE KEYS */;
-INSERT INTO `majorprofessor` VALUES ('aravind','CS','Bryant Barett','BryantBarett@unt.edu',NULL),('dolly','CE','Dr. Armin Mikler','arminmikler@unt.edu',NULL),('harshini','CS','Bryant Barett','BryantBarett@unt.edu',NULL),('nanditha','CS','Bryant Barett','BryantBarett@unt.edu',NULL),('sharanya','CS','Dr. Armin Mikler','arminmikler@unt.edu','yes'),('sharmila','CE','Robert Akl','roberakl@unt.edu',NULL);
+INSERT INTO `majorprofessor` VALUES ('aravind','CS','Bryant Barett','BryantBarett@unt.edu',NULL),('chinnu','CS','pushpa','pushpa@gmail.com','yes'),('harshini','CS','Bryant Barett','BryantBarett@unt.edu',NULL),('nanditha','CS','Bryant Barett','BryantBarett@unt.edu',NULL),('raghu','CS','Dr. Armin Mikler','arminmikler@unt.edu',NULL),('rinku','CS','Dr. Armin Mikler','arminmikler@unt.edu','yes'),('sharanya','CS','Dr. Armin Mikler','arminmikler@unt.edu','yes'),('sharmila','CE','Robert Akl','roberakl@unt.edu',NULL),('tweety','CS','pushpa','pushpa@gmail.com',NULL);
 /*!40000 ALTER TABLE `majorprofessor` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,7 +306,7 @@ CREATE TABLE `register` (
 
 LOCK TABLES `register` WRITE;
 /*!40000 ALTER TABLE `register` DISABLE KEYS */;
-INSERT INTO `register` VALUES ('Aravind Thotempudi','aravindthottempudi@my.unt.edu','student','aravind','347b7d2417ca30d906dc5edda4056d7b','approved'),('Dr. Armin Mikler','arminmikler@unt.edu','professor','mikler','e63eea102da9e561d9e1281a9e2dd6b6','approved'),('Bryant Barett','BryantBarett@unt.edu','chair','Bryant','f925916e2754e5e03f75dd58a5733251','approved'),('dolly','dolly@gmail.com','student','dolly','f925916e2754e5e03f75dd58a5733251','approved'),('George Joseph','georgejoseph@my.unt.edu','student','george','4bc9a9caad572fd65efdea49f8297fc3','approved'),('Melanie Dewey','melaniedewey@my.unt.edu','adminspecialist','melanie','f925916e2754e5e03f75dd58a5733251','approved'),('Nanditha Bodanapu','nandithabodanapu@my.unt.edu','student','nanditha','8e86ec7899c66248e6bf5d24503bd3f9','approved'),('pushpa','pushpa@gmail.com','professor','pushpa','df6e3cce545e954073a7fa82beb3ac8d','approved'),('Robert Akl','roberakl@unt.edu','associatechair','robert','f925916e2754e5e03f75dd58a5733251','approved'),('sahithya','sahithya@my.unt.edu','student','sahithya','f925916e2754e5e03f75dd58a5733251','approved'),('Sharanya Gottimukkula','sharanyagottimukkua@my.unt.edu','student','Sharanya','d232704062b0fea5c8d5b869cddef2a5','approved'),('sharmila','sharmila1@my.unt.edu','student','sharmila','f925916e2754e5e03f75dd58a5733251','approved'),('Sri Harshini','sriharshinivallabhaneni@my.unt.edu','student','harshini','e6d304912bdaaad6e67c2f6fdf8015cb','approved');
+INSERT INTO `register` VALUES ('Aravind Thotempudi','aravindthottempudi@my.unt.edu','student','aravind','347b7d2417ca30d906dc5edda4056d7b','approved'),('Dr. Armin Mikler','arminmikler@unt.edu','professor','mikler','e63eea102da9e561d9e1281a9e2dd6b6','approved'),('Bryant Barett','BryantBarett@unt.edu','chair','Bryant','f925916e2754e5e03f75dd58a5733251','approved'),('chinnu','chinnu@my.unt.edu','student','chinnu','f925916e2754e5e03f75dd58a5733251','approved'),('danny','danny@my.unt.edu','student','danny','f925916e2754e5e03f75dd58a5733251','approved'),('dolly','dolly@gmail.com','student','dolly','f925916e2754e5e03f75dd58a5733251','approved'),('donyy','donny@my.unt.edu','chair','donny','38e668dd23cb646dea27ddcf45e5b041','approved'),('George Joseph','georgejoseph@my.unt.edu','student','george','4bc9a9caad572fd65efdea49f8297fc3','approved'),('harsh','harsh@my.unt.edu','professor','harsh','38e668dd23cb646dea27ddcf45e5b041','pending'),('harsha','harsha@my.unt.edu','student','harsha','f925916e2754e5e03f75dd58a5733251','approved'),('Melanie Dewey','melaniedewey@my.unt.edu','adminspecialist','melanie','f925916e2754e5e03f75dd58a5733251','approved'),('Nanditha Bodanapu','nandithabodanapu@my.unt.edu','student','nanditha','8e86ec7899c66248e6bf5d24503bd3f9','approved'),('priya','priya@my.unt.edu','student','priya','38e668dd23cb646dea27ddcf45e5b041','approved'),('pushpa','pushpa@gmail.com','professor','pushpa','f925916e2754e5e03f75dd58a5733251','approved'),('raghu','raghu@my.unt.edu','student','raghu','f925916e2754e5e03f75dd58a5733251','approved'),('rinku.R','rinku@my.unt.edu','student','rinku','38e668dd23cb646dea27ddcf45e5b041','approved'),('Robert Akl','roberakl@unt.edu','associatechair','robert','f925916e2754e5e03f75dd58a5733251','approved'),('sahithya','sahithya@my.unt.edu','student','sahithya','f925916e2754e5e03f75dd58a5733251','approved'),('Sharanya Gottimukkula','sharanyagottimukkua@my.unt.edu','student','Sharanya','d232704062b0fea5c8d5b869cddef2a5','approved'),('sharmila','sharmila1@my.unt.edu','student','sharmila','f925916e2754e5e03f75dd58a5733251','approved'),('Sri Harshini','sriharshinivallabhaneni@my.unt.edu','student','harshini','e6d304912bdaaad6e67c2f6fdf8015cb','approved'),('tweety','tweety@my.unt.edu','student','tweety','f925916e2754e5e03f75dd58a5733251','approved');
 /*!40000 ALTER TABLE `register` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -313,7 +337,7 @@ CREATE TABLE `requests` (
 
 LOCK TABLES `requests` WRITE;
 /*!40000 ALTER TABLE `requests` DISABLE KEYS */;
-INSERT INTO `requests` VALUES ('aravind','Bryant Barett','BryantBarett@unt.edu','CS','fall',2017,'please accept my request','Request Accepted'),('dolly','Dr. Armin Mikler','arminmikler@unt.edu','CE','spring',2017,'please accept my request','Request Accepted'),('george','Bryant Barett','BryantBarett@unt.edu','CS','fall',2017,'please accept','Request Sent'),('harshini','Bryant Barett','BryantBarett@unt.edu','CS','fall',2017,'Please accept','Request Accepted'),('nanditha','Bryant Barett','BryantBarett@unt.edu','CS','fall',2017,'Hello Sir,\r\n\r\nIt would be great if you can accept my request.\r\n\r\nThanks\r\nSharanya','Request Accepted'),('sharanya','Dr. Armin Mikler','arminmikler@unt.edu','CS','fall',2017,'Hello Sir\r\n\r\nIt would be great if you can accept my request and be my major professor.\r\n\r\nThanks\r\nSharanya','Request Accepted'),('sharanya','Bryant Barett','BryantBarett@unt.edu','CS','fall',2017,'mmmmm','Request Sent'),('sharmila','Robert Akl','roberakl@unt.edu','CE','fall',2017,'Please be my major professor','Request Accepted');
+INSERT INTO `requests` VALUES ('aravind','Bryant Barett','BryantBarett@unt.edu','CS','fall',2017,'please accept my request','Request Accepted'),('chinnu','pushpa','pushpa@gmail.com','CS','spring',2017,'Please accept','Request Accepted'),('danny','Dr. Armin Mikler','arminmikler@unt.edu','CS','fall',2017,'please accept','Request Accepted'),('dolly','Dr. Armin Mikler','arminmikler@unt.edu','CE','spring',2017,'please accept my request','Request Accepted'),('george','Bryant Barett','BryantBarett@unt.edu','CS','fall',2017,'please accept','Request Sent'),('harsha','Dr. Armin Mikler','arminmikler@unt.edu','CS','spring',2017,'please kindly accept','Request Accepted'),('harshini','Bryant Barett','BryantBarett@unt.edu','CS','fall',2017,'Please accept','Request Accepted'),('mikler','Dr. Armin Mikler','arminmikler@unt.edu','CS','spring',2017,'please accept','Request Sent'),('nanditha','Bryant Barett','BryantBarett@unt.edu','CS','fall',2017,'Hello Sir,\r\n\r\nIt would be great if you can accept my request.\r\n\r\nThanks\r\nSharanya','Request Accepted'),('priya','Dr. Armin Mikler','arminmikler@unt.edu','CS','fall',2017,'please kindly accept','Request Accepted'),('raghu','Dr. Armin Mikler','arminmikler@unt.edu','CS','fall',2017,'Please accept','Request Accepted'),('rinku','Dr. Armin Mikler','arminmikler@unt.edu','CS','fall',2017,'please accept','Request Accepted'),('sharanya','Dr. Armin Mikler','arminmikler@unt.edu','CS','fall',2017,'Hello Sir\r\n\r\nIt would be great if you can accept my request and be my major professor.\r\n\r\nThanks\r\nSharanya','Request Accepted'),('sharanya','Bryant Barett','BryantBarett@unt.edu','CS','fall',2017,'mmmmm','Request Sent'),('sharmila','Robert Akl','roberakl@unt.edu','CE','fall',2017,'Please be my major professor','Request Accepted'),('tweety','pushpa','pushpa@gmail.com','CS','spring',2017,'please accept','Request Accepted');
 /*!40000 ALTER TABLE `requests` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -326,4 +350,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-25 17:54:02
+-- Dump completed on 2018-12-04  3:41:39

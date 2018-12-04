@@ -43,10 +43,11 @@ public class RegisterController {
 		if (result == 1) {
 			model.put("succ", "Registered Sucessfully, Please Login");
 			return "login";
-		} else {
-			model.put("error", "Username already existing");
-			return "register";
 		}
+		else {
+			model.put("error", "Username already existing");
+		}
+		return "register";
 	}
 
 }

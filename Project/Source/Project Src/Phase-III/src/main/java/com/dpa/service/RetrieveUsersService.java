@@ -9,7 +9,7 @@ public interface RetrieveUsersService {
 
 	List<Request> getMyStudents(String userName);
 
-	List<Request> getMyAdvisors(String userName);
+	Request getMyAdvisors(String userName);
 
 	List<Register> getStudentList();
 

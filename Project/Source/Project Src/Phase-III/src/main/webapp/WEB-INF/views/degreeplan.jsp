@@ -58,12 +58,12 @@
 			<label class="control-label col-sm-2" for="degreeToBeEarned">Degree To Be Earned</label>
 				<div class="col-sm-4">
 					<input type="text" class="form-control field" id="degree"
-						name="degree" value="M.S" required>
+						name="degree" value="M.S" required readonly>
 				</div>
 				<label class="control-label col-sm-1" for="major">Major</label>
 				<div class="col-sm-5">
 					<input type="text" class="form-control field" id="major"
-						name="major" value="${major}" required>
+						name="major" value="${major}" required readonly>
 				</div>
 			</div>
 			
@@ -72,7 +72,7 @@
 			<label class="control-label col-sm-2" for="minor">Minor</label>
 				<div class="col-sm-4">
 					<input type="text" class="form-control field" id="minor"
-						name="minor" placeholder="Please enter minor" required>
+						name="minor" placeholder="Please enter minor">
 				</div>
 				<label class="control-label col-sm-2" for="Specialization">Interest Area
 				</label>
@@ -86,12 +86,12 @@
 			<label class="control-label col-sm-2" for="majorProf">Major Professor</label>
 				<div class="col-sm-4">
 					<input type="text" class="form-control field" id="majorProf"
-						name="majorProfessor" placeholder="Enter Major Professor Name" value = "${majorProfessor}" required>
+						name="majorProfessor" placeholder="Enter Major Professor Name" value = "${majorProfessor}" required readonly>
 				</div>
 				<label class="control-label col-sm-2" for="co_major_prof">Co-Major Professor</label>
 				<div class="col-sm-4">
 					<input type="text" class="form-control field" id="coMajorProf"
-						name="coMajorProfessor" placeholder="Enter Co-Major Professor Name" required>
+						name="coMajorProfessor" placeholder="Enter Co-Major Professor Name">
 				</div>
 			</div>
 			 <!-- gre  -->
@@ -154,7 +154,7 @@
 				</label>
 				<div class="col-sm-1">
 					<input type="text" class="form-control field" id="grade_a"
-						name="courseA.grade" placeholder="grade"   required>
+						name="courseA.grade" placeholder="grade" >
 				</div>
 				
 			</div>
@@ -223,7 +223,7 @@
 				</label>
 				<div class="col-sm-1">
 					<input type="text" class="form-control field" id="grade_c"
-						name="courseC.grade" placeholder="grade"   >
+						name="courseC.grade" placeholder="grade" >
 				</div>
 			</div>
 			

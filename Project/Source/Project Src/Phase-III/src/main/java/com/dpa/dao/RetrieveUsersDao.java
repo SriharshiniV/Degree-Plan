@@ -9,7 +9,7 @@ public interface RetrieveUsersDao {
 
 	 List<Request> getMyStudents(String uName);
 
-	List<Request> getMyAdvisors(String userName);
+	Request getMyAdvisors(String userName);
 
 	List<Register> getStudentList();
 

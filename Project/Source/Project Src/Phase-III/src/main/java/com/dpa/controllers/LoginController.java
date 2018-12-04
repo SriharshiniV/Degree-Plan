@@ -65,7 +65,7 @@ public class LoginController {
 			if (role.equals("admin")) {
 				return "adminhome";
 			} else if(role.equals("student")) {
-				List<Request> myAdvisors = retrieveUsersService.getMyAdvisors(userName);
+				Request myAdvisors = retrieveUsersService.getMyAdvisors(userName);
 				model.addAttribute("myAdvisors", myAdvisors);
 				return "studenthome";
 			} else if(role.equals("professor")) {

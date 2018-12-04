@@ -35,9 +35,9 @@ public class RetrieveUsersServiceImpl implements RetrieveUsersService{
 		}
 		return myStudents;
 	}
-	public List<Request> getMyAdvisors(String userName) {
+	public Request getMyAdvisors(String userName) {
 		// TODO Auto-generated method stub
-		List<Request> myAdvisors = retrieveStudentsDao.getMyAdvisors(userName);
+		Request myAdvisors = retrieveStudentsDao.getMyAdvisors(userName);
 		return myAdvisors;
 	}
 	public List<Register> getStudentList() {

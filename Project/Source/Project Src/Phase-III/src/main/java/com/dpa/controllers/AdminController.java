@@ -64,11 +64,12 @@ public class AdminController {
 		int result = registerService.insertUser(register, approvalStatus);
 		if (result == 1) {
 			model.put("success", "User registered successfully");
-			return "adduser";
-		} else {
+		} else if(result == 3){
+			model.put("error", " User with the role is already present");
+		}else {
 			model.put("error", "Username already existing");
-			return "adduser";
 		}
+		return "adduser";
 	}
 	
 	//Approve Users

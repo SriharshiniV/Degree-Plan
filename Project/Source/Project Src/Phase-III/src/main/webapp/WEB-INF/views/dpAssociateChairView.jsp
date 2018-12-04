@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="container" id="dPView">
 	<form name="viewDegreePlan"  action="/dpa/submitToAS" class="form-horizontal" onsubmit="" method="POST">
-		<input type="text" name = "sName" id= "sName" value = "${degreePlan.name}" style="visibility:hidden" required>
+		<input type="text" name = "sName" id= "sName" value = "${degreePlan.userName}" style="visibility:hidden" required>
 		<input type="text" name = "studentId" id= "sId" value = "${degreePlan.studentId}" style="visibility:hidden" required>
 		<div align = "center">
 			<font color="green">${success}</font>
@@ -145,7 +145,7 @@ function signDP(){
 	document.getElementById("acceptDP").style.visibility = "visible";
 }
 function rejectDP(){
-	var sName = document.getElementById("sName").value;
+	var sName = document.getElementById("sId").value;
 	$.post('rejectDP', {studentName : sName},
 	    function(result){
 	         $('#toChange').html(result);
